@@ -54,6 +54,7 @@
     try {
       const res = await fetch(DATA_SOURCES[key]);
       const items = await res.json();
+      items.sort((a, b) => b.date.localeCompare(a.date));
       if (items.length === 0) {
         container.innerHTML = '<div class="empty">등록된 항목이 없습니다.</div>';
         return;

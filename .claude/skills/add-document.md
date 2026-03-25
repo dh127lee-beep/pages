@@ -26,6 +26,6 @@ user_invocable: true
    - `url`: `assets/documents/{filename}`
    - 나머지 필드는 사용자 입력값
 
-5. 날짜 역순(최신순)으로 정렬 후 저장합니다.
+5. JSON 파일을 저장합니다. (정렬 불필요 — 페이지에서 date 기준 최신순 자동 정렬됨)
 
 6. 결과를 사용자에게 알려줍니다.
