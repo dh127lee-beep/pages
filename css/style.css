@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: #666;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0;
+}
+
+.tab {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: #333;
+}
+
+.tab.active {
+  color: #0969da;
+  border-bottom-color: #0969da;
+  font-weight: 600;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.card-desc {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.4rem;
+}
+
+.card-meta {
+  font-size: 0.75rem;
+  color: #999;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.card-meta .tag {
+  background: #eef1f5;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+}
+
+.download-btn {
+  padding: 0.5rem 1rem;
+  background: #0969da;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.download-btn:hover {
+  background: #0550ae;
+}
+
+.repo-link {
+  font-size: 0.75rem;
+  color: #0969da;
+  text-decoration: none;
+}
+
+.repo-link:hover {
+  text-decoration: underline;
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #999;
+  font-size: 0.8rem;
+}

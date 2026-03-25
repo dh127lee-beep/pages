@@ -1,0 +1,11 @@
+[
+  {
+    "id": "doc-001",
+    "title": "샘플 문서",
+    "description": "샘플 PDF 문서입니다.",
+    "filename": "sample.pdf",
+    "url": "assets/documents/sample.pdf",
+    "date": "2026-03-25",
+    "tags": ["샘플"]
+  }
+]

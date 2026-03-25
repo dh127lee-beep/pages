@@ -1,0 +1,13 @@
+[
+  {
+    "id": "oss-001",
+    "title": "샘플 프로젝트",
+    "description": "샘플 오픈소스 프로젝트입니다.",
+    "filename": "sample-project.zip",
+    "url": "assets/opensource/sample-project.zip",
+    "version": "1.0.0",
+    "date": "2026-03-25",
+    "tags": ["샘플"],
+    "repo": "https://github.com/example/sample-project"
+  }
+]
