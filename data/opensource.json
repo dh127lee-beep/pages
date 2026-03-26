@@ -1,5 +1,16 @@
 [
   {
+    "id": "oss-002",
+    "title": "Slide Template",
+    "description": "파워포인트 스타일의 정적 슬라이드 웹페이지 템플릿. 7가지 테마(타이틀, 섹션, 본문, 2열, 인용, 이미지, 마무리) 포함.",
+    "filename": "slide-template.zip",
+    "url": "assets/opensource/slide-template.zip",
+    "version": "1.0.0",
+    "date": "2026-03-26",
+    "tags": ["슬라이드", "템플릿", "프레젠테이션"],
+    "repo": ""
+  },
+  {
     "id": "oss-001",
     "title": "샘플 프로젝트",
     "description": "샘플 오픈소스 프로젝트입니다.",
