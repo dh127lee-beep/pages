@@ -7,5 +7,32 @@
     "url": "assets/documents/sample.pdf",
     "date": "2026-03-25",
     "tags": ["샘플"]
+  },
+  {
+    "id": "doc-002",
+    "title": "Dynamic Agent Scaffolding",
+    "description": "Dynamic Agent Scaffolding 관련 문서입니다.",
+    "filename": "Dynamic_Agent_Scaffolding.pdf",
+    "url": "assets/documents/Dynamic_Agent_Scaffolding.pdf",
+    "date": "2026-03-26",
+    "tags": ["Agent"]
+  },
+  {
+    "id": "doc-003",
+    "title": "Harness Engineering",
+    "description": "Harness Engineering 관련 문서입니다.",
+    "filename": "Harness_Engineering.pdf",
+    "url": "assets/documents/Harness_Engineering.pdf",
+    "date": "2026-03-26",
+    "tags": ["Engineering"]
+  },
+  {
+    "id": "doc-004",
+    "title": "The Loopy Era",
+    "description": "The Loopy Era 관련 문서입니다.",
+    "filename": "The_Loopy_Era.pdf",
+    "url": "assets/documents/The_Loopy_Era.pdf",
+    "date": "2026-03-26",
+    "tags": ["Research"]
   }
 ]
