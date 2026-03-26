@@ -25,16 +25,15 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 3vh 3vw;
 }
 
 .slide-page {
   --s: 1;
   background: #fff;
   aspect-ratio: 16 / 9;
-  width: min(100%, calc((100vh - 56px - 48px) * 16 / 9));
-  max-width: 1280px;
-  max-height: calc(100vh - 56px - 48px);
+  width: min(100%, calc((100vh - 56px - 6vh) * 16 / 9));
+  max-height: calc(100vh - 56px - 6vh);
   border-radius: calc(6 * var(--s) * 1px);
   box-shadow: 0 calc(8 * var(--s) * 1px) calc(32 * var(--s) * 1px) rgba(0, 0, 0, 0.4);
   overflow: hidden;
