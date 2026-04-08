@@ -2,6 +2,7 @@
   const DATA_SOURCES = {
     documents: 'data/documents.json',
     opensource: 'data/opensource.json',
+    bookmark: 'data/bookmark.json',
   };
 
   // Tab switching
@@ -49,6 +50,21 @@
       </div>`;
   }
 
+  function renderBookmarkCard(item) {
+    const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="card">
+        <div class="card-info">
+          <div class="card-title">${item.title}</div>
+          <div class="card-meta">
+            <span>${item.date}</span>
+            ${tags}
+          </div>
+        </div>
+        <a class="bookmark-link" href="${item.url}" target="_blank">바로가기 →</a>
+      </div>`;
+  }
+
   async function loadList(key, containerId, renderFn) {
     const container = document.getElementById(containerId);
     try {
@@ -67,4 +83,5 @@
 
   loadList('documents', 'documents-list', renderDocumentCard);
   loadList('opensource', 'opensource-list', renderOpensourceCard);
+  loadList('bookmark', 'bookmark-list', renderBookmarkCard);
 })();

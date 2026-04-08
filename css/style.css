@@ -140,6 +140,21 @@ header h1 {
   text-decoration: underline;
 }
 
+.bookmark-link {
+  padding: 0.5rem 1rem;
+  color: #0969da;
+  font-size: 0.875rem;
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.bookmark-link:hover {
+  color: #0550ae;
+  text-decoration: underline;
+}
+
 .empty {
   text-align: center;
   padding: 3rem;

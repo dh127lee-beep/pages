@@ -1,0 +1,37 @@
+[
+  {
+    "id": "bm-001",
+    "title": "GitHub",
+    "url": "https://github.com",
+    "date": "2026-04-08",
+    "tags": ["개발"]
+  },
+  {
+    "id": "bm-002",
+    "title": "Claude",
+    "url": "https://claude.ai",
+    "date": "2026-04-08",
+    "tags": ["AI"]
+  },
+  {
+    "id": "bm-003",
+    "title": "Agent Skills",
+    "url": "https://github.com/addyosmani/agent-skills",
+    "date": "2026-04-08",
+    "tags": ["AI", "Agent"]
+  },
+  {
+    "id": "bm-004",
+    "title": "PptxGenJS",
+    "url": "https://github.com/gitbrent/PptxGenJS",
+    "date": "2026-04-08",
+    "tags": ["개발", "PPT"]
+  },
+  {
+    "id": "bm-005",
+    "title": "Evolution of AI Agentic Patterns",
+    "url": "https://bits-bytes-nn.github.io/insights/agentic-ai/2026/04/05/evolution-of-ai-agentic-patterns.html",
+    "date": "2026-04-08",
+    "tags": ["AI", "Agent"]
+  }
+]
