@@ -3,6 +3,7 @@
     documents: 'data/documents.json',
     opensource: 'data/opensource.json',
     bookmark: 'data/bookmark.json',
+    proposals: 'data/proposals.json',
   };
 
   // Tab switching
@@ -65,6 +66,30 @@
       </div>`;
   }
 
+  function renderProposalCard(item) {
+    const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
+    const highlights = (item.highlights || [])
+      .map((point) => `<li>${point}</li>`)
+      .join('');
+    const source = item.source
+      ? `<div class="card-source">Source: ${item.source}</div>`
+      : '';
+
+    return `
+      <div class="card proposal-card">
+        <div class="card-info">
+          <div class="card-title">${item.title}</div>
+          <div class="card-desc">${item.description}</div>
+          <div class="card-meta">
+            <span>${item.date}</span>
+            ${tags}
+          </div>
+          ${source}
+          <ul class="proposal-points">${highlights}</ul>
+        </div>
+      </div>`;
+  }
+
   async function loadList(key, containerId, renderFn) {
     const container = document.getElementById(containerId);
     try {
@@ -84,4 +109,5 @@
   loadList('documents', 'documents-list', renderDocumentCard);
   loadList('opensource', 'opensource-list', renderOpensourceCard);
   loadList('bookmark', 'bookmark-list', renderBookmarkCard);
+  loadList('proposals', 'proposals-list', renderProposalCard);
 })();

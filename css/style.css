@@ -29,6 +29,7 @@ header h1 {
 
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #ddd;
@@ -78,6 +79,10 @@ header h1 {
   transition: box-shadow 0.2s;
 }
 
+.proposal-card {
+  align-items: flex-start;
+}
+
 .card:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
@@ -111,6 +116,24 @@ header h1 {
   background: #eef1f5;
   padding: 0.1rem 0.5rem;
   border-radius: 4px;
+}
+
+.card-source {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: #666;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.proposal-points {
+  margin-top: 0.75rem;
+  padding-left: 1.1rem;
+  color: #555;
+  font-size: 0.875rem;
+}
+
+.proposal-points li + li {
+  margin-top: 0.35rem;
 }
 
 .download-btn {
