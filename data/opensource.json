@@ -1,5 +1,16 @@
 [
   {
+    "id": "oss-003",
+    "title": "Skill System Proposal",
+    "description": "Browser Agent Skill System Proposal 전체 압축본입니다. 문서, HTML 목업, 프레젠테이션 뷰, SVG 자산이 포함됩니다.",
+    "filename": "skill-system-proposal.zip",
+    "url": "assets/opensource/skill-system-proposal.zip",
+    "version": "1.0.0",
+    "date": "2026-04-09",
+    "tags": ["Skill", "Proposal", "ZIP"],
+    "repo": ""
+  },
+  {
     "id": "oss-002",
     "title": "Slide Template",
     "description": "파워포인트 스타일의 정적 슬라이드 웹페이지 템플릿. 7가지 테마(타이틀, 섹션, 본문, 2열, 인용, 이미지, 마무리) 포함.",
