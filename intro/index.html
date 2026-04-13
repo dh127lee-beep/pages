@@ -217,7 +217,7 @@
         }
 
         /* Scene 4 (Smart Personal Agent) video clips — same box size as prior mockups */
-        .scene4-clip {
+        .scene-smart-clip {
             width: 400px;
             height: 280px;
             object-fit: cover;
@@ -289,26 +289,26 @@
     <div class="video-container" id="videoContainer">
         
         <!-- Scene 1: Browser Agent Typing -->
-        <div class="scene" id="scene2">
+        <div class="scene" id="scene-browser">
             <div class="typing-text"><span id="typewriter"></span><span class="cursor"></span></div>
         </div>
 
         <!-- NEW SCENE 1A -->
-        <div class="scene" id="scene3" style="background:#ffffff;">
+        <div class="scene" id="scene-partner" style="background:#ffffff;">
             <div class="typing-text st3" style="opacity: 0;">
                 Browser Agent is&nbsp;<span style="color: #3b82f6;">Work Partner</span>
             </div>
         </div>
 
         <!-- NEW SCENE 1B -->
-        <div class="scene" id="scene4" style="background:#ffffff;">
+        <div class="scene" id="scene-smart" style="background:#ffffff;">
             <div style="position: absolute; top: 25%; width: 100vw; height: 40%; display: flex; align-items: center; overflow: hidden;">
-                <div id="scene4_track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 200px);">
-                    <video src="video/atlas-easy-001.mp4"   class="scene4-clip" autoplay muted loop playsinline></video>
-                    <video src="video/atlas-easy-002.mp4"   class="scene4-clip" autoplay muted loop playsinline></video>
-                    <video src="video/claude-easy-001.mp4"  class="scene4-clip" autoplay muted loop playsinline></video>
-                    <video src="video/claude-easy-002.mp4"  class="scene4-clip" autoplay muted loop playsinline></video>
-                    <video src="video/claude-medium-002.mp4" class="scene4-clip" autoplay muted loop playsinline></video>
+                <div id="scene-smart-track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 200px);">
+                    <video src="video/atlas-easy-001.mp4"   class="scene-smart-clip" autoplay muted loop playsinline></video>
+                    <video src="video/atlas-easy-002.mp4"   class="scene-smart-clip" autoplay muted loop playsinline></video>
+                    <video src="video/claude-easy-001.mp4"  class="scene-smart-clip" autoplay muted loop playsinline></video>
+                    <video src="video/claude-easy-002.mp4"  class="scene-smart-clip" autoplay muted loop playsinline></video>
+                    <video src="video/claude-medium-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
                 </div>
             </div>
             <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);">
@@ -317,7 +317,7 @@
         </div>
 
         <!-- Scene 2: Original Zoom Mockup (Moved to later or shortened, but keeping it as transition) -->
-        <div class="scene" id="scene5" style="background:#f8fafc;">
+        <div class="scene" id="scene-zoom" style="background:#f8fafc;">
             <div id="zoomContainer" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; will-change: transform;">
                 <div class="mockup-container" style="opacity: 1; transform: none; width: 85%; height: 80%;">
                     <div class="mockup-header">
@@ -342,7 +342,7 @@
         <!-- NEW SCENES -->
 
         <!-- Scene 3: Link to Your Work Site -->
-        <div class="scene flex-col" id="scene6">
+        <div class="scene flex-col" id="scene-link">
             <div class="text-wrapper" style="position: absolute; top: 10%; z-index: 10;">
                 <div class="title-text st6">Link to Your Work Site</div>
             </div>
@@ -365,7 +365,7 @@
         </div>
 
         <!-- Scene 4: Skill is All you Need -->
-        <div class="scene flex-col" id="scene7">
+        <div class="scene flex-col" id="scene-skill">
             <div class="text-wrapper" style="position: absolute; top: 10%; z-index: 10;">
                 <div class="title-text st7">Skill is All You Need</div>
             </div>
@@ -381,7 +381,7 @@
         </div>
 
         <!-- Scene 5: Work Starts with New Tab -->
-        <div class="scene flex-col" id="scene8">
+        <div class="scene flex-col" id="scene-newtab">
             <div class="text-wrapper" style="position: absolute; top: 15%; z-index: 10;">
                 <div class="title-text st8">Work Starts with New Tab</div>
             </div>
@@ -397,7 +397,7 @@
         </div>
 
         <!-- Scene 6: Multi-Task & Multi-Turn -->
-        <div class="scene flex-col" id="scene9">
+        <div class="scene flex-col" id="scene-multi">
             <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
                 <div class="title-text st9">Multi-Task & Multi-Turn</div>
             </div>
@@ -429,7 +429,7 @@
         </div>
 
         <!-- Scene 7: Search & Report -->
-        <div class="scene flex-col" id="scene10">
+        <div class="scene flex-col" id="scene-report">
             <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
                 <div class="title-text st10">Search & Report</div>
             </div>
@@ -459,7 +459,7 @@
         </div>
 
         <!-- Scene 8: Next & Coming Soon -->
-        <div class="scene flex-col" id="scene11">
+        <div class="scene flex-col" id="scene-coming">
             <div class="text-wrapper">
                 <div class="title-text st11">Next: OS, Automation, MarketPlace</div>
                 <div class="title-text gradient-text st12" style="font-size: 7vw; margin-top: 40px;">Coming Soon</div>
@@ -467,7 +467,7 @@
         </div>
 
         <!-- Scene 9: AX Team Outro -->
-        <div class="scene flex-col" id="scene12" style="background: #ffffff; overflow: hidden;">
+        <div class="scene flex-col" id="scene-outro" style="background: #ffffff; overflow: hidden;">
             <!-- Ambient rings -->
             <div class="outro-ring" id="ring1" style="width:600px; height:600px; border-radius:50%; border: 1px solid rgba(59,130,246,0.12); position:absolute; opacity:0;"></div>
             <div class="outro-ring" id="ring2" style="width:900px; height:900px; border-radius:50%; border: 1px solid rgba(59,130,246,0.07); position:absolute; opacity:0;"></div>
@@ -578,17 +578,17 @@
         // - element: CSS selector of the scene root, or null for the logo entry.
         const SCENES = [
             { key: "logo",    label: "로고 비디오 (처음부터)", time: 0,    element: null,       isLogo: true },
-            { key: "browser", label: "Browser Agent",         time: 0,    element: "#scene2"  },
-            { key: "partner", label: "Work Partner",          time: 3.5,  element: "#scene3"  },
-            { key: "smart",   label: "Smart Personal Agent",  time: 8.0,  element: "#scene4"  },
-            { key: "zoom",    label: "Zoom Mockup",           time: 16.0, element: "#scene5"  },
-            { key: "link",    label: "Link to Work Site",     time: 28.0, element: "#scene6"  },
-            { key: "skill",   label: "Skill is All You Need", time: 36.0, element: "#scene7"  },
-            { key: "newtab",  label: "New Tab",               time: 44.0, element: "#scene8"  },
-            { key: "multi",   label: "Multi-Task",            time: 52.0, element: "#scene9"  },
-            { key: "report",  label: "Search & Report",       time: 60.0, element: "#scene10" },
-            { key: "coming",  label: "Coming Soon",           time: 68.0, element: "#scene11" },
-            { key: "outro",   label: "AX Team Outro",         time: 76.0, element: "#scene12" },
+            { key: "browser", label: "Browser Agent",         time: 0,    element: "#scene-browser"  },
+            { key: "partner", label: "Work Partner",          time: 3.5,  element: "#scene-partner"  },
+            { key: "smart",   label: "Smart Personal Agent",  time: 8.0,  element: "#scene-smart"  },
+            { key: "zoom",    label: "Zoom Mockup",           time: 16.0, element: "#scene-zoom"  },
+            { key: "link",    label: "Link to Work Site",     time: 28.0, element: "#scene-link"  },
+            { key: "skill",   label: "Skill is All You Need", time: 36.0, element: "#scene-skill"  },
+            { key: "newtab",  label: "New Tab",               time: 44.0, element: "#scene-newtab"  },
+            { key: "multi",   label: "Multi-Task",            time: 52.0, element: "#scene-multi"  },
+            { key: "report",  label: "Search & Report",       time: 60.0, element: "#scene-report" },
+            { key: "coming",  label: "Coming Soon",           time: 68.0, element: "#scene-coming" },
+            { key: "outro",   label: "AX Team Outro",         time: 76.0, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -672,9 +672,9 @@
 
             // Setup
             gsap.set(".scene", { opacity: 0 });
-            gsap.set("#scene2", { opacity: 1 });
-            gsap.set("#scene3", { opacity: 1, xPercent: 100 });
-            gsap.set("#scene4", { opacity: 1, xPercent: 100 });
+            gsap.set("#scene-browser", { opacity: 1 });
+            gsap.set("#scene-partner", { opacity: 1, xPercent: 100 });
+            gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
 
             // 1. Browser Agent Typing
             const textToType = "Browser Agent";
@@ -694,33 +694,33 @@
 
             // Transition 1 -> 1A
             tl.to({}, { duration: 1.0 })
-              .to("#scene2", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans1")
-              .to("#scene3", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans1")
+              .to("#scene-browser", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans1")
+              .to("#scene-partner", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans1")
               .to(".st3", { opacity: 1, duration: 0.4 }, "trans1+=0.5")
               // Drift 1A smoothly for a "hold" effect
-              .to("#scene3", { xPercent: -5, duration: 2.5, ease: "linear" }, "trans1+=0.8")
+              .to("#scene-partner", { xPercent: -5, duration: 2.5, ease: "linear" }, "trans1+=0.8")
               
               // Transition 1A -> 1B
-              .to("#scene3", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans2")
-              .to("#scene4", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
+              .to("#scene-partner", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans2")
+              .to("#scene-smart", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
               .to(".st4", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "trans2+=0.6")
               
               // Scene 1B track: Snap & Drift multiple screens
               // Note: item width 400 + gap 40 = 440px per item jump
-              .to("#scene4_track", { x: -40, duration: 1.2, ease: "linear" }, "trans2+=0.8") // Drift item 1
-              .to("#scene4_track", { x: -440, duration: 0.7, ease: "expo.inOut" }) // Snap item 2
-              .to("#scene4_track", { x: -480, duration: 1.2, ease: "linear" }) // Drift item 2
-              .to("#scene4_track", { x: -880, duration: 0.7, ease: "expo.inOut" }) // Snap item 3
-              .to("#scene4_track", { x: -920, duration: 1.2, ease: "linear" }) // Drift item 3
-              .to("#scene4_track", { x: -1320, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
-              .to("#scene4_track", { x: -1360, duration: 1.2, ease: "linear" }) // Drift item 4
+              .to("#scene-smart-track", { x: -40, duration: 1.2, ease: "linear" }, "trans2+=0.8") // Drift item 1
+              .to("#scene-smart-track", { x: -440, duration: 0.7, ease: "expo.inOut" }) // Snap item 2
+              .to("#scene-smart-track", { x: -480, duration: 1.2, ease: "linear" }) // Drift item 2
+              .to("#scene-smart-track", { x: -880, duration: 0.7, ease: "expo.inOut" }) // Snap item 3
+              .to("#scene-smart-track", { x: -920, duration: 1.2, ease: "linear" }) // Drift item 3
+              .to("#scene-smart-track", { x: -1320, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
+              .to("#scene-smart-track", { x: -1360, duration: 1.2, ease: "linear" }) // Drift item 4
               
               .to({}, { duration: 0.5 })
 
               // Transition 1B -> 2 (Mockup Zoom sequence)
-              .to("#scene4", { opacity: 0, xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans3")
+              .to("#scene-smart", { opacity: 0, xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans3")
               .set("#zoomContainer", { scale: 3, xPercent: -60, yPercent: 40 }, "trans3+=0.4")
-              .to("#scene5", { opacity: 1, duration: 0.8 }, "trans3+=0.4")
+              .to("#scene-zoom", { opacity: 1, duration: 0.8 }, "trans3+=0.4")
               
               // Drift Top Right
               .to("#zoomContainer", { xPercent: -62, yPercent: 42, duration: 1.5, ease: "linear" })
@@ -733,7 +733,7 @@
               // Drift Full View
               .to("#zoomContainer", { scale: 0.98, duration: 1.5, ease: "linear" })
               
-              .to("#scene5", { opacity: 0, duration: 0.8 });
+              .to("#scene-zoom", { opacity: 0, duration: 0.8 });
 
             // Helper for Text & Mockup Scenes
             function animateScene(sceneId, textClass, mockupClass) {
@@ -747,30 +747,30 @@
             }
 
             // 3. Link to Your Work Site
-            animateScene("#scene6", ".st6", ".sm6");
+            animateScene("#scene-link", ".st6", ".sm6");
 
             // 4. Skill is All you Need
-            animateScene("#scene7", ".st7", ".sm7");
+            animateScene("#scene-skill", ".st7", ".sm7");
 
             // 5. Work Starts with New Tab
-            animateScene("#scene8", ".st8", ".sm8");
+            animateScene("#scene-newtab", ".st8", ".sm8");
 
             // 6. Multi-Task & Multi-Turn
-            animateScene("#scene9", ".st9", ".sm9");
+            animateScene("#scene-multi", ".st9", ".sm9");
 
             // 7. Search & Report
-            animateScene("#scene10", ".st10", ".sm10");
+            animateScene("#scene-report", ".st10", ".sm10");
 
             // 8. Next & Coming Soon
-            tl.to("#scene11", { opacity: 1, duration: 0.5 })
+            tl.to("#scene-coming", { opacity: 1, duration: 0.5 })
               .to(".st11", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
               .to({}, { duration: 1.5 })
               .to(".st12", { opacity: 1, y: 0, duration: 1.5, ease: "back.out(1.2)" })
               .to({}, { duration: 2.0 })
-              .to("#scene11", { opacity: 0, duration: 0.8 });
+              .to("#scene-coming", { opacity: 0, duration: 0.8 });
 
             // 9. AX Team Outro
-            tl.set("#scene12", { opacity: 1 })
+            tl.set("#scene-outro", { opacity: 1 })
               // Rings fade in slowly
               .to(["#ring1", "#ring2", "#ring3"], { opacity: 1, duration: 1.5, ease: "power2.out", stagger: 0.3 }, "outro")
               // Logo flips in from 3D (rotateX) then overshoots scale and settles
