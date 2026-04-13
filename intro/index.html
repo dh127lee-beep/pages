@@ -227,6 +227,24 @@
             border: 1px solid #cbd5e1;
             flex-shrink: 0;
         }
+        .scene-smart-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+            width: 400px;
+        }
+        .scene-smart-caption {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 999px;
+            padding: 8px 18px;
+            white-space: nowrap;
+        }
 
         /* Bottom Nav Bar (fixed to viewport so it stays visible regardless of video box size) */
         #navBar {
@@ -302,11 +320,26 @@
         <div class="scene" id="scene-smart" style="background:#ffffff;">
             <div style="position: absolute; top: 25%; width: 100vw; height: 40%; display: flex; align-items: center; overflow: hidden;">
                 <div id="scene-smart-track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 200px);">
-                    <video src="video/atlas-easy-001.mp4"   class="scene-smart-clip" autoplay muted loop playsinline></video>
-                    <video src="video/atlas-easy-002.mp4"   class="scene-smart-clip" autoplay muted loop playsinline></video>
-                    <video src="video/claude-easy-001.mp4"  class="scene-smart-clip" autoplay muted loop playsinline></video>
-                    <video src="video/claude-easy-002.mp4"  class="scene-smart-clip" autoplay muted loop playsinline></video>
-                    <video src="video/claude-medium-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                    <div class="scene-smart-item">
+                        <video src="video/atlas-easy-001.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-caption" data-text="smart.caption.1"></div>
+                    </div>
+                    <div class="scene-smart-item">
+                        <video src="video/atlas-easy-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-caption" data-text="smart.caption.2"></div>
+                    </div>
+                    <div class="scene-smart-item">
+                        <video src="video/claude-easy-001.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-caption" data-text="smart.caption.3"></div>
+                    </div>
+                    <div class="scene-smart-item">
+                        <video src="video/claude-easy-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-caption" data-text="smart.caption.4"></div>
+                    </div>
+                    <div class="scene-smart-item">
+                        <video src="video/claude-medium-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-caption" data-text="smart.caption.5"></div>
+                    </div>
                 </div>
             </div>
             <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);" data-text="smart.title"></div>
@@ -738,6 +771,8 @@
               .to("#scene-smart-track", { x: -920, duration: 1.2, ease: "linear" }) // Drift item 3
               .to("#scene-smart-track", { x: -1320, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
               .to("#scene-smart-track", { x: -1360, duration: 1.2, ease: "linear" }) // Drift item 4
+              .to("#scene-smart-track", { x: -1760, duration: 0.7, ease: "expo.inOut" }) // Snap item 5
+              .to("#scene-smart-track", { x: -1800, duration: 1.2, ease: "linear" }) // Drift item 5
               
               .to({}, { duration: 0.5 })
 

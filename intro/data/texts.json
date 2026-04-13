@@ -4,6 +4,11 @@
   "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
 
   "smart.title": "Smart Personal Agent",
+  "smart.caption.1": "주가 검색해줘",
+  "smart.caption.2": "오늘 일정 알려줘",
+  "smart.caption.3": "이메일 요약해줘",
+  "smart.caption.4": "회의록 작성해줘",
+  "smart.caption.5": "분기 보고서 만들어줘",
 
   "link.title": "Link to Your Work Site",
   "link.url": "https://workspace.integration",
