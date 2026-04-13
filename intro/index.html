@@ -540,6 +540,7 @@
             });
 
             document.getElementById("startBtn").addEventListener("click", function() {
+                presentationStartMs = performance.now();
                 const key = sceneSelect.value;
                 const scene = SCENE_BY_KEY[key];
                 if (scene && scene.isLogo) {
@@ -596,6 +597,8 @@
 
         // Timeline reference (set when animation starts) so nav bar can control seeks.
         let activeTimeline = null;
+        // Wall-clock start (set when user clicks Start) so timer covers logo phase too.
+        let presentationStartMs = null;
 
         function formatTime(sec) {
             sec = Math.max(0, sec);
@@ -610,18 +613,23 @@
             const navScenes = document.getElementById("navScenes");
             const navTimer = document.getElementById("navTimer");
 
-            // Build scene jump buttons (skip logo entry — logo is not seekable on timeline)
+            // Build scene jump buttons (logo entry is shown but not seekable)
             navScenes.innerHTML = "";
             SCENES.forEach((s, i) => {
-                if (s.isLogo) return;
                 const btn = document.createElement("button");
                 btn.className = "nav-scene-btn";
                 btn.dataset.key = s.key;
                 btn.textContent = `${i + 1}. ${s.label}`;
-                btn.addEventListener("click", () => {
-                    if (!activeTimeline) return;
-                    activeTimeline.seek(s.time, false);
-                });
+                if (s.isLogo) {
+                    btn.disabled = true;
+                    btn.style.opacity = "0.6";
+                    btn.style.cursor = "default";
+                } else {
+                    btn.addEventListener("click", () => {
+                        if (!activeTimeline) return;
+                        activeTimeline.seek(s.time, false);
+                    });
+                }
                 navScenes.appendChild(btn);
             });
 
@@ -631,21 +639,30 @@
 
             navBar.classList.add("visible");
 
-            // Timer + active-button update, driven by gsap ticker (~60fps)
+            // Timer + active-button update, driven by gsap ticker (~60fps).
+            // Timer counts wall-clock time from Start click (covers logo phase too).
             const btns = Array.from(navScenes.querySelectorAll(".nav-scene-btn"));
-            const seekableScenes = SCENES.filter(s => !s.isLogo);
+            const logoIdx = SCENES.findIndex(s => s.isLogo);
             gsap.ticker.add(() => {
-                if (!activeTimeline) return;
-                const t = activeTimeline.time();
-                navTimer.textContent = formatTime(t);
-                // Highlight the latest scene whose time <= current time
-                let activeIdx = 0;
-                for (let i = 0; i < seekableScenes.length; i++) {
-                    if (seekableScenes[i].time <= t + 0.001) activeIdx = i;
+                const elapsed = presentationStartMs == null
+                    ? 0
+                    : (performance.now() - presentationStartMs) / 1000;
+                navTimer.textContent = formatTime(elapsed);
+
+                let activeIdx = logoIdx >= 0 ? logoIdx : 0;
+                if (activeTimeline) {
+                    const t = activeTimeline.time();
+                    for (let i = 0; i < SCENES.length; i++) {
+                        if (SCENES[i].isLogo) continue;
+                        if (SCENES[i].time <= t + 0.001) activeIdx = i;
+                    }
                 }
                 btns.forEach((b, i) => b.classList.toggle("active", i === activeIdx));
             });
         }
+
+        // Initialize nav bar immediately so it's visible during the logo phase.
+        document.addEventListener("DOMContentLoaded", initNavBar);
 
         function startAnimation(startScene) {
             const tl = gsap.timeline({
@@ -653,7 +670,6 @@
                 paused: false
             });
             activeTimeline = tl;
-            initNavBar();
 
             const introAudio = document.getElementById("introSound");
             const bgmAudio = document.getElementById("bgmSound");
