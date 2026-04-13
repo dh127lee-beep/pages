@@ -1,5 +1,27 @@
 [
   {
+    "id": "oss-006",
+    "title": "Atlas Demo Videos (MP4)",
+    "description": "Atlas 데모 영상 모음 (MP4, 1280px, H.264). 난이도별 easy/medium/hard/veryhard 총 16개 클립.",
+    "filename": "atlas-mp4.zip",
+    "url": "assets/opensource/atlas-mp4.zip",
+    "version": "1.0.0",
+    "date": "2026-04-13",
+    "tags": ["Atlas", "Video", "MP4", "ZIP"],
+    "repo": ""
+  },
+  {
+    "id": "oss-005",
+    "title": "Claude Extension Demo Videos (MP4)",
+    "description": "Claude 확장 데모 영상 모음 (MP4, 1280px, H.264). 난이도별 easy/medium/hard/veryhard 총 16개 클립.",
+    "filename": "claude-extension-mp4.zip",
+    "url": "assets/opensource/claude-extension-mp4.zip",
+    "version": "1.0.0",
+    "date": "2026-04-13",
+    "tags": ["Claude", "Video", "MP4", "ZIP"],
+    "repo": ""
+  },
+  {
     "id": "oss-004",
     "title": "Claude",
     "description": "Claude 관련 리소스 압축본입니다.",
