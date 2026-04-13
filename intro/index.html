@@ -295,9 +295,7 @@
 
         <!-- NEW SCENE 1A -->
         <div class="scene" id="scene-partner" style="background:#ffffff;">
-            <div class="typing-text st3" style="opacity: 0;">
-                Browser Agent is&nbsp;<span style="color: #3b82f6;">Work Partner</span>
-            </div>
+            <div class="typing-text st3" style="opacity: 0;" data-text="partner.title"></div>
         </div>
 
         <!-- NEW SCENE 1B -->
@@ -311,9 +309,7 @@
                     <video src="video/claude-medium-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
                 </div>
             </div>
-            <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);">
-                Smart Personal Agent
-            </div>
+            <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);" data-text="smart.title"></div>
         </div>
 
         <!-- Scene 2: Original Zoom Mockup (Moved to later or shortened, but keeping it as transition) -->
@@ -344,12 +340,12 @@
         <!-- Scene 3: Link to Your Work Site -->
         <div class="scene flex-col" id="scene-link">
             <div class="text-wrapper" style="position: absolute; top: 10%; z-index: 10;">
-                <div class="title-text st6">Link to Your Work Site</div>
+                <div class="title-text st6" data-text="link.title"></div>
             </div>
             <div class="mockup-container sm6" style="margin-top: 5%;">
                 <div class="mockup-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <div class="url-bar">https://workspace.integration</div>
+                    <div class="url-bar" data-text="link.url"></div>
                 </div>
                 <div class="mockup-body">
                     <div class="grid-layout">
@@ -367,15 +363,15 @@
         <!-- Scene 4: Skill is All you Need -->
         <div class="scene flex-col" id="scene-skill">
             <div class="text-wrapper" style="position: absolute; top: 10%; z-index: 10;">
-                <div class="title-text st7">Skill is All You Need</div>
+                <div class="title-text st7" data-text="skill.title"></div>
             </div>
             <div class="mockup-container sm7" style="margin-top: 5%; background: transparent; border: none; box-shadow: none;">
                 <div class="skill-node-container">
                     <div class="skill-orbit"></div>
-                    <div class="skill-item" style="top: -30px; left: 120px; border: 2px solid #ef4444;">API</div>
-                    <div class="skill-item" style="bottom: 40px; left: -10px; border: 2px solid #10b981;">DB</div>
-                    <div class="skill-item" style="bottom: 40px; right: -10px; border: 2px solid #f59e0b;">UI</div>
-                    <div class="skill-center">Agent</div>
+                    <div class="skill-item" style="top: -30px; left: 120px; border: 2px solid #ef4444;" data-text="skill.item.api"></div>
+                    <div class="skill-item" style="bottom: 40px; left: -10px; border: 2px solid #10b981;" data-text="skill.item.db"></div>
+                    <div class="skill-item" style="bottom: 40px; right: -10px; border: 2px solid #f59e0b;" data-text="skill.item.ui"></div>
+                    <div class="skill-center" data-text="skill.center"></div>
                 </div>
             </div>
         </div>
@@ -383,12 +379,12 @@
         <!-- Scene 5: Work Starts with New Tab -->
         <div class="scene flex-col" id="scene-newtab">
             <div class="text-wrapper" style="position: absolute; top: 15%; z-index: 10;">
-                <div class="title-text st8">Work Starts with New Tab</div>
+                <div class="title-text st8" data-text="newtab.title"></div>
             </div>
             <div class="mockup-container sm8" style="margin-top: 5%; justify-content: center; align-items: center; background: white;">
                 <div class="new-tab-content">
-                    <div style="font-size: 48px; font-weight: 800; color: #111827;">What can I help you with?</div>
-                    <div class="search-box">Ask the agent anything...</div>
+                    <div style="font-size: 48px; font-weight: 800; color: #111827;" data-text="newtab.headline"></div>
+                    <div class="search-box" data-text="newtab.placeholder"></div>
                     <div class="quick-links">
                         <div class="quick-link"></div><div class="quick-link"></div><div class="quick-link"></div><div class="quick-link"></div>
                     </div>
@@ -399,28 +395,28 @@
         <!-- Scene 6: Multi-Task & Multi-Turn -->
         <div class="scene flex-col" id="scene-multi">
             <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
-                <div class="title-text st9">Multi-Task & Multi-Turn</div>
+                <div class="title-text st9" data-text="multi.title"></div>
             </div>
             <div class="mockup-container sm9" style="margin-top: 5%;">
                 <div class="mockup-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <div class="url-bar">Agent Workspace</div>
+                    <div class="url-bar" data-text="multi.url"></div>
                 </div>
                 <div class="mockup-body" style="padding: 20px;">
                     <div class="split-screen">
                         <div class="chat-panel">
-                            <div class="chat-bubble user" style="width: 60%">Generate a report on Q3</div>
-                            <div class="chat-bubble agent" style="width: 80%">Sure, I'm gathering the data now.</div>
-                            <div class="chat-bubble user" style="width: 50%">Also include the UX metrics.</div>
-                            <div class="chat-bubble agent" style="width: 90%">Added UX metrics. Updating the DB queries...</div>
+                            <div class="chat-bubble user" style="width: 60%" data-text="multi.chat.1"></div>
+                            <div class="chat-bubble agent" style="width: 80%" data-text="multi.chat.2"></div>
+                            <div class="chat-bubble user" style="width: 50%" data-text="multi.chat.3"></div>
+                            <div class="chat-bubble agent" style="width: 90%" data-text="multi.chat.4"></div>
                         </div>
                         <div class="work-panel" style="display: flex; flex-direction: column; gap: 15px;">
                             <div style="height: 30px; background: #e2e8f0; border-radius: 6px; width: 40%;"></div>
                             <div style="flex: 1; background: #f1f5f9; border-radius: 6px; border: 2px dashed #cbd5e1; display:flex; justify-content:center; align-items:center;">
-                                <span style="font-weight: 600; color: #94a3b8;">Working on Task 1...</span>
+                                <span style="font-weight: 600; color: #94a3b8;" data-text="multi.task.1"></span>
                             </div>
                             <div style="flex: 1; background: #f1f5f9; border-radius: 6px; border: 2px dashed #cbd5e1; display:flex; justify-content:center; align-items:center;">
-                                <span style="font-weight: 600; color: #94a3b8;">Working on Task 2...</span>
+                                <span style="font-weight: 600; color: #94a3b8;" data-text="multi.task.2"></span>
                             </div>
                         </div>
                     </div>
@@ -431,12 +427,12 @@
         <!-- Scene 7: Search & Report -->
         <div class="scene flex-col" id="scene-report">
             <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
-                <div class="title-text st10">Search & Report</div>
+                <div class="title-text st10" data-text="report.title"></div>
             </div>
             <div class="mockup-container sm10" style="margin-top: 5%;">
                 <div class="mockup-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <div class="url-bar">Report Generator</div>
+                    <div class="url-bar" data-text="report.url"></div>
                 </div>
                 <div class="mockup-body" style="padding: 20px;">
                     <div class="report-layout">
@@ -461,8 +457,8 @@
         <!-- Scene 8: Next & Coming Soon -->
         <div class="scene flex-col" id="scene-coming">
             <div class="text-wrapper">
-                <div class="title-text st11">Next: OS, Automation, MarketPlace</div>
-                <div class="title-text gradient-text st12" style="font-size: 7vw; margin-top: 40px;">Coming Soon</div>
+                <div class="title-text st11" data-text="coming.next"></div>
+                <div class="title-text gradient-text st12" style="font-size: 7vw; margin-top: 40px;" data-text="coming.headline"></div>
             </div>
         </div>
 
@@ -476,14 +472,10 @@
             <!-- 3D perspective wrapper -->
             <div style="perspective: 1200px; perspective-origin: center;">
                 <div id="outro-logo" style="opacity:0; transform: scale(2.5) rotateX(90deg); z-index:10; transform-origin: center center;">
-                    <div style="font-size: 2.5vw; font-weight: 600; color: #6b7280; text-align:center; letter-spacing: 0.12em; text-transform: uppercase;">
-                        <span style="color: #3b82f6;">AX</span> Team
-                    </div>
-                    <div style="font-size: 6vw; font-weight: 900; letter-spacing: -0.03em; text-align:center; line-height:1.0; margin-top: 8px; white-space: nowrap;">
-                        <span style="color: #3b82f6;">AX</span><span style="color: #111827;"> Development Group</span>
-                    </div>
+                    <div style="font-size: 2.5vw; font-weight: 600; color: #6b7280; text-align:center; letter-spacing: 0.12em; text-transform: uppercase;" data-text="outro.team"></div>
+                    <div style="font-size: 6vw; font-weight: 900; letter-spacing: -0.03em; text-align:center; line-height:1.0; margin-top: 8px; white-space: nowrap;" data-text="outro.group"></div>
                     <div id="outro-line" style="width:0%; height:2px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); margin: 28px auto 0; opacity:0;"></div>
-                    <div id="outro-tagline" style="opacity:0; font-size:1.2vw; color: #9ca3af; text-align:center; margin-top: 16px; letter-spacing: 0.2em; text-transform: uppercase;">Building the Future of Work</div>
+                    <div id="outro-tagline" style="opacity:0; font-size:1.2vw; color: #9ca3af; text-align:center; margin-top: 16px; letter-spacing: 0.2em; text-transform: uppercase;" data-text="outro.tagline"></div>
                 </div>
             </div>
         </div>
@@ -524,7 +516,25 @@
     </div>
 
     <script>
+        // Text content, loaded from data/texts.json at startup so copy can be edited
+        // without touching the HTML. Each DOM slot carries data-text="<key>".
+        let TEXTS = {};
+        async function loadTexts() {
+            try {
+                const res = await fetch("data/texts.json", { cache: "no-cache" });
+                TEXTS = await res.json();
+            } catch (e) {
+                console.warn("texts.json load failed:", e);
+                TEXTS = {};
+            }
+            document.querySelectorAll("[data-text]").forEach(el => {
+                const key = el.getAttribute("data-text");
+                if (key in TEXTS) el.innerHTML = TEXTS[key];
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
+            loadTexts();
             const logoVideo = document.getElementById("logoVideo");
             const jumpControls = document.getElementById("jumpControls");
             const startScreen = document.getElementById("startScreen");
@@ -693,7 +703,7 @@
             gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
 
             // 1. Browser Agent Typing
-            const textToType = "Browser Agent";
+            const textToType = TEXTS["browser.typewriter"] || "Browser Agent";
             const typewriterEl = document.getElementById("typewriter");
             const typeSpeed = 0.08;
             

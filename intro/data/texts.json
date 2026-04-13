@@ -1,0 +1,39 @@
+{
+  "browser.typewriter": "Browser Agent",
+
+  "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
+
+  "smart.title": "Smart Personal Agent",
+
+  "link.title": "Link to Your Work Site",
+  "link.url": "https://workspace.integration",
+
+  "skill.title": "Skill is All You Need",
+  "skill.item.api": "API",
+  "skill.item.db": "DB",
+  "skill.item.ui": "UI",
+  "skill.center": "Agent",
+
+  "newtab.title": "Work Starts with New Tab",
+  "newtab.headline": "What can I help you with?",
+  "newtab.placeholder": "Ask the agent anything...",
+
+  "multi.title": "Multi-Task & Multi-Turn",
+  "multi.url": "Agent Workspace",
+  "multi.chat.1": "Generate a report on Q3",
+  "multi.chat.2": "Sure, I'm gathering the data now.",
+  "multi.chat.3": "Also include the UX metrics.",
+  "multi.chat.4": "Added UX metrics. Updating the DB queries...",
+  "multi.task.1": "Working on Task 1...",
+  "multi.task.2": "Working on Task 2...",
+
+  "report.title": "Search & Report",
+  "report.url": "Report Generator",
+
+  "coming.next": "Next: OS, Automation, MarketPlace",
+  "coming.headline": "Coming Soon",
+
+  "outro.team": "<span style=\"color:#3b82f6;\">AX</span> Team",
+  "outro.group": "<span style=\"color:#3b82f6;\">AX</span><span style=\"color:#111827;\"> Development Group</span>",
+  "outro.tagline": "Building the Future of Work"
+}
