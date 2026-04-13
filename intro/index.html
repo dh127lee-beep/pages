@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Introduction</title>
+    <!-- Use Google Fonts for a modern UI (Inter fits well) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1920px;
+            aspect-ratio: 16 / 9;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .scene {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Scene Typography */
+        .title-text {
+            font-size: 5vw;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.04em;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .subtitle-text {
+            font-size: 2.5vw;
+            font-weight: 600;
+            color: #4b5563;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .text-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Specific Scene Elements */
+        
+        /* Scene 1: Browser Agent */
+        .typing-text {
+            font-size: 5vw;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.04em;
+            display: flex;
+            align-items: center;
+        }
+        .cursor {
+            display: inline-block;
+            width: 0.08em;
+            height: 1.1em;
+            background-color: #3b82f6;
+            margin-left: 0.1em;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Generic Mockups for New Scenes */
+        .mockup-container {
+            width: 80%;
+            height: 75%;
+            background: #f8fafc;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .mockup-header {
+            height: 40px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot.r { background: #ff5f56; } .dot.y { background: #ffbd2e; } .dot.g { background: #27c93f; }
+        .url-bar { flex: 1; margin: 0 16px; height: 24px; background: #f1f5f9; border-radius: 4px; display: flex; align-items: center; padding: 0 12px; font-size: 12px; color: #94a3b8; font-family: monospace; }
+        
+        .mockup-body {
+            flex: 1;
+            padding: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Scene 3: Link to Your Work Site */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            height: 100%;
+        }
+        .app-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .app-icon { width: 48px; height: 48px; border-radius: 12px; background: #e2e8f0; }
+        .app-line { height: 12px; background: #f1f5f9; border-radius: 6px; }
+
+        /* Scene 4: Skill is All you Need */
+        .skill-node-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .skill-center { width: 120px; height: 120px; border-radius: 60px; background: #3b82f6; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 24px; z-index: 2; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5); }
+        .skill-orbit { position: absolute; width: 300px; height: 300px; border: 2px dashed #cbd5e1; border-radius: 50%; animation: spin 20s linear infinite; }
+        .skill-item { position: absolute; width: 60px; height: 60px; border-radius: 50%; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 12px; color: #475569; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Scene 5: Work Starts with New Tab */
+        .new-tab-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+        }
+        .search-box {
+            width: 60%;
+            height: 60px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            font-size: 18px;
+            color: #94a3b8;
+        }
+        .quick-links { display: flex; gap: 24px; }
+        .quick-link { width: 80px; height: 80px; border-radius: 16px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        /* Scene 6: Multi-Task & Multi-Turn */
+        .split-screen {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            gap: 20px;
+        }
+        .chat-panel { flex: 1; background: white; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+        .work-panel { flex: 2; background: white; border-radius: 12px; padding: 20px; }
+        .chat-bubble { padding: 12px 16px; border-radius: 16px; max-width: 80%; }
+        .chat-bubble.agent { background: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-bubble.user { background: #3b82f6; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+        /* Scene 7: Search & Report */
+        .report-layout {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            width: 100%;
+            height: 100%;
+            gap: 24px;
+        }
+        .doc-sidebar { background: white; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .doc-item { height: 24px; background: #f1f5f9; border-radius: 4px; }
+        .doc-main { background: white; border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+        .doc-title { height: 40px; width: 60%; background: #e2e8f0; border-radius: 8px; }
+        .doc-paragraph { height: 16px; width: 100%; background: #f1f5f9; border-radius: 4px; }
+
+        /* Scene 8: Next & Coming Soon */
+        .gradient-text {
+            background: linear-gradient(135deg, #111827, #4b5563);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scene 4 (Smart Personal Agent) video clips — same box size as prior mockups */
+        .scene4-clip {
+            width: 400px;
+            height: 280px;
+            object-fit: cover;
+            background: #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #cbd5e1;
+            flex-shrink: 0;
+        }
+
+        /* Bottom Nav Bar (fixed to viewport so it stays visible regardless of video box size) */
+        #navBar {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 20px;
+            background: rgba(17, 24, 39, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #f9fafb;
+            font-size: 13px;
+            z-index: 200;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        #navBar.visible { display: flex; }
+        #navTimer {
+            font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: #93c5fd;
+            letter-spacing: 0.05em;
+            min-width: 78px;
+        }
+        #navScenes {
+            display: flex;
+            gap: 6px;
+            flex: 1;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        #navScenes::-webkit-scrollbar { height: 4px; }
+        #navScenes::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+        .nav-scene-btn {
+            flex-shrink: 0;
+            padding: 6px 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            background: transparent;
+            color: #e5e7eb;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .nav-scene-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); }
+        .nav-scene-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="video-container" id="videoContainer">
+        
+        <!-- Scene 1: Browser Agent Typing -->
+        <div class="scene" id="scene2">
+            <div class="typing-text"><span id="typewriter"></span><span class="cursor"></span></div>
+        </div>
+
+        <!-- NEW SCENE 1A -->
+        <div class="scene" id="scene3" style="background:#ffffff;">
+            <div class="typing-text st3" style="opacity: 0;">
+                Browser Agent is&nbsp;<span style="color: #3b82f6;">Work Partner</span>
+            </div>
+        </div>
+
+        <!-- NEW SCENE 1B -->
+        <div class="scene" id="scene4" style="background:#ffffff;">
+            <div style="position: absolute; top: 25%; width: 100vw; height: 40%; display: flex; align-items: center; overflow: hidden;">
+                <div id="scene4_track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 200px);">
+                    <video src="video/atlas-easy-001.mov"   class="scene4-clip" autoplay muted loop playsinline></video>
+                    <video src="video/atlas-easy-002.mov"   class="scene4-clip" autoplay muted loop playsinline></video>
+                    <video src="video/claude-easy-001.mov"  class="scene4-clip" autoplay muted loop playsinline></video>
+                    <video src="video/claude-easy-002.mov"  class="scene4-clip" autoplay muted loop playsinline></video>
+                    <video src="video/claude-medium-002.mov" class="scene4-clip" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+            <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);">
+                Smart Personal Agent
+            </div>
+        </div>
+
+        <!-- Scene 2: Original Zoom Mockup (Moved to later or shortened, but keeping it as transition) -->
+        <div class="scene" id="scene5" style="background:#f8fafc;">
+            <div id="zoomContainer" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; will-change: transform;">
+                <div class="mockup-container" style="opacity: 1; transform: none; width: 85%; height: 80%;">
+                    <div class="mockup-header">
+                        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    </div>
+                    <!-- Reuse the generic blocks for zooming -->
+                    <div style="flex: 1; padding: 24px; display: grid; grid-template-columns: 1fr 3fr; gap: 24px;">
+                        <div style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);"></div>
+                        <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 24px;">
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+                                <div style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: relative;" id="topRightTarget">
+                                    <div style="position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 20px; background: #3b82f6;"></div>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid #10b981;" id="bottomRightTarget"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW SCENES -->
+
+        <!-- Scene 3: Link to Your Work Site -->
+        <div class="scene flex-col" id="scene6">
+            <div class="text-wrapper" style="position: absolute; top: 10%; z-index: 10;">
+                <div class="title-text st6">Link to Your Work Site</div>
+            </div>
+            <div class="mockup-container sm6" style="margin-top: 5%;">
+                <div class="mockup-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <div class="url-bar">https://workspace.integration</div>
+                </div>
+                <div class="mockup-body">
+                    <div class="grid-layout">
+                        <div class="app-card"><div class="app-icon" style="background: #fbbf24;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
+                        <div class="app-card"><div class="app-icon" style="background: #60a5fa;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
+                        <div class="app-card"><div class="app-icon" style="background: #34d399;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
+                        <div class="app-card"><div class="app-icon" style="background: #f87171;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
+                        <div class="app-card"><div class="app-icon" style="background: #a78bfa;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
+                        <div class="app-card"><div class="app-icon" style="background: #fb923c;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 4: Skill is All you Need -->
+        <div class="scene flex-col" id="scene7">
+            <div class="text-wrapper" style="position: absolute; top: 10%; z-index: 10;">
+                <div class="title-text st7">Skill is All You Need</div>
+            </div>
+            <div class="mockup-container sm7" style="margin-top: 5%; background: transparent; border: none; box-shadow: none;">
+                <div class="skill-node-container">
+                    <div class="skill-orbit"></div>
+                    <div class="skill-item" style="top: -30px; left: 120px; border: 2px solid #ef4444;">API</div>
+                    <div class="skill-item" style="bottom: 40px; left: -10px; border: 2px solid #10b981;">DB</div>
+                    <div class="skill-item" style="bottom: 40px; right: -10px; border: 2px solid #f59e0b;">UI</div>
+                    <div class="skill-center">Agent</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 5: Work Starts with New Tab -->
+        <div class="scene flex-col" id="scene8">
+            <div class="text-wrapper" style="position: absolute; top: 15%; z-index: 10;">
+                <div class="title-text st8">Work Starts with New Tab</div>
+            </div>
+            <div class="mockup-container sm8" style="margin-top: 5%; justify-content: center; align-items: center; background: white;">
+                <div class="new-tab-content">
+                    <div style="font-size: 48px; font-weight: 800; color: #111827;">What can I help you with?</div>
+                    <div class="search-box">Ask the agent anything...</div>
+                    <div class="quick-links">
+                        <div class="quick-link"></div><div class="quick-link"></div><div class="quick-link"></div><div class="quick-link"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 6: Multi-Task & Multi-Turn -->
+        <div class="scene flex-col" id="scene9">
+            <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
+                <div class="title-text st9">Multi-Task & Multi-Turn</div>
+            </div>
+            <div class="mockup-container sm9" style="margin-top: 5%;">
+                <div class="mockup-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <div class="url-bar">Agent Workspace</div>
+                </div>
+                <div class="mockup-body" style="padding: 20px;">
+                    <div class="split-screen">
+                        <div class="chat-panel">
+                            <div class="chat-bubble user" style="width: 60%">Generate a report on Q3</div>
+                            <div class="chat-bubble agent" style="width: 80%">Sure, I'm gathering the data now.</div>
+                            <div class="chat-bubble user" style="width: 50%">Also include the UX metrics.</div>
+                            <div class="chat-bubble agent" style="width: 90%">Added UX metrics. Updating the DB queries...</div>
+                        </div>
+                        <div class="work-panel" style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="height: 30px; background: #e2e8f0; border-radius: 6px; width: 40%;"></div>
+                            <div style="flex: 1; background: #f1f5f9; border-radius: 6px; border: 2px dashed #cbd5e1; display:flex; justify-content:center; align-items:center;">
+                                <span style="font-weight: 600; color: #94a3b8;">Working on Task 1...</span>
+                            </div>
+                            <div style="flex: 1; background: #f1f5f9; border-radius: 6px; border: 2px dashed #cbd5e1; display:flex; justify-content:center; align-items:center;">
+                                <span style="font-weight: 600; color: #94a3b8;">Working on Task 2...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 7: Search & Report -->
+        <div class="scene flex-col" id="scene10">
+            <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
+                <div class="title-text st10">Search & Report</div>
+            </div>
+            <div class="mockup-container sm10" style="margin-top: 5%;">
+                <div class="mockup-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <div class="url-bar">Report Generator</div>
+                </div>
+                <div class="mockup-body" style="padding: 20px;">
+                    <div class="report-layout">
+                        <div class="doc-sidebar">
+                            <div class="doc-item" style="background:#3b82f6; opacity:0.8;"></div>
+                            <div class="doc-item"></div>
+                            <div class="doc-item"></div>
+                            <div class="doc-item"></div>
+                        </div>
+                        <div class="doc-main">
+                            <div class="doc-title"></div>
+                            <div class="doc-paragraph"></div>
+                            <div class="doc-paragraph" style="width: 90%"></div>
+                            <div class="doc-paragraph" style="width: 80%"></div>
+                            <div style="height: 120px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 20px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 8: Next & Coming Soon -->
+        <div class="scene flex-col" id="scene11">
+            <div class="text-wrapper">
+                <div class="title-text st11">Next: OS, Automation, MarketPlace</div>
+                <div class="title-text gradient-text st12" style="font-size: 7vw; margin-top: 40px;">Coming Soon</div>
+            </div>
+        </div>
+
+        <!-- Scene 9: AX Team Outro -->
+        <div class="scene flex-col" id="scene12" style="background: #ffffff; overflow: hidden;">
+            <!-- Ambient rings -->
+            <div class="outro-ring" id="ring1" style="width:600px; height:600px; border-radius:50%; border: 1px solid rgba(59,130,246,0.12); position:absolute; opacity:0;"></div>
+            <div class="outro-ring" id="ring2" style="width:900px; height:900px; border-radius:50%; border: 1px solid rgba(59,130,246,0.07); position:absolute; opacity:0;"></div>
+            <div class="outro-ring" id="ring3" style="width:1200px; height:1200px; border-radius:50%; border: 1px solid rgba(59,130,246,0.04); position:absolute; opacity:0;"></div>
+            
+            <!-- 3D perspective wrapper -->
+            <div style="perspective: 1200px; perspective-origin: center;">
+                <div id="outro-logo" style="opacity:0; transform: scale(2.5) rotateX(90deg); z-index:10; transform-origin: center center;">
+                    <div style="font-size: 2.5vw; font-weight: 600; color: #6b7280; text-align:center; letter-spacing: 0.12em; text-transform: uppercase;">
+                        <span style="color: #3b82f6;">AX</span> Team
+                    </div>
+                    <div style="font-size: 6vw; font-weight: 900; letter-spacing: -0.03em; text-align:center; line-height:1.0; margin-top: 8px; white-space: nowrap;">
+                        <span style="color: #3b82f6;">AX</span><span style="color: #111827;"> Development Group</span>
+                    </div>
+                    <div id="outro-line" style="width:0%; height:2px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); margin: 28px auto 0; opacity:0;"></div>
+                    <div id="outro-tagline" style="opacity:0; font-size:1.2vw; color: #9ca3af; text-align:center; margin-top: 16px; letter-spacing: 0.2em; text-transform: uppercase;">Building the Future of Work</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Initial Start Screen with logo video -->
+        <div id="startScreen" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; z-index: 100;">
+            <!-- Scene jump controls (shows first) -->
+            <div id="jumpControls" style="position: absolute; display: flex; flex-direction: column; align-items: center; gap: 12px; z-index: 101;">
+                <div style="font-size: 13px; color: #9ca3af; font-weight: 500;">특정 씬으로 이동 (선택사항)</div>
+                <select id="sceneSelect" style="padding: 8px 16px; font-size: 13px; border: 1px solid #e5e7eb; border-radius: 10px; color: #374151; background: white; cursor: pointer; outline: none;">
+                    <!-- Options populated dynamically from SCENES config -->
+                </select>
+                <button id="startBtn" style="padding: 12px 28px; font-size: 15px; font-weight: 600; background: #3b82f6; color: white; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(59,130,246,0.35); transition: transform 0.2s;">시작</button>
+            </div>
+            <!-- Logo video -->
+            <video id="logoVideo" src="video/logo.mov" muted playsinline
+                style="max-width: 50%; max-height: 50%; object-fit: contain; opacity: 0; pointer-events: none; transition: opacity 0.8s ease;"
+            ></video>
+        </div>
+
+        <!-- Audio Elements -->
+        <!-- Note: We use sample audio URLs. These should be replaced with actual assets. -->
+        <audio id="introSound" preload="auto">
+            <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="bgmSound" loop preload="auto">
+            <!-- Example of a very subtle ambient/mysterious sound -->
+            <source src="https://assets.mixkit.co/active_storage/sfx/135/135-preview.mp3" type="audio/mpeg">
+        </audio>
+
+    </div>
+
+    <!-- Bottom Nav: timer + scene jump (fixed to viewport, populated from SCENES) -->
+    <div id="navBar">
+        <div id="navTimer">00:00:00</div><!-- MM:SS:mm -->
+        <div id="navScenes"></div>
+        <button id="navRestart" class="nav-scene-btn" title="시작 화면으로 돌아가기">↺ 처음으로</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const logoVideo = document.getElementById("logoVideo");
+            const jumpControls = document.getElementById("jumpControls");
+            const startScreen = document.getElementById("startScreen");
+            const sceneSelect = document.getElementById("sceneSelect");
+
+            // Populate dropdown from SCENES config
+            SCENES.forEach((s, i) => {
+                const opt = document.createElement("option");
+                opt.value = s.key;
+                const prefix = s.isLogo ? "🎬 " : "";
+                opt.textContent = `${prefix}Scene ${i + 1} — ${s.label}`;
+                sceneSelect.appendChild(opt);
+            });
+
+            document.getElementById("startBtn").addEventListener("click", function() {
+                const key = sceneSelect.value;
+                const scene = SCENE_BY_KEY[key];
+                if (scene && scene.isLogo) {
+                    jumpControls.style.display = "none";
+                    logoVideo.style.opacity = "1";
+                    logoVideo.play();
+                } else {
+                    startScreen.style.display = "none";
+                    startAnimation(key);
+                }
+            });
+
+            // When video ends: start main animation from first non-logo scene
+            logoVideo.addEventListener("ended", function() {
+                gsap.to(logoVideo, { opacity: 0, duration: 0.8, onComplete: () => {
+                    startScreen.style.display = "none";
+                    startAnimation(FIRST_ANIM_KEY);
+                }});
+            });
+
+            // Fallback: if video fails to load, go straight to animation
+            logoVideo.addEventListener("error", function() {
+                if (jumpControls.style.display === "none") {
+                    startScreen.style.display = "none";
+                    startAnimation(FIRST_ANIM_KEY);
+                }
+            });
+        });
+
+        // Single source of truth for scene ordering.
+        // To insert a new scene, add an entry at the desired index — numbering,
+        // dropdown labels, and timeline-seek lookup all update automatically.
+        // - key:     stable identifier used for seek/lookup (do NOT reuse).
+        // - label:   human-readable name shown in the dropdown.
+        // - time:    timeline seek offset in seconds (0 = start).
+        // - element: CSS selector of the scene root, or null for the logo entry.
+        const SCENES = [
+            { key: "logo",    label: "로고 비디오 (처음부터)", time: 0,    element: null,       isLogo: true },
+            { key: "browser", label: "Browser Agent",         time: 0,    element: "#scene2"  },
+            { key: "partner", label: "Work Partner",          time: 3.5,  element: "#scene3"  },
+            { key: "smart",   label: "Smart Personal Agent",  time: 8.0,  element: "#scene4"  },
+            { key: "zoom",    label: "Zoom Mockup",           time: 16.0, element: "#scene5"  },
+            { key: "link",    label: "Link to Work Site",     time: 28.0, element: "#scene6"  },
+            { key: "skill",   label: "Skill is All You Need", time: 36.0, element: "#scene7"  },
+            { key: "newtab",  label: "New Tab",               time: 44.0, element: "#scene8"  },
+            { key: "multi",   label: "Multi-Task",            time: 52.0, element: "#scene9"  },
+            { key: "report",  label: "Search & Report",       time: 60.0, element: "#scene10" },
+            { key: "coming",  label: "Coming Soon",           time: 68.0, element: "#scene11" },
+            { key: "outro",   label: "AX Team Outro",         time: 76.0, element: "#scene12" },
+        ];
+        const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
+        // Key used to start the post-logo animation (first non-logo entry).
+        const FIRST_ANIM_KEY = SCENES.find(s => !s.isLogo).key;
+
+        // Timeline reference (set when animation starts) so nav bar can control seeks.
+        let activeTimeline = null;
+
+        function formatTime(sec) {
+            sec = Math.max(0, sec);
+            const m = String(Math.floor(sec / 60)).padStart(2, "0");
+            const s = String(Math.floor(sec % 60)).padStart(2, "0");
+            const ms = String(Math.floor((sec % 1) * 100)).padStart(2, "0");
+            return `${m}:${s}:${ms}`;
+        }
+
+        function initNavBar() {
+            const navBar = document.getElementById("navBar");
+            const navScenes = document.getElementById("navScenes");
+            const navTimer = document.getElementById("navTimer");
+
+            // Build scene jump buttons (skip logo entry — logo is not seekable on timeline)
+            navScenes.innerHTML = "";
+            SCENES.forEach((s, i) => {
+                if (s.isLogo) return;
+                const btn = document.createElement("button");
+                btn.className = "nav-scene-btn";
+                btn.dataset.key = s.key;
+                btn.textContent = `${i + 1}. ${s.label}`;
+                btn.addEventListener("click", () => {
+                    if (!activeTimeline) return;
+                    activeTimeline.seek(s.time, false);
+                });
+                navScenes.appendChild(btn);
+            });
+
+            // Restart: simplest reliable reset — reload to the start screen
+            const restartBtn = document.getElementById("navRestart");
+            restartBtn.onclick = () => location.reload();
+
+            navBar.classList.add("visible");
+
+            // Timer + active-button update, driven by gsap ticker (~60fps)
+            const btns = Array.from(navScenes.querySelectorAll(".nav-scene-btn"));
+            const seekableScenes = SCENES.filter(s => !s.isLogo);
+            gsap.ticker.add(() => {
+                if (!activeTimeline) return;
+                const t = activeTimeline.time();
+                navTimer.textContent = formatTime(t);
+                // Highlight the latest scene whose time <= current time
+                let activeIdx = 0;
+                for (let i = 0; i < seekableScenes.length; i++) {
+                    if (seekableScenes[i].time <= t + 0.001) activeIdx = i;
+                }
+                btns.forEach((b, i) => b.classList.toggle("active", i === activeIdx));
+            });
+        }
+
+        function startAnimation(startScene) {
+            const tl = gsap.timeline({
+                onComplete: () => {},
+                paused: false
+            });
+            activeTimeline = tl;
+            initNavBar();
+
+            const introAudio = document.getElementById("introSound");
+            const bgmAudio = document.getElementById("bgmSound");
+
+            // Play Intro impact sound
+            introAudio.volume = 1.0;
+            introAudio.play().catch(e => console.log("Audio play blocked by browser. User interaction may be required: ", e));
+            
+            // Play background ambient
+            bgmAudio.volume = 0; // Start at 0 and fade in
+            bgmAudio.play().catch(e => console.log("Audio play blocked", e));
+            
+            // Fade out intro slowly over 4 seconds, fade in BG music slowly to a lower volume
+            gsap.to(introAudio, { volume: 0, duration: 4, ease: "power2.inOut" });
+            gsap.to(bgmAudio, { volume: 0.3, duration: 4, ease: "power2.inOut", delay: 1 });
+
+            // Setup
+            gsap.set(".scene", { opacity: 0 });
+            gsap.set("#scene2", { opacity: 1 });
+            gsap.set("#scene3", { opacity: 1, xPercent: 100 });
+            gsap.set("#scene4", { opacity: 1, xPercent: 100 });
+
+            // 1. Browser Agent Typing
+            const textToType = "Browser Agent";
+            const typewriterEl = document.getElementById("typewriter");
+            const typeSpeed = 0.08;
+            
+            let currentStr = "";
+            for (let i = 0; i < textToType.length; i++) {
+                tl.to({}, {
+                    duration: typeSpeed,
+                    onComplete: () => {
+                        currentStr += textToType[i];
+                        typewriterEl.innerText = currentStr;
+                    }
+                });
+            }
+
+            // Transition 1 -> 1A
+            tl.to({}, { duration: 1.0 })
+              .to("#scene2", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans1")
+              .to("#scene3", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans1")
+              .to(".st3", { opacity: 1, duration: 0.4 }, "trans1+=0.5")
+              // Drift 1A smoothly for a "hold" effect
+              .to("#scene3", { xPercent: -5, duration: 2.5, ease: "linear" }, "trans1+=0.8")
+              
+              // Transition 1A -> 1B
+              .to("#scene3", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans2")
+              .to("#scene4", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
+              .to(".st4", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "trans2+=0.6")
+              
+              // Scene 1B track: Snap & Drift multiple screens
+              // Note: item width 400 + gap 40 = 440px per item jump
+              .to("#scene4_track", { x: -40, duration: 1.2, ease: "linear" }, "trans2+=0.8") // Drift item 1
+              .to("#scene4_track", { x: -440, duration: 0.7, ease: "expo.inOut" }) // Snap item 2
+              .to("#scene4_track", { x: -480, duration: 1.2, ease: "linear" }) // Drift item 2
+              .to("#scene4_track", { x: -880, duration: 0.7, ease: "expo.inOut" }) // Snap item 3
+              .to("#scene4_track", { x: -920, duration: 1.2, ease: "linear" }) // Drift item 3
+              .to("#scene4_track", { x: -1320, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
+              .to("#scene4_track", { x: -1360, duration: 1.2, ease: "linear" }) // Drift item 4
+              
+              .to({}, { duration: 0.5 })
+
+              // Transition 1B -> 2 (Mockup Zoom sequence)
+              .to("#scene4", { opacity: 0, xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans3")
+              .set("#zoomContainer", { scale: 3, xPercent: -60, yPercent: 40 }, "trans3+=0.4")
+              .to("#scene5", { opacity: 1, duration: 0.8 }, "trans3+=0.4")
+              
+              // Drift Top Right
+              .to("#zoomContainer", { xPercent: -62, yPercent: 42, duration: 1.5, ease: "linear" })
+              // Snap to Bottom Right
+              .to("#zoomContainer", { duration: 1.0, ease: "expo.inOut", xPercent: -60, yPercent: -40 })
+              // Drift Bottom Right
+              .to("#zoomContainer", { xPercent: -62, yPercent: -42, duration: 1.5, ease: "linear" })
+              // Snap to Full View (Zoom Out)
+              .to("#zoomContainer", { duration: 1.0, ease: "expo.inOut", scale: 1, xPercent: 0, yPercent: 0 })
+              // Drift Full View
+              .to("#zoomContainer", { scale: 0.98, duration: 1.5, ease: "linear" })
+              
+              .to("#scene5", { opacity: 0, duration: 0.8 });
+
+            // Helper for Text & Mockup Scenes
+            function animateScene(sceneId, textClass, mockupClass) {
+                tl.to(sceneId, { opacity: 1, duration: 0.1 })
+                  .to(textClass, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" })
+                  .to(mockupClass, { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "-=0.4")
+                  .to({}, { duration: 3 }) // Hold scene reading time
+                  .to(mockupClass, { opacity: 0, y: 20, duration: 0.6 })
+                  .to(textClass, { opacity: 0, y: -20, duration: 0.6 }, "-=0.4")
+                  .to(sceneId, { opacity: 0, duration: 0.1 });
+            }
+
+            // 3. Link to Your Work Site
+            animateScene("#scene6", ".st6", ".sm6");
+
+            // 4. Skill is All you Need
+            animateScene("#scene7", ".st7", ".sm7");
+
+            // 5. Work Starts with New Tab
+            animateScene("#scene8", ".st8", ".sm8");
+
+            // 6. Multi-Task & Multi-Turn
+            animateScene("#scene9", ".st9", ".sm9");
+
+            // 7. Search & Report
+            animateScene("#scene10", ".st10", ".sm10");
+
+            // 8. Next & Coming Soon
+            tl.to("#scene11", { opacity: 1, duration: 0.5 })
+              .to(".st11", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+              .to({}, { duration: 1.5 })
+              .to(".st12", { opacity: 1, y: 0, duration: 1.5, ease: "back.out(1.2)" })
+              .to({}, { duration: 2.0 })
+              .to("#scene11", { opacity: 0, duration: 0.8 });
+
+            // 9. AX Team Outro
+            tl.set("#scene12", { opacity: 1 })
+              // Rings fade in slowly
+              .to(["#ring1", "#ring2", "#ring3"], { opacity: 1, duration: 1.5, ease: "power2.out", stagger: 0.3 }, "outro")
+              // Logo flips in from 3D (rotateX) then overshoots scale and settles
+              .to("#outro-logo", {
+                  opacity: 1,
+                  scale: 1.4,
+                  rotateX: 0,
+                  duration: 0.9,
+                  ease: "expo.out"
+              }, "outro+=0.2")
+              // Settle: scale down from big to final size
+              .to("#outro-logo", {
+                  scale: 1,
+                  duration: 0.7,
+                  ease: "back.inOut(2)"
+              })
+              // Line sweeps in
+              .to("#outro-line", { opacity: 1, width: "60%", duration: 0.8, ease: "power2.out" }, "outro+=1.4")
+              // Tagline fades in
+              .to("#outro-tagline", { opacity: 1, duration: 0.8, ease: "power2.out" }, "outro+=2.0")
+              // Rings slowly pulse outward
+              .to("#ring1", { scale: 1.05, duration: 3, ease: "sine.inOut", yoyo: true, repeat: -1 }, "outro+=0.5")
+              .to("#ring2", { scale: 1.03, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1 }, "outro+=0.5")
+              // Fade out bgm
+              .to(bgmAudio, { volume: 0, duration: 3, ease: "power2.inOut" }, "outro+=1.5");
+
+            // Jump to the selected scene if needed
+            const target = SCENE_BY_KEY[startScene];
+            if (target && !target.isLogo && target.time > 0) {
+                tl.seek(target.time, false);
+            }
+        }
+    </script>
+</body>
+</html>
