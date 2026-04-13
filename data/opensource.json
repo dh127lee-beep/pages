@@ -1,5 +1,16 @@
 [
   {
+    "id": "oss-004",
+    "title": "Claude",
+    "description": "Claude 관련 리소스 압축본입니다.",
+    "filename": "claude.zip",
+    "url": "assets/opensource/claude.zip",
+    "version": "1.0.0",
+    "date": "2026-04-13",
+    "tags": ["Claude", "ZIP"],
+    "repo": ""
+  },
+  {
     "id": "oss-003",
     "title": "Skill System Proposal",
     "description": "Browser Agent Skill System Proposal 전체 압축본입니다. 문서, HTML 목업, 프레젠테이션 뷰, SVG 자산이 포함됩니다.",
