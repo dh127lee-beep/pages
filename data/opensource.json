@@ -1,5 +1,16 @@
 [
   {
+    "id": "oss-007",
+    "title": "Intro Video",
+    "description": "Browser Agent 인트로 영상 전체 소스. GSAP 타임라인 씬(Partner → Extension → Smart → AddTab → …), SVG 자산, BGM, 비디오 클립 포함.",
+    "filename": "intro-video.zip",
+    "url": "assets/opensource/intro-video.zip",
+    "version": "1.0.0",
+    "date": "2026-04-14",
+    "tags": ["Intro", "GSAP", "Animation", "ZIP"],
+    "repo": ""
+  },
+  {
     "id": "oss-006",
     "title": "Atlas Demo Videos (MP4)",
     "description": "Atlas 데모 영상 모음 (MP4, 1280px, H.264). 난이도별 easy/medium/hard/veryhard 총 16개 클립.",
