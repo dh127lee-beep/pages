@@ -476,22 +476,13 @@
 
         <!-- Scene: Skill is All You Need -->
         <div class="scene" id="scene-skill" style="background:#ffffff;">
-            <div style="position: absolute; top: 10%; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.6em;">
-                <div style="position:relative; display:inline-block;">
-                    <div id="skill-text-old" style="font-size: 2.6vw; font-weight:600; color:#9ca3af; white-space:nowrap; opacity:0; transform: translateY(12px);">Slow and Sluggish Browser Agent</div>
-                    <span id="skill-strike" style="position:absolute; top:50%; left:-2%; width:0; height:4px; background:#ef4444; transform: translateY(-50%); border-radius:2px;"></span>
+            <div id="skill-caption" style="position: absolute; top: 14%; left: 50%; transform: translateX(-50%); font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 4vw; color:#111827; line-height:1; white-space:nowrap;"></div>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48vw; aspect-ratio: 16/9; perspective: 1600px;">
+                <div id="skill-carousel" style="position:relative; width:100%; height:100%; transform-style: preserve-3d; transform: rotateY(0deg);">
+                    <video class="skill-face" data-idx="0" src="video/atlas-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(0deg) translateZ(28vw);"></video>
+                    <video class="skill-face" data-idx="1" src="video/claude-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(120deg) translateZ(28vw);"></video>
+                    <video class="skill-face" data-idx="2" src="video/claude-medium-002.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(240deg) translateZ(28vw);"></video>
                 </div>
-                <div id="skill-text-new" style="font-size: 4.2vw; font-weight:800; color:#111827; letter-spacing:-0.03em; white-space:nowrap; opacity:0; transform: translateY(20px) scale(0.95);">
-                    <span class="highlight-pill">Efficient</span> Browser Agent
-                </div>
-            </div>
-            <div style="position: absolute; bottom: 9%; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 16px;">
-                <div id="skill-video-stack" style="position: relative; width: 48vw; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; box-shadow: 0 18px 45px rgba(0,0,0,0.15); background:#000;">
-                    <video class="skill-clip" data-idx="0" src="video/atlas-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video>
-                    <video class="skill-clip" data-idx="1" src="video/claude-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0;"></video>
-                    <video class="skill-clip" data-idx="2" src="video/claude-medium-002.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0;"></video>
-                </div>
-                <div id="skill-caption" style="font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 2.6vw; color:#111827; line-height:1;"></div>
             </div>
         </div>
 
@@ -578,6 +569,64 @@
             <div class="text-wrapper">
                 <div class="title-text st11" data-text="coming.next"></div>
                 <div class="title-text gradient-text st12" style="font-size: 7vw; margin-top: 40px;" data-text="coming.headline"></div>
+            </div>
+        </div>
+
+        <!-- Scene: One More Thing!! (dramatic reveal) -->
+        <div class="scene" id="scene-onemore" style="background: #0a0a0a;">
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <div id="onemore-glow" style="position:absolute; width: 80vw; height: 80vw; border-radius:50%; background: radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0) 60%); opacity:0;"></div>
+                <div id="onemore-text" style="font-size: 8vw; font-weight: 200; color:#ffffff; letter-spacing: -0.04em; opacity:0; transform: scale(1.3); white-space:nowrap; position:relative; z-index:2;">One more thing<span style="color:#3b82f6; font-weight: 400;">!!</span></div>
+            </div>
+        </div>
+
+        <!-- Scene: Receipt typing prompt -->
+        <div class="scene" id="scene-receipt" style="background:#ffffff;">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 1.5em; padding: 0 8%;">
+                <div style="font-size: 1.4vw; font-weight:600; color:#9ca3af; letter-spacing:0.2em; text-transform:uppercase;">User Prompt</div>
+                <div style="font-size: 3.2vw; font-weight: 700; color:#111827; line-height:1.35; text-align:center; min-height:1em; display:flex; align-items:center; justify-content:center;">
+                    <span id="receipt-typed"></span><span id="receipt-cursor" class="partner-cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene: Browser-Desktop (desktop app reveal) -->
+        <div class="scene" id="scene-browserdesktop" style="background: #0a0a0a; overflow:hidden;">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 3vh;">
+                <div id="desktop-title" style="font-size: 5.5vw; font-weight: 800; color:#ffffff; letter-spacing:-0.03em; opacity:0;">Browser-<span style="color:#3b82f6;">Desktop</span></div>
+                <div id="desktop-app" style="width: 56vw; aspect-ratio: 16/10; border-radius: 18px; overflow:hidden; box-shadow: 0 30px 80px rgba(59,130,246,0.35), 0 0 0 1px rgba(255,255,255,0.08); opacity:0; transform: translateY(40px) scale(0.92);">
+                    <div style="height:38px; background: linear-gradient(180deg, #1f2937, #111827); display:flex; align-items:center; padding:0 14px; gap:8px;">
+                        <div style="width:10px; height:10px; border-radius:50%; background:#ef4444;"></div>
+                        <div style="width:10px; height:10px; border-radius:50%; background:#fbbf24;"></div>
+                        <div style="width:10px; height:10px; border-radius:50%; background:#10b981;"></div>
+                        <div style="flex:1; text-align:center; color:#9ca3af; font-size:12px; font-weight:500;">Browser Agent — Desktop</div>
+                    </div>
+                    <div style="height: calc(100% - 38px); background: linear-gradient(135deg, #0f172a, #1e293b); display:grid; grid-template-columns: 200px 1fr; gap: 14px; padding: 14px;">
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                            <div style="height:32px; border-radius:8px; background: rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.4);"></div>
+                            <div style="height:28px; border-radius:8px; background: rgba(255,255,255,0.05);"></div>
+                            <div style="height:28px; border-radius:8px; background: rgba(255,255,255,0.05);"></div>
+                            <div style="height:28px; border-radius:8px; background: rgba(255,255,255,0.05);"></div>
+                            <div style="flex:1;"></div>
+                            <div style="height:48px; border-radius:10px; background: linear-gradient(135deg, rgba(59,130,246,0.4), rgba(139,92,246,0.3)); border:1px solid rgba(139,92,246,0.4);"></div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:14px;">
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <div style="width:34px; height:34px; border-radius:10px; background: linear-gradient(135deg,#3b82f6,#8b5cf6);"></div>
+                                <div style="height:14px; flex:1; background: rgba(255,255,255,0.08); border-radius:4px;"></div>
+                            </div>
+                            <div style="flex:1; border-radius:12px; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); padding: 18px; display:flex; flex-direction:column; gap:10px;">
+                                <div style="height:10px; width:60%; background:rgba(255,255,255,0.12); border-radius:3px;"></div>
+                                <div style="height:10px; width:85%; background:rgba(255,255,255,0.08); border-radius:3px;"></div>
+                                <div style="height:10px; width:70%; background:rgba(255,255,255,0.08); border-radius:3px;"></div>
+                                <div style="height:10px; width:50%; background:rgba(255,255,255,0.08); border-radius:3px;"></div>
+                                <div style="flex:1;"></div>
+                                <div style="height:44px; border-radius:10px; background: linear-gradient(90deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border:1px solid rgba(59,130,246,0.3);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="desktop-tagline" style="font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 3vw; color:#e5e7eb; opacity:0;">Beyond the Browser.</div>
             </div>
         </div>
 
@@ -775,8 +824,11 @@
             { key: "newtab",       label: "New Tab",                time: 48.5, element: "#scene-newtab"  },
             { key: "multi",        label: "Multi-Task",             time: 56.5, element: "#scene-multi"  },
             { key: "report",       label: "Search & Report",        time: 64.5, element: "#scene-report" },
-            { key: "coming",       label: "Coming Soon",            time: 72.5, element: "#scene-coming" },
-            { key: "outro",        label: "AX Team Outro",          time: 80.5, element: "#scene-outro" },
+            { key: "coming",          label: "Coming Soon",            time: 72.5, element: "#scene-coming" },
+            { key: "onemore",         label: "One More Thing",         time: 80.5, element: "#scene-onemore" },
+            { key: "receipt",         label: "Receipt Prompt",         time: 84.5, element: "#scene-receipt" },
+            { key: "browserdesktop",  label: "Browser-Desktop",        time: 90.5, element: "#scene-browserdesktop" },
+            { key: "outro",           label: "AX Team Outro",          time: 98.0, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -1103,31 +1155,22 @@
               .to({}, { duration: 0.4 })
               .to("#scene-browserskill", { opacity: 0, duration: 0.5 });
 
-            // 4. Skill is All you Need (dynamic rework)
+            // 4. Skill is All you Need (3D carousel rotation)
+            function setSkillCaption(text) {
+                const el = document.getElementById("skill-caption");
+                gsap.fromTo(el, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", onStart: () => { el.textContent = text; } });
+            }
             tl.to("#scene-skill", { opacity: 1, duration: 0.4 })
-              // Old (gray, sluggish) line appears
-              .to("#skill-text-old", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
-              .to({}, { duration: 0.6 })
-              // Strike-through sweeps across
-              .to("#skill-strike", { width: "104%", duration: 0.55, ease: "power3.inOut" })
-              // Old text dims, new efficient line snaps in
-              .to("#skill-text-old", { opacity: 0.4, duration: 0.3 })
-              .to("#skill-text-new", { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, "-=0.15")
-              .to({}, { duration: 0.5 })
-              // Caption initializes for first clip
-              .call(() => { document.getElementById("skill-caption").textContent = "Inject WebMCP"; })
+              .call(() => setSkillCaption("Inject WebMCP"))
+              .to({}, { duration: 2.0 })
+              // Rotate carousel −120° to bring clip 2 to front
+              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
+              .call(() => setSkillCaption("Manage Skill"), null, "-=0.6")
+              .to({}, { duration: 1.6 })
+              // Rotate another −120° to bring clip 3 to front
+              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
+              .call(() => setSkillCaption("Learn Skill Easily"), null, "-=0.6")
               .to({}, { duration: 1.8 })
-              // Crossfade to clip 2
-              .to('.skill-clip[data-idx="0"]', { opacity: 0, duration: 0.5, ease: "power2.inOut" })
-              .to('.skill-clip[data-idx="1"]', { opacity: 1, duration: 0.5, ease: "power2.inOut" }, "-=0.5")
-              .call(() => { document.getElementById("skill-caption").textContent = "Manage Skill"; })
-              .to({}, { duration: 1.8 })
-              // Crossfade to clip 3
-              .to('.skill-clip[data-idx="1"]', { opacity: 0, duration: 0.5, ease: "power2.inOut" })
-              .to('.skill-clip[data-idx="2"]', { opacity: 1, duration: 0.5, ease: "power2.inOut" }, "-=0.5")
-              .call(() => { document.getElementById("skill-caption").textContent = "Learn Skill Easily"; })
-              .to({}, { duration: 1.8 })
-              // Fade out scene
               .to("#scene-skill", { opacity: 0, duration: 0.5 });
 
             // 5. Work Starts with New Tab
@@ -1146,6 +1189,41 @@
               .to(".st12", { opacity: 1, y: 0, duration: 1.5, ease: "back.out(1.2)" })
               .to({}, { duration: 2.0 })
               .to("#scene-coming", { opacity: 0, duration: 0.8 });
+
+            // 8b. One More Thing!! dramatic reveal
+            tl.set("#scene-onemore", { opacity: 1 })
+              .to("#onemore-glow", { opacity: 1, scale: 1.2, duration: 1.4, ease: "power2.out" })
+              .to("#onemore-text", { opacity: 1, scale: 1, duration: 1.2, ease: "expo.out" }, "-=1.0")
+              .to({}, { duration: 1.6 })
+              .to("#onemore-glow", { opacity: 0, duration: 0.6 })
+              .to("#scene-onemore", { opacity: 0, duration: 0.5 }, "-=0.3");
+
+            // 8c. Receipt prompt typing
+            tl.set("#scene-receipt", { opacity: 1 })
+              .call(() => { document.getElementById("receipt-cursor").classList.add("active"); })
+              .call(() => {
+                  const msg = "파일에 있는 영수증 분석해서 사이트에 제출해줘";
+                  const el = document.getElementById("receipt-typed");
+                  el.textContent = "";
+                  let i = 0;
+                  const iv = setInterval(() => {
+                      if (i >= msg.length) { clearInterval(iv); return; }
+                      el.textContent += msg[i++];
+                  }, 45);
+              })
+              .to({}, { duration: 2.4 })
+              .call(() => { document.getElementById("receipt-cursor").classList.remove("active"); })
+              .to({}, { duration: 0.5 })
+              .to("#scene-receipt", { opacity: 0, duration: 0.5 });
+
+            // 8d. Browser-Desktop reveal
+            tl.set("#scene-browserdesktop", { opacity: 1 })
+              .to("#desktop-title", { opacity: 1, duration: 0.8, ease: "power2.out" })
+              .to("#desktop-app", { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "expo.out" }, "-=0.4")
+              .to("#desktop-app", { y: -12, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 })
+              .to("#desktop-tagline", { opacity: 1, duration: 0.9, ease: "power2.out" }, "-=4.0")
+              .to({}, { duration: 0.5 })
+              .to("#scene-browserdesktop", { opacity: 0, duration: 0.6 });
 
             // 9. AX Team Outro
             tl.set("#scene-outro", { opacity: 1 })
