@@ -218,8 +218,8 @@
 
         /* Scene 4 (Smart Personal Agent) video clips — same box size as prior mockups */
         .scene-smart-clip {
-            width: 400px;
-            height: 280px;
+            width: 480px;
+            height: 336px;
             object-fit: cover;
             background: #e2e8f0;
             border-radius: 12px;
@@ -233,7 +233,7 @@
             align-items: center;
             gap: 14px;
             flex-shrink: 0;
-            width: 400px;
+            width: 480px;
         }
         .scene-smart-caption {
             font-size: 18px;
@@ -313,7 +313,12 @@
 
         <!-- Scene: Browser Agent is Work Partner -->
         <div class="scene" id="scene-partner" style="background:#ffffff;">
-            <div class="typing-text st3" style="opacity: 0;" data-text="partner.title"></div>
+            <div id="partner-stage" style="display:flex; align-items:center; justify-content:center; width:100%; gap: 0.2em;">
+                <div id="partner-phrase" style="display:flex; align-items:center; font-size: 3.2vw; font-weight: 600; color:#9ca3af; letter-spacing:-0.01em; white-space:nowrap;"></div>
+                <div id="partner-suffix" style="opacity:0; font-size: 7vw; font-weight: 800; letter-spacing:-0.03em; color:#111827; white-space:nowrap; display:flex; align-items:center; gap:0.25em;">
+                    <span style="color:#9ca3af; font-weight:500;">in</span><span>Browser</span>
+                </div>
+            </div>
         </div>
 
         <!-- Scene: Chrome Extension Side Panel Reveal -->
@@ -354,7 +359,7 @@
         <!-- Scene: Smart Personal Agent Showcase -->
         <div class="scene" id="scene-smart" style="background:#ffffff;">
             <div style="position: absolute; top: 25%; width: 100vw; height: 40%; display: flex; align-items: center; overflow: hidden;">
-                <div id="scene-smart-track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 200px);">
+                <div id="scene-smart-track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 240px);">
                     <div class="scene-smart-item">
                         <video src="video/atlas-easy-001.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
                         <div class="scene-smart-caption" data-text="smart.caption.1"></div>
@@ -629,7 +634,7 @@
     {
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
-      "smart.title": "Smart Personal Agent",
+      "smart.title": "지루한 업무에서 해방되세요",
       "smart.caption.1": "주가 검색해줘",
       "smart.caption.2": "오늘 일정 알려줘",
       "smart.caption.3": "이메일 요약해줘",
@@ -860,12 +865,30 @@
             gsap.to(introAudio, { volume: 0, duration: 4, ease: "power2.inOut" });
             gsap.to(bgmAudio, { volume: 0.3, duration: 4, ease: "power2.inOut", delay: 1 });
 
+            // Build partner phrase letters (once per animation start)
+            (function buildPartnerPhrase() {
+                const phrase = "Browser Agent In Your Work for AI Transformation";
+                const acrIdx = new Set([0, 8, 14, 17, 22]);
+                const container = document.getElementById("partner-phrase");
+                if (!container) return;
+                container.innerHTML = "";
+                for (let i = 0; i < phrase.length; i++) {
+                    const ch = phrase[i];
+                    const span = document.createElement("span");
+                    span.textContent = ch === " " ? "\u00A0" : ch;
+                    span.style.display = "inline-block";
+                    span.style.transformOrigin = "center center";
+                    span.className = acrIdx.has(i) ? "partner-acr" : "partner-other";
+                    container.appendChild(span);
+                }
+            })();
+
             // Setup
             gsap.set(".scene", { opacity: 0 });
             gsap.set("#scene-browser", { opacity: 1 });
             gsap.set("#scene-partner", { opacity: 1, xPercent: 100 });
             gsap.set("#scene-extension", { opacity: 0 });
-            gsap.set("#extension-browser", { transformOrigin: "top right", scale: 3.4, xPercent: -42, yPercent: 40 });
+            gsap.set("#extension-browser", { transformOrigin: "top right", scale: 5.0, xPercent: -18, yPercent: 28 });
             gsap.set("#extension-panel", { xPercent: 100 });
             gsap.set("#extension-click-ring", { opacity: 0, scale: 0.5 });
             gsap.set("#scene-addtab", { opacity: 0 });
@@ -891,9 +914,23 @@
             tl.to({}, { duration: 1.0 })
               .to("#scene-browser", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans1")
               .to("#scene-partner", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans1")
-              .to(".st3", { opacity: 1, duration: 0.4 }, "trans1+=0.5")
-              // Drift 1A smoothly for a "hold" effect
-              .to("#scene-partner", { xPercent: -5, duration: 2.5, ease: "linear" }, "trans1+=0.8")
+              // Hold full phrase briefly
+              .to({}, { duration: 0.9 })
+              // Capture widths then collapse non-acronym letters
+              .call(() => {
+                  document.querySelectorAll("#partner-phrase .partner-other").forEach(el => {
+                      el.style.width = el.offsetWidth + "px";
+                  });
+              })
+              .to(".partner-other", { opacity: 0, duration: 0.5, stagger: 0.015 })
+              .to(".partner-other", { width: 0, duration: 0.8, ease: "expo.inOut" }, "-=0.3")
+              // Scale up acronym letters
+              .to(".partner-acr", { fontSize: "7vw", color: "#111827", fontWeight: 800, duration: 0.8, ease: "power3.out" }, "-=0.7")
+              .to({}, { duration: 0.8 })
+              // Slide phrase left, reveal "in Browser" suffix on the right
+              .to("#partner-stage", { xPercent: -12, duration: 0.9, ease: "expo.inOut" })
+              .to("#partner-suffix", { opacity: 1, duration: 0.6 }, "-=0.5")
+              .to({}, { duration: 2.0 })
 
               // Partner fades out before extension scene
               .to("#scene-partner", { opacity: 0, duration: 0.5 })
@@ -930,16 +967,16 @@
               .to(".st4", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "trans2+=0.6")
               
               // Scene 1B track: Snap & Drift multiple screens
-              // Note: item width 400 + gap 40 = 440px per item jump
-              .to("#scene-smart-track", { x: -40, duration: 1.2, ease: "linear" }, "trans2+=0.8") // Drift item 1
-              .to("#scene-smart-track", { x: -440, duration: 0.7, ease: "expo.inOut" }) // Snap item 2
-              .to("#scene-smart-track", { x: -480, duration: 1.2, ease: "linear" }) // Drift item 2
-              .to("#scene-smart-track", { x: -880, duration: 0.7, ease: "expo.inOut" }) // Snap item 3
-              .to("#scene-smart-track", { x: -920, duration: 1.2, ease: "linear" }) // Drift item 3
-              .to("#scene-smart-track", { x: -1320, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
-              .to("#scene-smart-track", { x: -1360, duration: 1.2, ease: "linear" }) // Drift item 4
-              .to("#scene-smart-track", { x: -1760, duration: 0.7, ease: "expo.inOut" }) // Snap item 5
-              .to("#scene-smart-track", { x: -1800, duration: 1.2, ease: "linear" }) // Drift item 5
+              // Note: item width 480 + gap 40 = 520px per item jump
+              .to("#scene-smart-track", { x: -48, duration: 1.2, ease: "linear" }, "trans2+=0.8") // Drift item 1
+              .to("#scene-smart-track", { x: -528, duration: 0.7, ease: "expo.inOut" }) // Snap item 2
+              .to("#scene-smart-track", { x: -576, duration: 1.2, ease: "linear" }) // Drift item 2
+              .to("#scene-smart-track", { x: -1056, duration: 0.7, ease: "expo.inOut" }) // Snap item 3
+              .to("#scene-smart-track", { x: -1104, duration: 1.2, ease: "linear" }) // Drift item 3
+              .to("#scene-smart-track", { x: -1584, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
+              .to("#scene-smart-track", { x: -1632, duration: 1.2, ease: "linear" }) // Drift item 4
+              .to("#scene-smart-track", { x: -2112, duration: 0.7, ease: "expo.inOut" }) // Snap item 5
+              .to("#scene-smart-track", { x: -2160, duration: 1.2, ease: "linear" }) // Drift item 5
 
               .to({}, { duration: 0.5 })
 
