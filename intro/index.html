@@ -316,6 +316,41 @@
             <div class="typing-text st3" style="opacity: 0;" data-text="partner.title"></div>
         </div>
 
+        <!-- Scene: Chrome Extension Side Panel Reveal -->
+        <div class="scene" id="scene-extension" style="background:#f3f4f6;">
+            <div id="extension-viewport" style="width:100%; height:100%; position:relative; display:flex; justify-content:center; align-items:center; overflow:hidden;">
+                <div id="extension-browser" style="width: 88%; height: 82%; background:#ffffff; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.2); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="height:44px; background:#f9fafb; border-bottom:1px solid #e5e7eb; display:flex; align-items:center; padding-left:16px;">
+                        <div style="flex:1; height:24px; background:#ffffff; border:1px solid #e5e7eb; border-radius: 12px; margin-right: 16px;"></div>
+                        <div id="extension-logo" style="position:relative; width:32px; height:32px; cursor:pointer; margin-right: 16px;">
+                            <img src="image/extension-icon.svg" width="32" height="32" alt="" draggable="false" style="display:block;"/>
+                            <div id="extension-click-ring" style="position:absolute; inset:-10px; border-radius:50%; border: 2px solid #3b82f6; opacity:0; pointer-events:none;"></div>
+                        </div>
+                        <div style="display:flex; align-self:stretch;">
+                            <div style="width:46px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:14px;">─</div>
+                            <div style="width:46px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:12px;">▢</div>
+                            <div class="win-close-x" style="width:46px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:14px;">✕</div>
+                        </div>
+                    </div>
+                    <div style="flex:1; display:flex; min-height:0;">
+                        <div style="flex:1; background:#ffffff; display:flex; flex-direction:column; gap:14px; padding: 28px;">
+                            <div style="height: 18px; width: 40%; background:#e5e7eb; border-radius:4px;"></div>
+                            <div style="height: 14px; width: 80%; background:#f1f5f9; border-radius:4px;"></div>
+                            <div style="height: 14px; width: 72%; background:#f1f5f9; border-radius:4px;"></div>
+                            <div style="height: 14px; width: 78%; background:#f1f5f9; border-radius:4px;"></div>
+                            <div style="height: 14px; width: 64%; background:#f1f5f9; border-radius:4px;"></div>
+                        </div>
+                        <div id="extension-panel" style="width: 340px; flex-shrink:0; position:relative;">
+                            <img src="image/extension-panel.svg" alt="" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover;"/>
+                            <div id="extension-chat-input" style="position:absolute; left:8%; right:8%; bottom:17.3%; height:6.7%; display:flex; align-items:center; padding: 0 14px; font-size:13px; color:#e2e8f0; font-family: Inter, sans-serif; box-sizing:border-box;">
+                                <span id="extension-typed"></span><span id="extension-typed-cursor" style="display:inline-block; width:2px; height:14px; background:#93c5fd; margin-left:2px; opacity:0;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Scene: Smart Personal Agent Showcase -->
         <div class="scene" id="scene-smart" style="background:#ffffff;">
             <div style="position: absolute; top: 25%; width: 100vw; height: 40%; display: flex; align-items: center; overflow: hidden;">
@@ -343,6 +378,45 @@
                 </div>
             </div>
             <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);" data-text="smart.title"></div>
+        </div>
+
+        <!-- Scene: New Tab Button Zoom & Open -->
+        <div class="scene" id="scene-addtab" style="background:#f3f4f6;">
+            <div style="width:100%; height:100%; position:relative; display:flex; justify-content:center; align-items:center; overflow:hidden;">
+                <div id="addtab-browser" style="width: 88%; height: 82%; background:#ffffff; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.2); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="height:40px; background:#e5e7eb; display:flex; align-items:flex-end; padding-left: 12px; gap:6px;">
+                        <div style="display:flex; align-items:center; height:32px; background:#ffffff; border-radius:10px 10px 0 0; padding: 0 14px; gap:8px; min-width:180px;">
+                            <div style="width:12px; height:12px; border-radius:50%; background:#3b82f6;"></div>
+                            <div style="height:8px; width:110px; background:#cbd5e1; border-radius:3px;"></div>
+                        </div>
+                        <div id="addtab-new" style="display:flex; align-items:center; height:32px; background:#ffffff; border-radius:10px 10px 0 0; padding: 0 14px; gap:8px; min-width:180px; opacity:0; transform-origin: left bottom;">
+                            <div style="width:12px; height:12px; border-radius:50%; background:#94a3b8;"></div>
+                            <div style="height:8px; width:100px; background:#e2e8f0; border-radius:3px;"></div>
+                        </div>
+                        <div id="addtab-plus" style="position:relative; width:28px; height:28px; border-radius:50%; background:rgba(15,23,42,0.06); display:flex; align-items:center; justify-content:center; margin-bottom:4px; cursor:pointer;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.4" stroke-linecap="round">
+                                <path d="M12 5v14"/><path d="M5 12h14"/>
+                            </svg>
+                            <div id="addtab-click-ring" style="position:absolute; inset:-10px; border-radius:50%; border:2px solid #3b82f6; opacity:0; pointer-events:none;"></div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div style="display:flex; align-self:stretch;">
+                            <div style="width:46px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:14px;">─</div>
+                            <div style="width:46px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:12px;">▢</div>
+                            <div style="width:46px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:14px;">✕</div>
+                        </div>
+                    </div>
+                    <div style="height:44px; background:#f9fafb; border-bottom:1px solid #e5e7eb; display:flex; align-items:center; padding: 0 16px;">
+                        <div style="flex:1; height:24px; background:#ffffff; border:1px solid #e5e7eb; border-radius: 12px;"></div>
+                    </div>
+                    <div style="flex:1; background:#ffffff; display:flex; flex-direction:column; gap:14px; padding: 28px;">
+                        <div style="height: 18px; width: 40%; background:#e5e7eb; border-radius:4px;"></div>
+                        <div style="height: 14px; width: 80%; background:#f1f5f9; border-radius:4px;"></div>
+                        <div style="height: 14px; width: 72%; background:#f1f5f9; border-radius:4px;"></div>
+                        <div style="height: 14px; width: 78%; background:#f1f5f9; border-radius:4px;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Scene: Zoom Mockup Transition -->
@@ -503,13 +577,16 @@
             <!-- 3D perspective wrapper -->
             <div style="perspective: 1200px; perspective-origin: center;">
                 <div id="outro-logo" style="opacity:0; transform: scale(2.5) rotateX(90deg); z-index:10; transform-origin: center center;">
-                    <div style="font-size: 2.5vw; font-weight: 600; color: #6b7280; text-align:center; letter-spacing: 0.12em; text-transform: uppercase;" data-text="outro.team"></div>
-                    <div style="font-size: 6vw; font-weight: 900; letter-spacing: -0.03em; text-align:center; line-height:1.0; margin-top: 8px; white-space: nowrap;" data-text="outro.group"></div>
+                    <div style="font-size: 3.5vw; font-weight: 700; color: #6b7280; text-align:center; letter-spacing: 0.12em; text-transform: uppercase;" data-text="outro.team"></div>
+                    <div style="font-size: 4.5vw; font-weight: 800; letter-spacing: -0.03em; text-align:center; line-height:1.0; margin-top: 8px; white-space: nowrap;" data-text="outro.group"></div>
                     <div id="outro-line" style="width:0%; height:2px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); margin: 28px auto 0; opacity:0;"></div>
                     <div id="outro-tagline" style="opacity:0; font-size:1.2vw; color: #9ca3af; text-align:center; margin-top: 16px; letter-spacing: 0.2em; text-transform: uppercase;" data-text="outro.tagline"></div>
                 </div>
             </div>
         </div>
+
+        <!-- Fade overlay: black at start (fade out to reveal), black at end (fade in to cover) -->
+        <div id="fadeOverlay" style="position:absolute; inset:0; background:#000000; z-index:200; opacity:0; pointer-events:none;"></div>
 
         <!-- Initial Start Screen with logo video -->
         <div id="startScreen" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; z-index: 100;">
@@ -630,17 +707,22 @@
             });
 
             document.getElementById("startBtn").addEventListener("click", function() {
-                presentationStartMs = performance.now();
                 const key = sceneSelect.value;
                 const scene = SCENE_BY_KEY[key];
-                if (scene && scene.isLogo) {
-                    jumpControls.style.display = "none";
-                    logoVideo.style.opacity = "1";
-                    logoVideo.play();
-                } else {
-                    startScreen.style.display = "none";
-                    startAnimation(key);
-                }
+                // Capture-friendly: black for 1s, then fade in
+                gsap.set("#fadeOverlay", { opacity: 1 });
+                jumpControls.style.display = "none";
+                gsap.delayedCall(1.0, () => {
+                    presentationStartMs = performance.now();
+                    if (scene && scene.isLogo) {
+                        logoVideo.style.opacity = "1";
+                        logoVideo.play();
+                    } else {
+                        startScreen.style.display = "none";
+                        startAnimation(key);
+                    }
+                    gsap.to("#fadeOverlay", { opacity: 0, duration: 1.5, ease: "power2.inOut" });
+                });
             });
 
             // When video ends: start main animation from first non-logo scene
@@ -668,18 +750,20 @@
         // - time:    timeline seek offset in seconds (0 = start).
         // - element: CSS selector of the scene root, or null for the logo entry.
         const SCENES = [
-            { key: "logo",    label: "로고 비디오 (처음부터)", time: 0,    element: null,       isLogo: true },
-            { key: "browser", label: "Browser Agent",         time: 0,    element: "#scene-browser"  },
-            { key: "partner", label: "Work Partner",          time: 3.5,  element: "#scene-partner"  },
-            { key: "smart",   label: "Smart Personal Agent",  time: 8.0,  element: "#scene-smart"  },
-            { key: "zoom",    label: "Zoom Mockup",           time: 16.0, element: "#scene-zoom"  },
-            { key: "link",    label: "Link to Work Site",     time: 28.0, element: "#scene-link"  },
-            { key: "skill",   label: "Skill is All You Need", time: 36.0, element: "#scene-skill"  },
-            { key: "newtab",  label: "New Tab",               time: 44.0, element: "#scene-newtab"  },
-            { key: "multi",   label: "Multi-Task",            time: 52.0, element: "#scene-multi"  },
-            { key: "report",  label: "Search & Report",       time: 60.0, element: "#scene-report" },
-            { key: "coming",  label: "Coming Soon",           time: 68.0, element: "#scene-coming" },
-            { key: "outro",   label: "AX Team Outro",         time: 76.0, element: "#scene-outro" },
+            { key: "logo",      label: "로고 비디오 (처음부터)",   time: 0,    element: null,               isLogo: true },
+            { key: "browser",   label: "Browser Agent",            time: 0,    element: "#scene-browser"  },
+            { key: "partner",   label: "Work Partner",             time: 3.5,  element: "#scene-partner"  },
+            { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
+            { key: "smart",     label: "Smart Personal Agent",     time: 19.0, element: "#scene-smart"  },
+            { key: "addtab",    label: "New Tab Button",           time: 27.0, element: "#scene-addtab"   },
+            { key: "zoom",      label: "Zoom Mockup",              time: 32.5, element: "#scene-zoom"  },
+            { key: "link",      label: "Link to Work Site",        time: 44.5, element: "#scene-link"  },
+            { key: "skill",     label: "Skill is All You Need",    time: 52.5, element: "#scene-skill"  },
+            { key: "newtab",    label: "New Tab",                  time: 60.5, element: "#scene-newtab"  },
+            { key: "multi",     label: "Multi-Task",               time: 68.5, element: "#scene-multi"  },
+            { key: "report",    label: "Search & Report",          time: 76.5, element: "#scene-report" },
+            { key: "coming",    label: "Coming Soon",              time: 84.5, element: "#scene-coming" },
+            { key: "outro",     label: "AX Team Outro",            time: 92.5, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -780,6 +864,11 @@
             gsap.set(".scene", { opacity: 0 });
             gsap.set("#scene-browser", { opacity: 1 });
             gsap.set("#scene-partner", { opacity: 1, xPercent: 100 });
+            gsap.set("#scene-extension", { opacity: 0 });
+            gsap.set("#extension-browser", { transformOrigin: "top right", scale: 3.4, xPercent: -42, yPercent: 40 });
+            gsap.set("#extension-panel", { xPercent: 100 });
+            gsap.set("#extension-click-ring", { opacity: 0, scale: 0.5 });
+            gsap.set("#scene-addtab", { opacity: 0 });
             gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
 
             // 1. Browser Agent Typing
@@ -805,9 +894,38 @@
               .to(".st3", { opacity: 1, duration: 0.4 }, "trans1+=0.5")
               // Drift 1A smoothly for a "hold" effect
               .to("#scene-partner", { xPercent: -5, duration: 2.5, ease: "linear" }, "trans1+=0.8")
-              
-              // Transition 1A -> 1B
-              .to("#scene-partner", { xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans2")
+
+              // Partner fades out before extension scene
+              .to("#scene-partner", { opacity: 0, duration: 0.5 })
+              .set("#scene-extension", { opacity: 1 })
+
+              // Chrome Extension: zoom-in corner → click → side panel → zoom-out (1.5x slower)
+              .to({}, { duration: 0.9 })
+              .to("#extension-click-ring", { opacity: 1, scale: 1.5, duration: 0.9, ease: "power2.out" })
+              .to("#extension-click-ring", { opacity: 0, duration: 0.45 }, "-=0.15")
+              .to("#extension-panel", { xPercent: 0, duration: 1.35, ease: "expo.out" }, "-=0.6")
+              .to("#extension-browser", { scale: 1, xPercent: 0, yPercent: 0, duration: 2.1, ease: "expo.inOut" }, "-=0.9")
+              .to({}, { duration: 0.5 })
+              // Zoom into chat input at bottom of side panel
+              .to("#extension-browser", { transformOrigin: "bottom right", scale: 3.0, xPercent: -6, yPercent: 6, duration: 1.4, ease: "expo.inOut" })
+              .to("#extension-typed-cursor", { opacity: 1, duration: 0.1 })
+              .call(() => {
+                  const msg = "오늘 오후 2시 일정 추가해줘";
+                  const el = document.getElementById("extension-typed");
+                  el.textContent = "";
+                  let i = 0;
+                  const iv = setInterval(() => {
+                      if (i >= msg.length) { clearInterval(iv); return; }
+                      el.textContent += msg[i++];
+                  }, 110);
+              })
+              // Hold while typing plays out (~14 chars * 0.11s ≈ 1.55s) + read time
+              .to({}, { duration: 2.8 })
+              .to("#extension-typed-cursor", { opacity: 0, duration: 0.2 })
+              .to({}, { duration: 0.4 })
+              .to("#scene-extension", { opacity: 0, duration: 0.75 }, "trans2-=0.6")
+
+              // Transition → Smart scene
               .to("#scene-smart", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
               .to(".st4", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "trans2+=0.6")
               
@@ -822,11 +940,27 @@
               .to("#scene-smart-track", { x: -1360, duration: 1.2, ease: "linear" }) // Drift item 4
               .to("#scene-smart-track", { x: -1760, duration: 0.7, ease: "expo.inOut" }) // Snap item 5
               .to("#scene-smart-track", { x: -1800, duration: 1.2, ease: "linear" }) // Drift item 5
-              
+
               .to({}, { duration: 0.5 })
 
+              // Smart fades out before addtab scene
+              .to("#scene-smart", { opacity: 0, duration: 0.5 })
+              .set("#scene-addtab", { opacity: 1 })
+
+              // New Tab: zoom into + button → click → new tab appears → zoom out (1.5x slower)
+              .set("#addtab-browser", { transformOrigin: "top left", scale: 3.4, xPercent: 42, yPercent: 40 })
+              .set("#addtab-new", { opacity: 0, scaleX: 0.2 })
+              .set("#addtab-click-ring", { opacity: 0, scale: 0.5 })
+              .to({}, { duration: 0.75 })
+              .to("#addtab-click-ring", { opacity: 1, scale: 1.5, duration: 0.825, ease: "power2.out" })
+              .to("#addtab-click-ring", { opacity: 0, duration: 0.45 }, "-=0.15")
+              .to("#addtab-new", { opacity: 1, scaleX: 1, duration: 0.825, ease: "back.out(1.6)" }, "-=0.5")
+              .to("#addtab-browser", { scale: 1, xPercent: 0, yPercent: 0, duration: 1.95, ease: "expo.inOut" }, "-=0.45")
+              .to({}, { duration: 0.6 })
+              .to("#scene-addtab", { opacity: 0, duration: 0.75 }, "trans3-=0.6")
+
               // Transition 1B -> 2 (Mockup Zoom sequence)
-              .to("#scene-smart", { opacity: 0, xPercent: -100, duration: 0.8, ease: "expo.inOut" }, "trans3")
+              .addLabel("trans3")
               .set("#zoomContainer", { scale: 3, xPercent: -60, yPercent: 40 }, "trans3+=0.4")
               .to("#scene-zoom", { opacity: 1, duration: 0.8 }, "trans3+=0.4")
               
@@ -903,7 +1037,9 @@
               .to("#ring1", { scale: 1.05, duration: 3, ease: "sine.inOut", yoyo: true, repeat: -1 }, "outro+=0.5")
               .to("#ring2", { scale: 1.03, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1 }, "outro+=0.5")
               // Fade out bgm
-              .to(bgmAudio, { volume: 0, duration: 3, ease: "power2.inOut" }, "outro+=1.5");
+              .to(bgmAudio, { volume: 0, duration: 3, ease: "power2.inOut" }, "outro+=1.5")
+              // Fade-out to black at the very end
+              .to("#fadeOverlay", { opacity: 1, duration: 2.0, ease: "power2.inOut" }, "outro+=2.5");
 
             // Jump to the selected scene if needed
             const target = SCENE_BY_KEY[startScene];

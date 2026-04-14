@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="600" viewBox="0 0 340 600" preserveAspectRatio="xMidYMid slice">
+  <rect width="340" height="600" fill="#0f172a"/>
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+    <text x="24" y="52" fill="#93c5fd" font-size="14" font-weight="700" letter-spacing="1.2">BROWSER AGENT</text>
+    <rect x="24" y="70" width="292" height="1" fill="#ffffff" opacity="0.12"/>
+    <text x="24" y="104" fill="#cbd5f5" font-size="13">어떤 도움이 필요하세요?</text>
+  </g>
+  <rect x="24" y="500" width="292" height="40" rx="10" fill="#ffffff" fill-opacity="0.08"/>
+  <rect x="24" y="548" width="292" height="40" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+</svg>
