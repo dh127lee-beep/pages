@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Introduction</title>
     <!-- Use Google Fonts for a modern UI (Inter fits well) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         body, html {
@@ -244,17 +244,17 @@
         .select-handle {
             display: inline-block;
             width: 0.08em;
-            height: 1em;
+            height: 1.15em;
             background: #2563eb;
             margin-left: 0.05em;
-            vertical-align: -0.12em;
+            vertical-align: -0.22em;
             position: relative;
         }
         .select-handle::before {
             content: '';
             position: absolute;
             left: 50%;
-            top: -0.4em;
+            top: -0.35em;
             transform: translateX(-50%);
             width: 0.38em;
             height: 0.38em;
@@ -262,17 +262,15 @@
             background: #2563eb;
         }
         .scene-smart-caption {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1f2937;
-            background: #f1f5f9;
-            border: 1px solid #cbd5e1;
-            border-radius: 999px;
-            padding: 8px 18px;
+            font-family: 'Nanum Pen Script', 'Inter', cursive;
+            font-size: 34px;
+            font-weight: 400;
+            color: #111827;
             white-space: nowrap;
+            line-height: 1.1;
         }
-        .scene-smart-caption::before { content: '\201C'; margin-right: 0.15em; color: #64748b; }
-        .scene-smart-caption::after { content: '\201D'; margin-left: 0.15em; color: #64748b; }
+        .scene-smart-caption::before { content: '\201C'; margin-right: 0.1em; color: #94a3b8; }
+        .scene-smart-caption::after { content: '\201D'; margin-left: 0.1em; color: #94a3b8; }
 
         /* Bottom Nav Bar (fixed to viewport so it stays visible regardless of video box size) */
         #navBar {
