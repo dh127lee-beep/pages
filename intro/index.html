@@ -236,12 +236,10 @@
             width: 480px;
         }
         .highlight-pill {
-            display: inline-block;
-            background: #3b82f6;
-            color: #ffffff;
-            padding: 0.04em 0.3em;
-            border-radius: 0.2em;
-            font-weight: 800;
+            background: #b4d5fe;
+            color: inherit;
+            padding: 0.02em 0.04em;
+            box-shadow: 0.04em 0 0 #b4d5fe, -0.04em 0 0 #b4d5fe;
         }
         .scene-smart-caption {
             font-size: 18px;
@@ -321,11 +319,8 @@
 
         <!-- Scene: Browser Agent is Work Partner -->
         <div class="scene" id="scene-partner" style="background:#ffffff;">
-            <div id="partner-stage" style="display:flex; align-items:center; justify-content:center; width:100%; gap: 0.2em;">
-                <div id="partner-phrase" style="display:flex; align-items:center; font-size: 3.2vw; font-weight: 600; color:#9ca3af; letter-spacing:-0.01em; white-space:nowrap;"></div>
-                <div id="partner-suffix" style="opacity:0; font-size: 7vw; font-weight: 800; letter-spacing:-0.03em; color:#111827; white-space:nowrap; display:flex; align-items:center; gap:0.25em;">
-                    <span style="color:#9ca3af; font-weight:500;">in</span><span>Browser</span>
-                </div>
+            <div id="partner-stage" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                <div id="partner-phrase" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; font-size: 3.2vw; font-weight: 600; color:#9ca3af; letter-spacing:-0.01em; max-width:88%; text-align:center; row-gap:0.3em;"></div>
             </div>
         </div>
 
@@ -355,8 +350,8 @@
                         </div>
                         <div id="extension-panel" style="width: 340px; flex-shrink:0; position:relative;">
                             <img src="image/extension-panel.svg" alt="" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover;"/>
-                            <div id="extension-chat-input" style="position:absolute; left:8%; right:8%; bottom:17.3%; height:6.7%; display:flex; align-items:center; padding: 0 14px; font-size:13px; color:#e2e8f0; font-family: Inter, sans-serif; box-sizing:border-box;">
-                                <span id="extension-typed"></span><span id="extension-typed-cursor" style="display:inline-block; width:2px; height:14px; background:#93c5fd; margin-left:2px; opacity:0;"></span>
+                            <div id="extension-chat-input" style="position:absolute; left:8%; right:8%; bottom:17.3%; height:6.7%; display:flex; align-items:center; padding: 0 14px; font-size:20px; color:#e2e8f0; font-family: Inter, sans-serif; box-sizing:border-box;">
+                                <span id="extension-typed"></span><span id="extension-typed-cursor" style="display:inline-block; width:2px; height:21px; background:#93c5fd; margin-left:2px; opacity:0;"></span>
                             </div>
                         </div>
                     </div>
@@ -422,34 +417,8 @@
                     <div style="height:44px; background:#f9fafb; border-bottom:1px solid #e5e7eb; display:flex; align-items:center; padding: 0 16px;">
                         <div style="flex:1; height:24px; background:#ffffff; border:1px solid #e5e7eb; border-radius: 12px;"></div>
                     </div>
-                    <div style="flex:1; background:#ffffff; display:flex; flex-direction:column; gap:14px; padding: 28px;">
-                        <div style="height: 18px; width: 40%; background:#e5e7eb; border-radius:4px;"></div>
-                        <div style="height: 14px; width: 80%; background:#f1f5f9; border-radius:4px;"></div>
-                        <div style="height: 14px; width: 72%; background:#f1f5f9; border-radius:4px;"></div>
-                        <div style="height: 14px; width: 78%; background:#f1f5f9; border-radius:4px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scene: Zoom Mockup Transition -->
-        <div class="scene" id="scene-zoom" style="background:#f8fafc;">
-            <div id="zoomContainer" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; will-change: transform;">
-                <div class="mockup-container" style="opacity: 1; transform: none; width: 85%; height: 80%;">
-                    <div class="mockup-header">
-                        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    </div>
-                    <!-- Reuse the generic blocks for zooming -->
-                    <div style="flex: 1; padding: 24px; display: grid; grid-template-columns: 1fr 3fr; gap: 24px;">
-                        <div style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);"></div>
-                        <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 24px;">
-                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
-                                <div style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: relative;" id="topRightTarget">
-                                    <div style="position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 20px; background: #3b82f6;"></div>
-                                </div>
-                            </div>
-                            <div style="background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid #10b981;" id="bottomRightTarget"></div>
-                        </div>
+                    <div style="flex:1; background:#ffffff; overflow:hidden;">
+                        <img src="image/addtab-search.svg" alt="" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position: top center;"/>
                     </div>
                 </div>
             </div>
@@ -642,7 +611,7 @@
     {
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
-      "smart.title": "<span class=\"highlight-pill\">Delegate</span> the Routine",
+      "smart.title": "<span class=\"highlight-pill\">Transform</span> How You Work",
       "smart.caption.1": "주가 검색해줘",
       "smart.caption.2": "오늘 일정 알려줘",
       "smart.caption.3": "이메일 요약해줘",
@@ -769,14 +738,13 @@
             { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
             { key: "smart",     label: "Smart Personal Agent",     time: 19.0, element: "#scene-smart"  },
             { key: "addtab",    label: "New Tab Button",           time: 27.0, element: "#scene-addtab"   },
-            { key: "zoom",      label: "Zoom Mockup",              time: 32.5, element: "#scene-zoom"  },
-            { key: "link",      label: "Link to Work Site",        time: 44.5, element: "#scene-link"  },
-            { key: "skill",     label: "Skill is All You Need",    time: 52.5, element: "#scene-skill"  },
-            { key: "newtab",    label: "New Tab",                  time: 60.5, element: "#scene-newtab"  },
-            { key: "multi",     label: "Multi-Task",               time: 68.5, element: "#scene-multi"  },
-            { key: "report",    label: "Search & Report",          time: 76.5, element: "#scene-report" },
-            { key: "coming",    label: "Coming Soon",              time: 84.5, element: "#scene-coming" },
-            { key: "outro",     label: "AX Team Outro",            time: 92.5, element: "#scene-outro" },
+            { key: "link",      label: "Link to Work Site",        time: 32.5, element: "#scene-link"  },
+            { key: "skill",     label: "Skill is All You Need",    time: 40.5, element: "#scene-skill"  },
+            { key: "newtab",    label: "New Tab",                  time: 48.5, element: "#scene-newtab"  },
+            { key: "multi",     label: "Multi-Task",               time: 56.5, element: "#scene-multi"  },
+            { key: "report",    label: "Search & Report",          time: 64.5, element: "#scene-report" },
+            { key: "coming",    label: "Coming Soon",              time: 72.5, element: "#scene-coming" },
+            { key: "outro",     label: "AX Team Outro",            time: 80.5, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -877,10 +845,19 @@
             (function buildPartnerPhrase() {
                 const phrase = "Browser Agent In Your Work for AI Transformation";
                 const acrIdx = new Set([0, 8, 14, 17, 22]);
+                const breakBefore = 23; // wrap before "for" so phrase fits in 2 lines
                 const container = document.getElementById("partner-phrase");
                 if (!container) return;
                 container.innerHTML = "";
                 for (let i = 0; i < phrase.length; i++) {
+                    if (i === breakBefore) {
+                        const br = document.createElement("div");
+                        br.id = "partner-break";
+                        br.style.flexBasis = "100%";
+                        br.style.height = "0";
+                        container.appendChild(br);
+                        continue; // skip the actual space character at this index
+                    }
                     const ch = phrase[i];
                     const span = document.createElement("span");
                     span.textContent = ch === " " ? "\u00A0" : ch;
@@ -889,6 +866,23 @@
                     span.className = acrIdx.has(i) ? "partner-acr" : "partner-other";
                     container.appendChild(span);
                 }
+                // Suffix "in Browser" rendered inline, hidden until reveal
+                const suffix = document.createElement("span");
+                suffix.id = "partner-suffix";
+                suffix.style.display = "inline-flex";
+                suffix.style.alignItems = "center";
+                suffix.style.gap = "0.25em";
+                suffix.style.marginLeft = "0.25em";
+                suffix.style.opacity = "0";
+                suffix.style.maxWidth = "0";
+                suffix.style.overflow = "hidden";
+                suffix.style.whiteSpace = "nowrap";
+                suffix.style.fontSize = "7vw";
+                suffix.style.fontWeight = "800";
+                suffix.style.letterSpacing = "-0.03em";
+                suffix.style.color = "#111827";
+                suffix.innerHTML = '<span style="color:#9ca3af; font-weight:500;">in</span><span>Browser</span>';
+                container.appendChild(suffix);
             })();
 
             // Setup
@@ -934,10 +928,11 @@
               .to(".partner-other", { width: 0, duration: 0.8, ease: "expo.inOut" }, "-=0.3")
               // Scale up acronym letters
               .to(".partner-acr", { fontSize: "7vw", color: "#111827", fontWeight: 800, duration: 0.8, ease: "power3.out" }, "-=0.7")
-              .to({}, { duration: 0.8 })
-              // Slide phrase left, reveal "in Browser" suffix on the right
-              .to("#partner-stage", { xPercent: -12, duration: 0.9, ease: "expo.inOut" })
-              .to("#partner-suffix", { opacity: 1, duration: 0.6 }, "-=0.5")
+              // Collapse the line break so acronym sits on a single centered line
+              .to("#partner-break", { flexBasis: 0, duration: 0.4, ease: "power2.inOut" }, "-=0.6")
+              .to({}, { duration: 0.6 })
+              // Reveal "in Browser" suffix after the acronym (stays centered in stage)
+              .to("#partner-suffix", { maxWidth: "40vw", opacity: 1, duration: 0.8, ease: "expo.out" })
               .to({}, { duration: 2.0 })
 
               // Partner fades out before extension scene
@@ -993,7 +988,7 @@
               .set("#scene-addtab", { opacity: 1 })
 
               // New Tab: zoom into + button → click → new tab appears → zoom out (1.5x slower)
-              .set("#addtab-browser", { transformOrigin: "top left", scale: 3.4, xPercent: 42, yPercent: 40 })
+              .set("#addtab-browser", { transformOrigin: "top left", scale: 3.4, xPercent: -28, yPercent: 25 })
               .set("#addtab-new", { opacity: 0, scaleX: 0.2 })
               .set("#addtab-click-ring", { opacity: 0, scale: 0.5 })
               .to({}, { duration: 0.75 })
@@ -1002,25 +997,7 @@
               .to("#addtab-new", { opacity: 1, scaleX: 1, duration: 0.825, ease: "back.out(1.6)" }, "-=0.5")
               .to("#addtab-browser", { scale: 1, xPercent: 0, yPercent: 0, duration: 1.95, ease: "expo.inOut" }, "-=0.45")
               .to({}, { duration: 0.6 })
-              .to("#scene-addtab", { opacity: 0, duration: 0.75 }, "trans3-=0.6")
-
-              // Transition 1B -> 2 (Mockup Zoom sequence)
-              .addLabel("trans3")
-              .set("#zoomContainer", { scale: 3, xPercent: -60, yPercent: 40 }, "trans3+=0.4")
-              .to("#scene-zoom", { opacity: 1, duration: 0.8 }, "trans3+=0.4")
-              
-              // Drift Top Right
-              .to("#zoomContainer", { xPercent: -62, yPercent: 42, duration: 1.5, ease: "linear" })
-              // Snap to Bottom Right
-              .to("#zoomContainer", { duration: 1.0, ease: "expo.inOut", xPercent: -60, yPercent: -40 })
-              // Drift Bottom Right
-              .to("#zoomContainer", { xPercent: -62, yPercent: -42, duration: 1.5, ease: "linear" })
-              // Snap to Full View (Zoom Out)
-              .to("#zoomContainer", { duration: 1.0, ease: "expo.inOut", scale: 1, xPercent: 0, yPercent: 0 })
-              // Drift Full View
-              .to("#zoomContainer", { scale: 0.98, duration: 1.5, ease: "linear" })
-              
-              .to("#scene-zoom", { opacity: 0, duration: 0.8 });
+              .to("#scene-addtab", { opacity: 0, duration: 0.75 });
 
             // Helper for Text & Mockup Scenes
             function animateScene(sceneId, textClass, mockupClass) {
