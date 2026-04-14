@@ -241,17 +241,25 @@
             padding: 0.02em 0.04em;
             box-shadow: 0.04em 0 0 #b4d5fe, -0.04em 0 0 #b4d5fe;
         }
-        .blink-cursor {
+        .select-handle {
             display: inline-block;
-            width: 0.06em;
+            width: 0.08em;
             height: 1em;
-            background: #111827;
-            margin-left: 0.12em;
+            background: #2563eb;
+            margin-left: 0.05em;
             vertical-align: -0.12em;
-            animation: blinkCursor 1s step-end infinite;
+            position: relative;
         }
-        @keyframes blinkCursor {
-            50% { opacity: 0; }
+        .select-handle::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -0.4em;
+            transform: translateX(-50%);
+            width: 0.38em;
+            height: 0.38em;
+            border-radius: 50%;
+            background: #2563eb;
         }
         .scene-smart-caption {
             font-size: 18px;
@@ -263,6 +271,8 @@
             padding: 8px 18px;
             white-space: nowrap;
         }
+        .scene-smart-caption::before { content: '\201C'; margin-right: 0.15em; color: #64748b; }
+        .scene-smart-caption::after { content: '\201D'; margin-left: 0.15em; color: #64748b; }
 
         /* Bottom Nav Bar (fixed to viewport so it stays visible regardless of video box size) */
         #navBar {
@@ -368,7 +378,7 @@
 
         <!-- Scene: Smart Personal Agent Showcase -->
         <div class="scene" id="scene-smart" style="background:#ffffff;">
-            <div style="position: absolute; top: 25%; width: 100vw; height: 40%; display: flex; align-items: center; overflow: hidden;">
+            <div style="position: absolute; top: 20%; width: 100vw; height: 55%; display: flex; align-items: center; overflow: hidden;">
                 <div id="scene-smart-track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 288px);">
                     <div class="scene-smart-item">
                         <video src="video/atlas-easy-001.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
@@ -618,7 +628,7 @@
     {
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
-      "smart.title": "<span class=\"highlight-pill\">Transform</span><span class=\"blink-cursor\"></span> How You Work",
+      "smart.title": "<span class=\"highlight-pill\">Transform</span><span class=\"select-handle\"></span> How You Work",
       "smart.caption.1": "주가 검색해줘",
       "smart.caption.2": "오늘 일정 알려줘",
       "smart.caption.3": "이메일 요약해줘",
