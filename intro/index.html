@@ -241,6 +241,21 @@
             padding: 0.02em 0.04em;
             box-shadow: 0.04em 0 0 #b4d5fe, -0.04em 0 0 #b4d5fe;
         }
+        .partner-cursor {
+            display: inline-block;
+            width: 0.06em;
+            height: 1em;
+            background: transparent;
+            vertical-align: -0.1em;
+            margin-left: 0.02em;
+        }
+        .partner-cursor.active {
+            animation: partnerCursorBlink 0.7s step-end infinite;
+        }
+        @keyframes partnerCursorBlink {
+            0%, 49% { background: #111827; }
+            50%, 100% { background: transparent; }
+        }
         .select-handle {
             display: inline-block;
             width: 0.08em;
@@ -403,6 +418,16 @@
             <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);" data-text="smart.title"></div>
         </div>
 
+        <!-- Scene: Browser-Link pre-analysis summary -->
+        <div class="scene" id="scene-browserlink" style="background:#ffffff;">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
+                <div id="browserlink-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0;">Browser-<span style="color:#3b82f6;">Link</span></div>
+                <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
+                    <span id="browserlink-typed"></span><span id="browserlink-cursor" class="partner-cursor"></span>
+                </div>
+            </div>
+        </div>
+
         <!-- Scene: New Tab Button Zoom & Open -->
         <div class="scene" id="scene-addtab" style="background:#f3f4f6;">
             <div style="width:100%; height:100%; position:relative; display:flex; justify-content:center; align-items:center; overflow:hidden;">
@@ -458,6 +483,16 @@
                         <div class="app-card"><div class="app-icon" style="background: #a78bfa;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
                         <div class="app-card"><div class="app-icon" style="background: #fb923c;"></div><div class="app-line w-full"></div><div class="app-line w-2/3"></div></div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene: Browser-Skill summary -->
+        <div class="scene" id="scene-browserskill" style="background:#ffffff;">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
+                <div id="browserskill-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0;">Browser-<span style="color:#3b82f6;">Skill</span></div>
+                <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
+                    <span id="browserskill-typed"></span><span id="browserskill-cursor" class="partner-cursor"></span>
                 </div>
             </div>
         </div>
@@ -750,15 +785,17 @@
             { key: "logo",      label: "로고 비디오 (처음부터)",   time: 0,    element: null,               isLogo: true },
             { key: "partner",   label: "Work Partner",             time: 0,    element: "#scene-partner"  },
             { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
-            { key: "smart",     label: "Smart Personal Agent",     time: 19.0, element: "#scene-smart"  },
-            { key: "addtab",    label: "New Tab Button",           time: 27.0, element: "#scene-addtab"   },
-            { key: "link",      label: "Link to Work Site",        time: 32.5, element: "#scene-link"  },
-            { key: "skill",     label: "Skill is All You Need",    time: 40.5, element: "#scene-skill"  },
-            { key: "newtab",    label: "New Tab",                  time: 48.5, element: "#scene-newtab"  },
-            { key: "multi",     label: "Multi-Task",               time: 56.5, element: "#scene-multi"  },
-            { key: "report",    label: "Search & Report",          time: 64.5, element: "#scene-report" },
-            { key: "coming",    label: "Coming Soon",              time: 72.5, element: "#scene-coming" },
-            { key: "outro",     label: "AX Team Outro",            time: 80.5, element: "#scene-outro" },
+            { key: "smart",       label: "Smart Personal Agent",   time: 19.0, element: "#scene-smart"  },
+            { key: "browserlink", label: "Browser-Link Summary",   time: 27.0, element: "#scene-browserlink" },
+            { key: "addtab",      label: "New Tab Button",         time: 31.0, element: "#scene-addtab"   },
+            { key: "link",         label: "Link to Work Site",      time: 36.5, element: "#scene-link"  },
+            { key: "browserskill", label: "Browser-Skill Summary",  time: 44.5, element: "#scene-browserskill" },
+            { key: "skill",        label: "Skill is All You Need",  time: 48.5, element: "#scene-skill"  },
+            { key: "newtab",       label: "New Tab",                time: 56.5, element: "#scene-newtab"  },
+            { key: "multi",        label: "Multi-Task",             time: 64.5, element: "#scene-multi"  },
+            { key: "report",       label: "Search & Report",        time: 72.5, element: "#scene-report" },
+            { key: "coming",       label: "Coming Soon",            time: 80.5, element: "#scene-coming" },
+            { key: "outro",        label: "AX Team Outro",          time: 88.5, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -903,6 +940,12 @@
                     }
                     container.appendChild(word);
                 });
+                // Typing cursor (inserted inline; repositioned during typing animation)
+                const cursor = document.createElement("span");
+                cursor.id = "partner-cursor";
+                cursor.className = "partner-cursor";
+                container.insertBefore(cursor, container.firstChild);
+
                 // Suffix "in Browser" rendered inline, hidden until reveal
                 const suffix = document.createElement("span");
                 suffix.id = "partner-suffix";
@@ -926,16 +969,28 @@
             gsap.set(".scene", { opacity: 0 });
             gsap.set("#scene-partner", { opacity: 1 });
             gsap.set("#scene-extension", { opacity: 0 });
-            gsap.set("#extension-browser", { transformOrigin: "top right", scale: 5.0, xPercent: -18, yPercent: 28 });
+            gsap.set("#extension-browser", { transformOrigin: "top right", scale: 4.0, xPercent: -8, yPercent: 22 });
             gsap.set("#extension-panel", { xPercent: 100 });
             gsap.set("#extension-click-ring", { opacity: 0, scale: 0.5 });
             gsap.set("#scene-addtab", { opacity: 0 });
             gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
 
-            // 1. Partner scene: line 1 types in, line 2 appears at once
+            // 1. Partner scene: line 1 types in with blinking cursor, line 2 appears at once
             tl.to({}, { duration: 0.4 })
-              .to(".partner-letter", { opacity: 1, duration: 0.06, stagger: 0.05, ease: "none" })
-              .to(".partner-word.line2", { opacity: 1, duration: 0.6, ease: "power2.out" }, "+=0.2")
+              .call(() => { document.getElementById("partner-cursor").classList.add("active"); });
+            {
+                const cursor = document.getElementById("partner-cursor");
+                const letters = document.querySelectorAll("#partner-phrase .partner-letter");
+                letters.forEach((letter) => {
+                    tl.to(letter, { opacity: 1, duration: 0.04, ease: "none" }, "+=0.04")
+                      .call(() => {
+                          letter.parentNode.insertBefore(cursor, letter.nextSibling);
+                      });
+                });
+            }
+            tl.to({}, { duration: 0.4 })
+              .call(() => { document.getElementById("partner-cursor").classList.remove("active"); })
+              .to(".partner-word.line2", { opacity: 1, duration: 0.6, ease: "power2.out" }, "+=0.1")
               .to({}, { duration: 0.9 })
               // Capture widths then collapse non-acronym letters
               .call(() => {
@@ -1004,8 +1059,25 @@
 
               .to({}, { duration: 0.5 })
 
-              // Smart fades out before addtab scene
+              // Smart fades out, Browser-Link summary, then addtab
               .to("#scene-smart", { opacity: 0, duration: 0.5 })
+              .set("#scene-browserlink", { opacity: 1 })
+              .to("#browserlink-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
+              .call(() => { document.getElementById("browserlink-cursor").classList.add("active"); })
+              .call(() => {
+                  const msg = "1300+ internal pages analyzed";
+                  const el = document.getElementById("browserlink-typed");
+                  el.textContent = "";
+                  let i = 0;
+                  const iv = setInterval(() => {
+                      if (i >= msg.length) { clearInterval(iv); return; }
+                      el.textContent += msg[i++];
+                  }, 55);
+              })
+              .to({}, { duration: 2.2 })
+              .call(() => { document.getElementById("browserlink-cursor").classList.remove("active"); })
+              .to({}, { duration: 0.5 })
+              .to("#scene-browserlink", { opacity: 0, duration: 0.5 })
               .set("#scene-addtab", { opacity: 1 })
 
               // New Tab: zoom into + button → click → new tab appears → zoom out (1.5x slower)
@@ -1033,6 +1105,25 @@
 
             // 3. Link to Your Work Site
             animateScene("#scene-link", ".st6", ".sm6");
+
+            // 3b. Browser-Skill summary (before Skill scene)
+            tl.set("#scene-browserskill", { opacity: 1 })
+              .to("#browserskill-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
+              .call(() => { document.getElementById("browserskill-cursor").classList.add("active"); })
+              .call(() => {
+                  const msg = "Powered by Web Skills & MCP";
+                  const el = document.getElementById("browserskill-typed");
+                  el.textContent = "";
+                  let i = 0;
+                  const iv = setInterval(() => {
+                      if (i >= msg.length) { clearInterval(iv); return; }
+                      el.textContent += msg[i++];
+                  }, 55);
+              })
+              .to({}, { duration: 2.2 })
+              .call(() => { document.getElementById("browserskill-cursor").classList.remove("active"); })
+              .to({}, { duration: 0.4 })
+              .to("#scene-browserskill", { opacity: 0, duration: 0.5 });
 
             // 4. Skill is All you Need
             animateScene("#scene-skill", ".st7", ".sm7");
