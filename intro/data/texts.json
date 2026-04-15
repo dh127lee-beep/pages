@@ -3,7 +3,7 @@
 
   "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
 
-  "smart.title": "<span class=\"highlight-pill\">Transform</span><span class=\"select-handle\"></span> How You Work",
+  "smart.title": "<span id=\"smart-title-part1\"><span class=\"highlight-pill\">Eliminate</span> routine</span><span id=\"smart-title-part2\" style=\"display:none; opacity:0; white-space:nowrap;\"><span style=\"color:#9ca3af; font-size:0.7em; font-weight:500; margin:0 0.6em;\">&amp;</span><span class=\"highlight-pill\">Unlock</span> productivity</span>",
   "smart.caption.1": "주가 검색해줘",
   "smart.caption.2": "오늘 일정 알려줘",
   "smart.caption.3": "이메일 요약해줘",

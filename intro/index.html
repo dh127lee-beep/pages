@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Introduction</title>
     <!-- Use Google Fonts for a modern UI (Inter fits well) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Nanum+Pen+Script&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         body, html {
@@ -276,6 +276,10 @@
             border-radius: 50%;
             background: #2563eb;
         }
+        .select-handle.end::before {
+            top: auto;
+            bottom: -0.35em;
+        }
         .scene-smart-caption {
             font-family: 'Nanum Pen Script', 'Inter', cursive;
             font-size: 34px;
@@ -502,75 +506,6 @@
             </div>
         </div>
 
-        <!-- Scene: Multi-Task & Multi-Turn -->
-        <div class="scene flex-col" id="scene-multi">
-            <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
-                <div class="title-text st9" data-text="multi.title"></div>
-            </div>
-            <div class="mockup-container sm9" style="margin-top: 5%;">
-                <div class="mockup-header">
-                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <div class="url-bar" data-text="multi.url"></div>
-                </div>
-                <div class="mockup-body" style="padding: 20px;">
-                    <div class="split-screen">
-                        <div class="chat-panel">
-                            <div class="chat-bubble user" style="width: 60%" data-text="multi.chat.1"></div>
-                            <div class="chat-bubble agent" style="width: 80%" data-text="multi.chat.2"></div>
-                            <div class="chat-bubble user" style="width: 50%" data-text="multi.chat.3"></div>
-                            <div class="chat-bubble agent" style="width: 90%" data-text="multi.chat.4"></div>
-                        </div>
-                        <div class="work-panel" style="display: flex; flex-direction: column; gap: 15px;">
-                            <div style="height: 30px; background: #e2e8f0; border-radius: 6px; width: 40%;"></div>
-                            <div style="flex: 1; background: #f1f5f9; border-radius: 6px; border: 2px dashed #cbd5e1; display:flex; justify-content:center; align-items:center;">
-                                <span style="font-weight: 600; color: #94a3b8;" data-text="multi.task.1"></span>
-                            </div>
-                            <div style="flex: 1; background: #f1f5f9; border-radius: 6px; border: 2px dashed #cbd5e1; display:flex; justify-content:center; align-items:center;">
-                                <span style="font-weight: 600; color: #94a3b8;" data-text="multi.task.2"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scene: Search & Report -->
-        <div class="scene flex-col" id="scene-report">
-            <div class="text-wrapper" style="position: absolute; top: 8%; z-index: 10;">
-                <div class="title-text st10" data-text="report.title"></div>
-            </div>
-            <div class="mockup-container sm10" style="margin-top: 5%;">
-                <div class="mockup-header">
-                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <div class="url-bar" data-text="report.url"></div>
-                </div>
-                <div class="mockup-body" style="padding: 20px;">
-                    <div class="report-layout">
-                        <div class="doc-sidebar">
-                            <div class="doc-item" style="background:#3b82f6; opacity:0.8;"></div>
-                            <div class="doc-item"></div>
-                            <div class="doc-item"></div>
-                            <div class="doc-item"></div>
-                        </div>
-                        <div class="doc-main">
-                            <div class="doc-title"></div>
-                            <div class="doc-paragraph"></div>
-                            <div class="doc-paragraph" style="width: 90%"></div>
-                            <div class="doc-paragraph" style="width: 80%"></div>
-                            <div style="height: 120px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 20px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scene: Next & Coming Soon -->
-        <div class="scene flex-col" id="scene-coming">
-            <div class="text-wrapper">
-                <div class="title-text st11" data-text="coming.next"></div>
-                <div class="title-text gradient-text st12" style="font-size: 7vw; margin-top: 40px;" data-text="coming.headline"></div>
-            </div>
-        </div>
 
         <!-- Scene: One More Thing!! (dramatic reveal) -->
         <div class="scene" id="scene-onemore" style="background: #0a0a0a;">
@@ -692,7 +627,7 @@
     {
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
-      "smart.title": "<span class=\"highlight-pill\">Transform</span><span class=\"select-handle\"></span> How You Work",
+      "smart.title": "<span id=\"smart-title-part1\"><span class=\"highlight-pill\">Eliminate</span> routine</span><span id=\"smart-title-part2\" style=\"display:none; opacity:0; white-space:nowrap;\"><span style=\"color:#9ca3af; font-size:0.7em; font-weight:500; margin:0 0.6em;\">&amp;</span><span class=\"highlight-pill\">Unlock</span> productivity</span>",
       "smart.caption.1": "주가 검색해줘",
       "smart.caption.2": "오늘 일정 알려줘",
       "smart.caption.3": "이메일 요약해줘",
@@ -822,13 +757,10 @@
             { key: "browserskill", label: "Browser-Skill Summary",  time: 36.5, element: "#scene-browserskill" },
             { key: "skill",        label: "Skill is All You Need",  time: 40.5, element: "#scene-skill"  },
             { key: "newtab",       label: "New Tab",                time: 48.5, element: "#scene-newtab"  },
-            { key: "multi",        label: "Multi-Task",             time: 56.5, element: "#scene-multi"  },
-            { key: "report",       label: "Search & Report",        time: 64.5, element: "#scene-report" },
-            { key: "coming",          label: "Coming Soon",            time: 72.5, element: "#scene-coming" },
-            { key: "onemore",         label: "One More Thing",         time: 80.5, element: "#scene-onemore" },
-            { key: "receipt",         label: "Receipt Prompt",         time: 84.5, element: "#scene-receipt" },
-            { key: "browserdesktop",  label: "Browser-Desktop",        time: 90.5, element: "#scene-browserdesktop" },
-            { key: "outro",           label: "AX Team Outro",          time: 98.0, element: "#scene-outro" },
+            { key: "onemore",         label: "One More Thing",         time: 56.5, element: "#scene-onemore" },
+            { key: "receipt",         label: "Receipt Prompt",         time: 60.5, element: "#scene-receipt" },
+            { key: "browserdesktop",  label: "Browser-Desktop",        time: 66.5, element: "#scene-browserdesktop" },
+            { key: "outro",           label: "AX Team Outro",          time: 74.0, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -958,7 +890,9 @@
                     } else {
                         word.style.color = "#111827";
                         word.style.fontWeight = "700";
-                        word.style.fontSize = "1.4em";
+                        word.style.fontSize = "1.68em";
+                        word.style.fontFamily = "'Oswald', 'Inter', sans-serif";
+                        word.style.letterSpacing = "0.01em";
                     }
                     for (let i = range[0]; i <= range[1]; i++) {
                         const span = document.createElement("span");
@@ -973,6 +907,21 @@
                     }
                     container.appendChild(word);
                 });
+                // Logo placeholder (revealed alongside acronym BAIYW)
+                const logo = document.createElement("img");
+                logo.id = "partner-logo";
+                logo.src = "image/extension-icon.svg";
+                logo.alt = "";
+                logo.draggable = false;
+                logo.style.display = "none";
+                logo.style.height = "5.6vw";
+                logo.style.width = "5.6vw";
+                logo.style.marginRight = "0.18em";
+                logo.style.verticalAlign = "-0.62em";
+                logo.style.opacity = "0";
+                logo.style.borderRadius = "0.16em";
+                container.insertBefore(logo, container.firstChild);
+
                 // Typing cursor (inserted inline; repositioned during typing animation)
                 const cursor = document.createElement("span");
                 cursor.id = "partner-cursor";
@@ -1035,6 +984,9 @@
               .to(".partner-other", { width: 0, duration: 0.8, ease: "expo.inOut" }, "-=0.3")
               // Scale up acronym letters
               .to(".partner-acr", { fontSize: "7vw", color: "#111827", fontWeight: 800, duration: 0.8, ease: "power3.out" }, "-=0.7")
+              // Reveal Browser Agent logo as the leading "letter"
+              .call(() => { document.getElementById("partner-logo").style.display = "inline-block"; }, null, "-=0.7")
+              .to("#partner-logo", { opacity: 1, duration: 0.55, ease: "power2.out" }, "-=0.55")
               // Close gaps between words so acronym letters sit contiguous
               .to(".partner-word", { marginRight: 0, duration: 0.5, ease: "power2.inOut" }, "-=0.7")
               // Collapse the line break so acronym sits on a single centered line
@@ -1077,6 +1029,10 @@
               // Transition → Smart scene
               .to("#scene-smart", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
               .to(".st4", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "trans2+=0.6")
+              // After holding "Eliminate routine", slide left and reveal "& Unlock productivity"
+              .call(() => { document.getElementById("smart-title-part2").style.display = "inline"; }, null, "trans2+=2.4")
+              .to(".st4", { x: "-=8vw", duration: 1.0, ease: "expo.inOut" }, "trans2+=2.4")
+              .to("#smart-title-part2", { opacity: 1, duration: 0.5, ease: "power2.out" }, "trans2+=2.6")
               
               // Scene 1B track: Snap & Drift multiple screens
               // Note: item width 576 + gap 40 = 616px per item jump
@@ -1176,21 +1132,7 @@
             // 5. Work Starts with New Tab
             animateScene("#scene-newtab", ".st8", ".sm8");
 
-            // 6. Multi-Task & Multi-Turn
-            animateScene("#scene-multi", ".st9", ".sm9");
-
-            // 7. Search & Report
-            animateScene("#scene-report", ".st10", ".sm10");
-
-            // 8. Next & Coming Soon
-            tl.to("#scene-coming", { opacity: 1, duration: 0.5 })
-              .to(".st11", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
-              .to({}, { duration: 1.5 })
-              .to(".st12", { opacity: 1, y: 0, duration: 1.5, ease: "back.out(1.2)" })
-              .to({}, { duration: 2.0 })
-              .to("#scene-coming", { opacity: 0, duration: 0.8 });
-
-            // 8b. One More Thing!! dramatic reveal
+            // 6. One More Thing!! dramatic reveal
             tl.set("#scene-onemore", { opacity: 1 })
               .to("#onemore-glow", { opacity: 1, scale: 1.2, duration: 1.4, ease: "power2.out" })
               .to("#onemore-text", { opacity: 1, scale: 1, duration: 1.2, ease: "expo.out" }, "-=1.0")
