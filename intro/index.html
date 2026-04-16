@@ -1193,6 +1193,27 @@
                 });
             })();
 
+            // Build Browser Link / Skill / Work subtitle words (pre-built so GSAP selectors resolve)
+            (function buildBrowserSubtitles() {
+                const configs = [
+                    { id: "browserlink-typed",  cls: "bl-word", text: "Fastest way to navigate internal systems" },
+                    { id: "browserskill-typed", cls: "bs-word", text: "Extend agent capabilities with plug-and-play skills" },
+                    { id: "spicawork-typed",    cls: "sw-word", text: "Seamless AI workspace for every workflow" },
+                ];
+                configs.forEach(({ id, cls, text }) => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    el.innerHTML = "";
+                    text.split(" ").forEach(w => {
+                        const s = document.createElement("span");
+                        s.textContent = w;
+                        s.className = cls;
+                        s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
+                        el.appendChild(s);
+                    });
+                });
+            })();
+
             // 1. Partner scene: line 1 types in with blinking cursor, line 2 appears at once
             tl.to({}, { duration: 0.4 })
               .call(() => { document.getElementById("partner-cursor").classList.add("active"); });
@@ -1288,15 +1309,6 @@
               .set("#scene-browserlink", { opacity: 1 })
               .to("#browserlink-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
               .to("#browserlink-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
-              .call(() => {
-                  const el = document.getElementById("browserlink-typed");
-                  el.innerHTML = "";
-                  "Fastest way to navigate internal systems".split(" ").forEach(w => {
-                      const s = document.createElement("span"); s.textContent = w;
-                      s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
-                      s.className = "bl-word"; el.appendChild(s);
-                  });
-              })
               .to(".bl-word", { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" })
               .to({}, { duration: 0.8 })
               .to("#scene-browserlink", { opacity: 0, duration: 0.5 })
@@ -1330,15 +1342,6 @@
             tl.set("#scene-browserskill", { opacity: 1 })
               .to("#browserskill-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
               .to("#browserskill-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
-              .call(() => {
-                  const el = document.getElementById("browserskill-typed");
-                  el.innerHTML = "";
-                  "Extend agent capabilities with plug-and-play skills".split(" ").forEach(w => {
-                      const s = document.createElement("span"); s.textContent = w;
-                      s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
-                      s.className = "bs-word"; el.appendChild(s);
-                  });
-              })
               .to(".bs-word", { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" })
               .to({}, { duration: 0.8 })
               .to("#scene-browserskill", { opacity: 0, duration: 0.5 });
@@ -1389,15 +1392,6 @@
             tl.set("#scene-spicawork", { opacity: 1 })
               .to("#spicawork-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
               .to("#spicawork-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
-              .call(() => {
-                  const el = document.getElementById("spicawork-typed");
-                  el.innerHTML = "";
-                  "Seamless AI workspace for every workflow".split(" ").forEach(w => {
-                      const s = document.createElement("span"); s.textContent = w;
-                      s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
-                      s.className = "sw-word"; el.appendChild(s);
-                  });
-              })
               .to(".sw-word", { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" })
               .to({}, { duration: 0.8 })
               .to("#scene-spicawork", { opacity: 0, duration: 0.5 });
