@@ -537,9 +537,52 @@
         <!-- Scene: Browser-Skill summary -->
         <div class="scene" id="scene-browserskill" style="background:#ffffff;">
             <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
-                <div id="browserskill-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0;">Browser-<span style="color:#3b82f6;">Skill</span></div>
+                <div id="browserskill-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0; display:inline-flex; align-items:center; gap:0.2em;">
+                    <img src="image/extension-icon.svg" alt="" draggable="false" style="width:0.9em; height:0.9em; border-radius:0.12em; display:block;"/>
+                    <span>SPICA</span>
+                    <span id="browserskill-word" style="color:#3b82f6; opacity:0; transform: translateY(12px); display:inline-block;">Skill</span>
+                </div>
                 <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
                     <span id="browserskill-typed"></span><span id="browserskill-cursor" class="partner-cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene: Skill Marketplace -->
+        <div class="scene" id="scene-marketplace" style="background:#f3f4f6;">
+            <div style="position:absolute; top:7%; left:50%; transform:translateX(-50%); font-size: 3.5vw; font-weight: 800; color:#111827; letter-spacing:-0.03em; white-space:nowrap;" id="marketplace-title">Skill <span style="color:#3b82f6;">Marketplace</span></div>
+            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%) perspective(1200px) rotateY(-14deg) rotateX(4deg); width: 52vw;">
+                <div id="marketplace-window" style="background:#fff; border-radius:14px; box-shadow: 0 24px 60px rgba(0,0,0,0.18); overflow:hidden; opacity:0; transform: translateY(30px);">
+                    <div style="height:38px; background:#e5e7eb; display:flex; align-items:center; padding:0 14px;">
+                        <div style="flex:1;"></div>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">─</div>
+                            <div style="width:12px; height:12px; border:1px solid #94a3b8; border-radius:1px;"></div>
+                            <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">✕</div>
+                        </div>
+                    </div>
+                    <div style="padding: 20px 24px; display:flex; flex-direction:column; gap:14px;" id="marketplace-list">
+                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
+                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#ef4444,#f97316); flex-shrink:0;"></div>
+                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Jira Integration</div><div style="color:#6b7280; font-size:12px;">Connect to project boards</div></div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        </div>
+                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
+                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#3b82f6,#6366f1); flex-shrink:0;"></div>
+                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Confluence Wiki</div><div style="color:#6b7280; font-size:12px;">Search & summarize docs</div></div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        </div>
+                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
+                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#10b981,#14b8a6); flex-shrink:0;"></div>
+                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Expense Report</div><div style="color:#6b7280; font-size:12px;">Auto-fill receipt data</div></div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        </div>
+                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
+                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#f59e0b,#eab308); flex-shrink:0;"></div>
+                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Calendar Sync</div><div style="color:#6b7280; font-size:12px;">Schedule & manage events</div></div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -572,6 +615,20 @@
             </div>
         </div>
 
+
+        <!-- Scene: SPICA Work summary -->
+        <div class="scene" id="scene-spicawork" style="background:#ffffff;">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
+                <div id="spicawork-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0; display:inline-flex; align-items:center; gap:0.2em;">
+                    <img src="image/extension-icon.svg" alt="" draggable="false" style="width:0.9em; height:0.9em; border-radius:0.12em; display:block;"/>
+                    <span>SPICA</span>
+                    <span id="spicawork-word" style="color:#3b82f6; opacity:0; transform: translateY(12px); display:inline-block;">Work</span>
+                </div>
+                <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
+                    <span id="spicawork-typed"></span><span id="spicawork-cursor" class="partner-cursor"></span>
+                </div>
+            </div>
+        </div>
 
         <!-- Scene: One More Thing!! (dramatic reveal) -->
         <div class="scene" id="scene-onemore" style="background: #0a0a0a;">
@@ -821,13 +878,15 @@
             { key: "browserlink",    label: "SPICA Link",              time: 27.0, element: "#scene-browserlink" },
             { key: "selfevolution",  label: "Self-Evolution",          time: 38.0, element: "#scene-selfevolution" },
             { key: "addtab",         label: "New Tab Button",          time: 44.0, element: "#scene-addtab"   },
-            { key: "browserskill",   label: "Browser-Skill Summary",   time: 49.5, element: "#scene-browserskill" },
-            { key: "skill",          label: "Skill is All You Need",   time: 53.5, element: "#scene-skill"  },
-            { key: "newtab",         label: "New Tab",                 time: 61.5, element: "#scene-newtab"  },
-            { key: "onemore",        label: "One More Thing",          time: 69.5, element: "#scene-onemore" },
-            { key: "receipt",        label: "Receipt Prompt",          time: 73.5, element: "#scene-receipt" },
-            { key: "browserdesktop", label: "Browser-Desktop",         time: 79.5, element: "#scene-browserdesktop" },
-            { key: "outro",          label: "AX Team Outro",           time: 87.0, element: "#scene-outro" },
+            { key: "browserskill",   label: "SPICA Skill",              time: 49.5, element: "#scene-browserskill" },
+            { key: "marketplace",    label: "Skill Marketplace",        time: 53.5, element: "#scene-marketplace" },
+            { key: "skill",          label: "Skill is All You Need",    time: 59.5, element: "#scene-skill"  },
+            { key: "newtab",         label: "New Tab",                  time: 67.5, element: "#scene-newtab"  },
+            { key: "spicawork",      label: "SPICA Work",              time: 75.5, element: "#scene-spicawork" },
+            { key: "onemore",        label: "One More Thing",          time: 80.0, element: "#scene-onemore" },
+            { key: "receipt",        label: "Receipt Prompt",          time: 84.0, element: "#scene-receipt" },
+            { key: "browserdesktop", label: "Browser-Desktop",         time: 90.0, element: "#scene-browserdesktop" },
+            { key: "outro",          label: "AX Team Outro",           time: 97.5, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -1039,30 +1098,41 @@
                 }
                 const orbit = document.getElementById("se-orbit");
                 orbit.innerHTML = "";
-                const N = 7;
-                const R = 26; // vw
-                for (let i = 0; i < N; i++) {
-                    const angle = (i / N) * Math.PI * 2;
-                    const x = Math.cos(angle) * R;
-                    const y = Math.sin(angle) * R * 0.55;
-                    const scale = 0.85 + Math.random() * 0.35;
-                    const rot = (Math.random() - 0.5) * 18;
-                    const win = document.createElement("div");
-                    win.className = "se-window";
-                    win.style.cssText = `position:absolute; left:${x}vw; top:${y}vw; transform: translate(-50%, -50%) scale(${scale}) rotate(${rot}deg); width:12vw; height:7.4vw; background:rgba(15,23,42,0.78); backdrop-filter: blur(6px); border:1px solid rgba(148,163,184,0.22); border-radius:10px; box-shadow: 0 10px 28px rgba(59,130,246,0.18); opacity:0; overflow:hidden;`;
-                    win.innerHTML = `
-                        <div style="height:14px; background:rgba(148,163,184,0.18); display:flex; align-items:center; padding:0 8px; gap:4px;">
-                            <div style="width:5px; height:5px; border-radius:50%; background:#ef4444;"></div>
-                            <div style="width:5px; height:5px; border-radius:50%; background:#fbbf24;"></div>
-                            <div style="width:5px; height:5px; border-radius:50%; background:#10b981;"></div>
-                        </div>
-                        <div style="padding:8px; display:flex; flex-direction:column; gap:4px;">
-                            <div style="height:5px; width:70%; background:rgba(147,197,253,0.5); border-radius:2px;"></div>
-                            <div style="height:4px; width:55%; background:rgba(148,163,184,0.3); border-radius:2px;"></div>
-                            <div style="height:4px; width:60%; background:rgba(148,163,184,0.2); border-radius:2px;"></div>
-                        </div>`;
-                    orbit.appendChild(win);
-                }
+                const rings = [
+                    { n: 7, r: 22, w: 12, h: 7.4, barH: 14, pad: 8, dotS: 5, lineH: [5, 4, 4] },
+                    { n: 7, r: 36, w: 8.5, h: 5.2, barH: 10, pad: 6, dotS: 4, lineH: [4, 3, 3] },
+                ];
+                rings.forEach((ring, ri) => {
+                    const offsetAngle = ri * Math.PI / ring.n;
+                    for (let i = 0; i < ring.n; i++) {
+                        const angle = (i / ring.n) * Math.PI * 2 + offsetAngle;
+                        const x = Math.cos(angle) * ring.r;
+                        const y = Math.sin(angle) * ring.r * 0.55;
+                        const scale = 0.85 + Math.random() * 0.3;
+                        const rot = (Math.random() - 0.5) * 16;
+                        const opac = ri === 0 ? 0.85 : 0.55;
+                        const win = document.createElement("div");
+                        win.className = "se-window";
+                        win.style.cssText = `position:absolute; left:${x}vw; top:${y}vw; transform: translate(-50%, -50%) scale(${scale}) rotate(${rot}deg); width:${ring.w}vw; height:${ring.h}vw; background:rgba(15,23,42,${opac}); backdrop-filter: blur(6px); border:1px solid rgba(148,163,184,${ri === 0 ? 0.22 : 0.14}); border-radius:${ri === 0 ? 10 : 8}px; box-shadow: 0 10px 28px rgba(59,130,246,${ri === 0 ? 0.18 : 0.10}); opacity:0; overflow:hidden;`;
+                        const g = ri === 0 ? 4 : 3;
+                        const ds = ring.dotS;
+                        win.innerHTML = `
+                            <div style="height:${ring.barH}px; background:rgba(148,163,184,0.18); display:flex; align-items:center; padding:0 ${ring.pad}px;">
+                                <div style="flex:1;"></div>
+                                <div style="display:flex; gap:${g}px; align-items:center;">
+                                    <div style="width:${ds+2}px; height:${ds}px; display:flex; align-items:center; justify-content:center; color:rgba(148,163,184,0.7); font-size:${ds+3}px; line-height:1;">─</div>
+                                    <div style="width:${ds}px; height:${ds}px; border:1px solid rgba(148,163,184,0.5); border-radius:1px;"></div>
+                                    <div style="width:${ds+2}px; height:${ds}px; display:flex; align-items:center; justify-content:center; color:rgba(148,163,184,0.7); font-size:${ds+3}px; line-height:1;">✕</div>
+                                </div>
+                            </div>
+                            <div style="padding:${ring.pad}px; display:flex; flex-direction:column; gap:${g}px;">
+                                <div style="height:${ring.lineH[0]}px; width:70%; background:rgba(147,197,253,${ri === 0 ? 0.5 : 0.35}); border-radius:2px;"></div>
+                                <div style="height:${ring.lineH[1]}px; width:55%; background:rgba(148,163,184,${ri === 0 ? 0.3 : 0.2}); border-radius:2px;"></div>
+                                <div style="height:${ring.lineH[2]}px; width:60%; background:rgba(148,163,184,${ri === 0 ? 0.2 : 0.12}); border-radius:2px;"></div>
+                            </div>`;
+                        orbit.appendChild(win);
+                    }
+                });
             })();
             gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
             // Build smart slogan words
@@ -1255,6 +1325,7 @@
             // 3. Browser-Skill summary (before Skill scene)
             tl.set("#scene-browserskill", { opacity: 1 })
               .to("#browserskill-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
+              .to("#browserskill-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
               .call(() => { document.getElementById("browserskill-cursor").classList.add("active"); })
               .call(() => {
                   const msg = "Powered by WebSkills & WebMCP";
@@ -1270,6 +1341,21 @@
               .call(() => { document.getElementById("browserskill-cursor").classList.remove("active"); })
               .to({}, { duration: 0.4 })
               .to("#scene-browserskill", { opacity: 0, duration: 0.5 });
+
+            // Skill Marketplace: tilted window with toggle rows
+            tl.set("#scene-marketplace", { opacity: 1 })
+              .to("#marketplace-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
+              .to(".mp-row", { opacity: 1, x: 0, duration: 0.5, stagger: 0.15, ease: "power3.out" })
+              .to({}, { duration: 0.6 })
+              // Toggle ON animation: slide dots right, bg turns blue
+              .call(() => {
+                  document.querySelectorAll(".mp-toggle").forEach((t, i) => {
+                      gsap.to(t, { backgroundColor: "#3b82f6", duration: 0.3, delay: i * 0.2 });
+                      gsap.to(t.querySelector("div"), { left: "20px", duration: 0.3, delay: i * 0.2 });
+                  });
+              })
+              .to({}, { duration: 1.6 })
+              .to("#scene-marketplace", { opacity: 0, duration: 0.5 });
 
             // 4. Skill is All you Need (3D carousel rotation)
             function setSkillCaption(text) {
@@ -1291,6 +1377,26 @@
 
             // 5. Work Starts with New Tab
             animateScene("#scene-newtab", ".st8", ".sm8");
+
+            // SPICA Work summary (after New Tab)
+            tl.set("#scene-spicawork", { opacity: 1 })
+              .to("#spicawork-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
+              .to("#spicawork-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
+              .call(() => { document.getElementById("spicawork-cursor").classList.add("active"); })
+              .call(() => {
+                  const msg = "Your AI-powered workspace for every task";
+                  const el = document.getElementById("spicawork-typed");
+                  el.textContent = "";
+                  let i = 0;
+                  const iv = setInterval(() => {
+                      if (i >= msg.length) { clearInterval(iv); return; }
+                      el.textContent += msg[i++];
+                  }, 45);
+              })
+              .to({}, { duration: 2.4 })
+              .call(() => { document.getElementById("spicawork-cursor").classList.remove("active"); })
+              .to({}, { duration: 0.4 })
+              .to("#scene-spicawork", { opacity: 0, duration: 0.5 });
 
             // 6. One More Thing!! dramatic reveal
             tl.set("#scene-onemore", { opacity: 1 })
