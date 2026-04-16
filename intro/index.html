@@ -419,7 +419,7 @@
                     </div>
                 </div>
             </div>
-            <div class="title-text st4" style="position: absolute; bottom: 15%; font-size: 3vw; opacity: 0; transform: translateY(20px);" data-text="smart.title"></div>
+            <div id="smart-slogan" style="position: absolute; left: 50%; bottom: 13%; font-size: 2.8vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; white-space: nowrap; display: flex; gap: 0.3em; transform: translateX(-50%); line-height: 1.2;"></div>
         </div>
 
         <!-- Scene: Browser-Link pre-analysis summary -->
@@ -956,6 +956,24 @@
             gsap.set("#extension-click-ring", { opacity: 0, scale: 0.5 });
             gsap.set("#scene-addtab", { opacity: 0 });
             gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
+            // Build smart slogan words
+            (function buildSmartSlogan() {
+                const container = document.getElementById("smart-slogan");
+                if (!container) return;
+                const phrase = ["Remove", "the", "AI", "Transformation", "Barrier", "with", "Your", "Context"];
+                const accent = new Set(["AI", "Transformation", "Context"]);
+                container.innerHTML = "";
+                phrase.forEach(w => {
+                    const span = document.createElement("span");
+                    span.className = "smart-slogan-word";
+                    span.textContent = w;
+                    span.style.display = "inline-block";
+                    span.style.opacity = "0";
+                    span.style.transform = "translateY(32px)";
+                    if (accent.has(w)) span.style.color = "#3b82f6";
+                    container.appendChild(span);
+                });
+            })();
 
             // 1. Partner scene: line 1 types in with blinking cursor, line 2 appears at once
             tl.to({}, { duration: 0.4 })
@@ -1028,11 +1046,8 @@
 
               // Transition → Smart scene
               .to("#scene-smart", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
-              .to(".st4", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "trans2+=0.6")
-              // After holding "Eliminate routine", slide left and reveal "& Unlock productivity"
-              .call(() => { document.getElementById("smart-title-part2").style.display = "inline"; }, null, "trans2+=2.4")
-              .to(".st4", { x: "-=8vw", duration: 1.0, ease: "expo.inOut" }, "trans2+=2.4")
-              .to("#smart-title-part2", { opacity: 1, duration: 0.5, ease: "power2.out" }, "trans2+=2.6")
+              // Slogan words rise from below, one by one
+              .to(".smart-slogan-word", { opacity: 1, y: 0, duration: 0.6, stagger: 0.18, ease: "expo.out" }, "trans2+=0.8")
               
               // Scene 1B track: Snap & Drift multiple screens
               // Note: item width 576 + gap 40 = 616px per item jump
