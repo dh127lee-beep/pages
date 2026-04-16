@@ -420,83 +420,7 @@
                     </div>
                 </div>
             </div>
-            <div id="smart-slogan" style="position: absolute; left: 50%; bottom: 10%; font-size: 2.8vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em; transform: translateX(-50%); line-height: 1.3; max-width: 80%;"></div>
-        </div>
-
-        <!-- Scene: Browser-Link pre-analysis summary -->
-        <div class="scene" id="scene-browserlink" style="background:#ffffff;">
-            <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap: 0.4em;">
-                <div id="browserlink-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0; display:inline-flex; align-items:center; gap:0.2em;">
-                    <img src="image/extension-icon.svg" alt="" draggable="false" style="width:0.9em; height:0.9em; border-radius:0.12em; display:block;"/>
-                    <span>SPICA</span>
-                    <span id="browserlink-link" style="color:#3b82f6; opacity:0; transform: translateY(12px); display:inline-block;">Link</span>
-                </div>
-                <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
-                    <span id="browserlink-typed" style="display:flex; gap:0.3em; flex-wrap:wrap; justify-content:center;"></span>
-                </div>
-            </div>
-            <!-- Browser demo: type → autocomplete → side panel opens → navigate -->
-            <div id="browserlink-browser" style="position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width: 62vw; height: 58vh; background:#fff; border-radius: 12px; box-shadow: 0 20px 55px rgba(0,0,0,0.2); overflow:hidden; opacity:0; display:flex; flex-direction:column;">
-                <div style="height:44px; background:#f3f4f6; border-bottom:1px solid #e5e7eb; display:flex; align-items:center; padding: 0 14px; gap:10px; flex-shrink:0;">
-                    <div style="display:flex; gap:6px;">
-                        <div style="width:10px; height:10px; border-radius:50%; background:#ef4444;"></div>
-                        <div style="width:10px; height:10px; border-radius:50%; background:#fbbf24;"></div>
-                        <div style="width:10px; height:10px; border-radius:50%; background:#10b981;"></div>
-                    </div>
-                    <div style="flex:1; height:30px; background:#fff; border:1px solid #e5e7eb; border-radius:15px; padding: 0 16px; display:flex; align-items:center; font-size:14px; color:#374151; position:relative; font-family: 'Inter', sans-serif;">
-                        <span id="bl-url-typed"></span><span id="bl-url-cursor" class="partner-cursor"></span>
-                        <div id="bl-autocomplete" style="position:absolute; top:calc(100% + 6px); left:-1px; right:-1px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow: 0 10px 28px rgba(0,0,0,0.14); opacity:0; transform: translateY(-6px); pointer-events:none; z-index:10; overflow:hidden;">
-                            <div style="padding:12px 16px; display:flex; align-items:center; gap:12px; background:#eff6ff;">
-                                <div style="width:24px; height:24px; border-radius:6px; background:#0052cc; display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:800;">J</div>
-                                <div style="flex:1;">
-                                    <div style="font-weight:600; color:#111827;">Jira — Internal Project Tracker</div>
-                                    <div style="font-size:12px; color:#6b7280;">https://jira.company.com</div>
-                                </div>
-                                <div style="font-size:11px; color:#2563eb; font-weight:700; background:#dbeafe; padding:4px 8px; border-radius:4px;">LINK</div>
-                            </div>
-                            <div style="padding:10px 16px; display:flex; align-items:center; gap:12px; border-top:1px solid #f3f4f6;">
-                                <div style="width:20px; height:20px; border-radius:5px; background:#16a34a;"></div>
-                                <div style="color:#6b7280; font-size:13px;">Jenkins Dashboard</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="flex:1; display:flex; min-height:0;">
-                    <div id="bl-page" style="flex:1; background:#fff; padding:22px; display:flex; flex-direction:column; gap:14px; opacity:0; overflow:hidden;">
-                        <div style="display:flex; align-items:center; gap:12px;">
-                            <div style="width:32px; height:32px; border-radius:8px; background:#0052cc; display:flex; align-items:center; justify-content:center; color:white; font-weight:800;">J</div>
-                            <div style="font-size:18px; font-weight:700; color:#111827;">Internal Project Tracker</div>
-                        </div>
-                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;">
-                            <div style="height:80px; border-radius:8px; background:#f1f5f9; border:1px solid #e5e7eb;"></div>
-                            <div style="height:80px; border-radius:8px; background:#eff6ff; border:1px solid #bfdbfe;"></div>
-                            <div style="height:80px; border-radius:8px; background:#f0fdf4; border:1px solid #bbf7d0;"></div>
-                        </div>
-                        <div style="flex:1; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; padding:14px; display:flex; flex-direction:column; gap:8px;">
-                            <div style="height:10px; width:40%; background:#e2e8f0; border-radius:3px;"></div>
-                            <div style="height:8px; width:80%; background:#e2e8f0; border-radius:3px;"></div>
-                            <div style="height:8px; width:70%; background:#e2e8f0; border-radius:3px;"></div>
-                            <div style="height:8px; width:65%; background:#e2e8f0; border-radius:3px;"></div>
-                        </div>
-                    </div>
-                    <div id="bl-panel" style="width:180px; background:#0f172a; padding:16px; display:flex; flex-direction:column; gap:10px; transform:translateX(100%);">
-                        <div style="font-size:11px; color:#93c5fd; font-weight:800; letter-spacing:1.4px;">LINK</div>
-                        <div style="height:1px; background:rgba(255,255,255,0.12);"></div>
-                        <div style="font-size:12px; color:#cbd5f5; line-height:1.5;">Quick navigation to internal systems.</div>
-                        <div style="flex:1;"></div>
-                        <div style="height:34px; border-radius:8px; background:rgba(59,130,246,0.25); border:1px solid rgba(59,130,246,0.4);"></div>
-                        <div style="height:34px; border-radius:8px; background:rgba(255,255,255,0.06);"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scene: Self-Evolution cosmic orbit -->
-        <div class="scene" id="scene-selfevolution" style="background: #050814; overflow:hidden;">
-            <div id="se-starfield" style="position:absolute; inset:0; overflow:hidden;"></div>
-            <div id="se-glow" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.15) 40%, rgba(0,0,0,0) 70%); opacity:0;"></div>
-            <div id="se-title" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size: 7vw; font-weight: 200; color:#ffffff; letter-spacing:-0.04em; text-align:center; opacity:0; z-index:3; line-height:1.15;">Toward<br><span style="color:#93c5fd; font-weight:400;">Self-Evolution</span></div>
-            <div id="se-orbit" style="position:absolute; top:50%; left:50%; width: 0; height: 0; transform: translate(-50%, -50%); z-index:2;"></div>
+            <div id="smart-slogan" style="position: absolute; left: 50%; bottom: 10%; font-size: 2.2vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em; transform: translateX(-50%); line-height: 1.3; max-width: 95%;"></div>
         </div>
 
         <!-- Scene: New Tab Button Zoom & Open -->
@@ -533,6 +457,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Scene: Self-Evolution cosmic orbit -->
+        <div class="scene" id="scene-selfevolution" style="background: #050814; overflow:hidden;">
+            <div id="se-starfield" style="position:absolute; inset:0; overflow:hidden;"></div>
+            <div id="se-glow" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.15) 40%, rgba(0,0,0,0) 70%); opacity:0;"></div>
+            <div id="se-title" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size: 7vw; font-weight: 200; color:#ffffff; letter-spacing:-0.04em; text-align:center; opacity:0; z-index:3; line-height:1.15;">Toward<br><span style="color:#93c5fd; font-weight:400;">Self-Evolution</span></div>
+            <div id="se-orbit" style="position:absolute; top:50%; left:50%; width: 0; height: 0; transform: translate(-50%, -50%); z-index:2;"></div>
         </div>
 
         <!-- Scene: Browser-Skill summary -->
@@ -593,18 +525,6 @@
                             <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scene: Skill is All You Need -->
-        <div class="scene" id="scene-skill" style="background:#ffffff;">
-            <div id="skill-caption" style="position: absolute; top: 14%; left: 50%; transform: translateX(-50%); font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 4vw; color:#111827; line-height:1; white-space:nowrap;"></div>
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48vw; aspect-ratio: 16/9; perspective: 1600px;">
-                <div id="skill-carousel" style="position:relative; width:100%; height:100%; transform-style: preserve-3d; transform: rotateY(0deg);">
-                    <video class="skill-face" data-idx="0" src="video/atlas-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(0deg) translateZ(28vw);"></video>
-                    <video class="skill-face" data-idx="1" src="video/claude-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(120deg) translateZ(28vw);"></video>
-                    <video class="skill-face" data-idx="2" src="video/claude-medium-002.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(240deg) translateZ(28vw);"></video>
                 </div>
             </div>
         </div>
@@ -715,6 +635,18 @@
                 </div>
                 <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
                     <span id="spicawork-typed" style="display:flex; gap:0.3em; flex-wrap:wrap; justify-content:center;"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene: Skill is All You Need -->
+        <div class="scene" id="scene-skill" style="background:#ffffff;">
+            <div id="skill-caption" style="position: absolute; top: 14%; left: 50%; transform: translateX(-50%); font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 4vw; color:#111827; line-height:1; white-space:nowrap;"></div>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48vw; aspect-ratio: 16/9; perspective: 1600px;">
+                <div id="skill-carousel" style="position:relative; width:100%; height:100%; transform-style: preserve-3d; transform: rotateY(0deg);">
+                    <video class="skill-face" data-idx="0" src="video/atlas-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(0deg) translateZ(28vw);"></video>
+                    <video class="skill-face" data-idx="1" src="video/claude-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(120deg) translateZ(28vw);"></video>
+                    <video class="skill-face" data-idx="2" src="video/claude-medium-002.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(240deg) translateZ(28vw);"></video>
                 </div>
             </div>
         </div>
@@ -964,15 +896,14 @@
             { key: "partner",   label: "Work Partner",             time: 0,    element: "#scene-partner"  },
             { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
             { key: "smart",       label: "Smart Personal Agent",   time: 19.0, element: "#scene-smart"  },
-            { key: "browserlink",    label: "SPICA Link",              time: 27.0, element: "#scene-browserlink" },
-            { key: "selfevolution",  label: "Self-Evolution",          time: 38.0, element: "#scene-selfevolution" },
-            { key: "addtab",         label: "New Tab Button",          time: 44.0, element: "#scene-addtab"   },
+            { key: "addtab",         label: "New Tab Button",           time: 27.0, element: "#scene-addtab"   },
+            { key: "selfevolution",  label: "Self-Evolution",          time: 33.0, element: "#scene-selfevolution" },
             { key: "browserskill",   label: "SPICA Skill",              time: 49.5, element: "#scene-browserskill" },
             { key: "marketplace",    label: "Skill Marketplace",        time: 53.5, element: "#scene-marketplace" },
-            { key: "skill",          label: "Skill is All You Need",    time: 59.5, element: "#scene-skill"  },
-            { key: "webmcp",         label: "WebMCP Tools",             time: 67.5, element: "#scene-webmcp" },
-            { key: "harness",        label: "Agent Harness",            time: 73.5, element: "#scene-harness" },
-            { key: "spicawork",      label: "SPICA Work",              time: 81.5, element: "#scene-spicawork" },
+            { key: "webmcp",         label: "WebMCP Tools",             time: 59.5, element: "#scene-webmcp" },
+            { key: "harness",        label: "Agent Harness",            time: 65.5, element: "#scene-harness" },
+            { key: "spicawork",      label: "SPICA Work",              time: 73.5, element: "#scene-spicawork" },
+            { key: "skill",          label: "Skill is All You Need",    time: 78.0, element: "#scene-skill"  },
             { key: "onemore",        label: "One More Thing",          time: 86.0, element: "#scene-onemore" },
             { key: "receipt",        label: "Receipt Prompt",          time: 90.0, element: "#scene-receipt" },
             { key: "browserdesktop", label: "Browser-Desktop",         time: 96.0, element: "#scene-browserdesktop" },
@@ -1171,9 +1102,6 @@
             gsap.set("#extension-panel", { xPercent: 100 });
             gsap.set("#extension-click-ring", { opacity: 0, scale: 0.5 });
             gsap.set("#scene-addtab", { opacity: 0 });
-            gsap.set("#bl-panel", { xPercent: 100 });
-            gsap.set("#bl-autocomplete", { opacity: 0, y: -6 });
-            gsap.set("#bl-page", { opacity: 0 });
 
             // Build Self-Evolution starfield + orbiting windows
             (function buildSelfEvolution() {
@@ -1338,58 +1266,8 @@
 
               .to({}, { duration: 0.5 })
 
-              // Smart fades out, Browser-Link summary, then addtab
+              // Smart fades out, then New Tab
               .to("#scene-smart", { opacity: 0, duration: 0.5 })
-              .set("#scene-browserlink", { opacity: 1 })
-              .to("#browserlink-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
-              .to("#browserlink-link", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
-              .call(() => {
-                  const el = document.getElementById("browserlink-typed");
-                  el.innerHTML = "";
-                  "Fastest way to navigate to the internal systems".split(" ").forEach(w => {
-                      const s = document.createElement("span"); s.textContent = w;
-                      s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
-                      s.className = "bl-word"; el.appendChild(s);
-                  });
-              })
-              .to(".bl-word", { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" })
-              .to({}, { duration: 0.4 })
-              // Browser demo: reveal, type URL, autocomplete, side panel, navigate
-              .to("#browserlink-browser", { opacity: 1, duration: 0.6, ease: "power2.out" })
-              .call(() => { document.getElementById("bl-url-cursor").classList.add("active"); })
-              .call(() => {
-                  const msg = "jira";
-                  const el = document.getElementById("bl-url-typed");
-                  el.textContent = "";
-                  let i = 0;
-                  const iv = setInterval(() => {
-                      if (i >= msg.length) { clearInterval(iv); return; }
-                      el.textContent += msg[i++];
-                  }, 140);
-              })
-              .to({}, { duration: 0.8 })
-              .to("#bl-autocomplete", { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" })
-              .to({}, { duration: 1.0 })
-              .call(() => { document.getElementById("bl-url-cursor").classList.remove("active"); })
-              // Side panel slides in + page fades in (navigate)
-              .to("#bl-autocomplete", { opacity: 0, duration: 0.3 })
-              .to("#bl-panel", { xPercent: 0, duration: 0.7, ease: "expo.out" }, "-=0.2")
-              .to("#bl-page", { opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.5")
-              .call(() => {
-                  document.getElementById("bl-url-typed").textContent = "https://jira.company.com";
-              })
-              .to({}, { duration: 1.6 })
-              .to("#scene-browserlink", { opacity: 0, duration: 0.5 })
-
-              // Self-Evolution cosmic scene
-              .set("#scene-selfevolution", { opacity: 1 })
-              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
-              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
-              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
-              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
-              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
-              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
-              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5")
 
               .set("#scene-addtab", { opacity: 1 })
 
@@ -1403,7 +1281,17 @@
               .to("#addtab-new", { opacity: 1, scaleX: 1, duration: 0.825, ease: "back.out(1.6)" }, "-=0.5")
               .to("#addtab-browser", { scale: 1, xPercent: 0, yPercent: 0, duration: 1.95, ease: "expo.inOut" }, "-=0.45")
               .to({}, { duration: 0.6 })
-              .to("#scene-addtab", { opacity: 0, duration: 0.75 });
+              .to("#scene-addtab", { opacity: 0, duration: 0.75 })
+
+              // Self-Evolution cosmic scene
+              .set("#scene-selfevolution", { opacity: 1 })
+              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
+              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
+              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
+              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
+              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
+              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
+              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5");
 
             // Helper for Text & Mockup Scenes
             function animateScene(sceneId, textClass, mockupClass) {
@@ -1448,24 +1336,6 @@
               .to({}, { duration: 1.8 })
               .to("#scene-marketplace", { opacity: 0, duration: 0.5 });
 
-            // 4. Skill is All you Need (3D carousel rotation)
-            function setSkillCaption(text) {
-                const el = document.getElementById("skill-caption");
-                gsap.fromTo(el, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", onStart: () => { el.textContent = text; } });
-            }
-            tl.to("#scene-skill", { opacity: 1, duration: 0.4 })
-              .call(() => setSkillCaption("Inject WebMCP"))
-              .to({}, { duration: 2.0 })
-              // Rotate carousel −120° to bring clip 2 to front
-              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
-              .call(() => setSkillCaption("Manage Skill"), null, "-=0.6")
-              .to({}, { duration: 1.6 })
-              // Rotate another −120° to bring clip 3 to front
-              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
-              .call(() => setSkillCaption("Learn Skill Easily"), null, "-=0.6")
-              .to({}, { duration: 1.8 })
-              .to("#scene-skill", { opacity: 0, duration: 0.5 });
-
             // WebMCP: tilted window with tools popping out + connecting to agent
             tl.set("#scene-webmcp", { opacity: 1 })
               .to("#webmcp-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
@@ -1499,6 +1369,22 @@
               .to(".sw-word", { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" })
               .to({}, { duration: 0.8 })
               .to("#scene-spicawork", { opacity: 0, duration: 0.5 });
+
+            // Skill is All you Need (3D carousel rotation)
+            function setSkillCaption(text) {
+                const el = document.getElementById("skill-caption");
+                gsap.fromTo(el, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", onStart: () => { el.textContent = text; } });
+            }
+            tl.to("#scene-skill", { opacity: 1, duration: 0.4 })
+              .call(() => setSkillCaption("Inject WebMCP"))
+              .to({}, { duration: 2.0 })
+              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
+              .call(() => setSkillCaption("Manage Skill"), null, "-=0.6")
+              .to({}, { duration: 1.6 })
+              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
+              .call(() => setSkillCaption("Learn Skill Easily"), null, "-=0.6")
+              .to({}, { duration: 1.8 })
+              .to("#scene-skill", { opacity: 0, duration: 0.5 });
 
             // 6. One More Thing!! dramatic reveal
             tl.set("#scene-onemore", { opacity: 1 })
