@@ -455,6 +455,16 @@ html, body {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
+/* Image-based icon (Lucide <img> — right-click downloadable) */
+.feature-point .point-icon .point-icon-img {
+  display: inline-block;
+  width: calc(34 * var(--s) * 1px);
+  height: calc(34 * var(--s) * 1px);
+  /* Convert black stroke to slate-400 (#94a3b8) */
+  filter: brightness(0) saturate(100%) invert(68%) sepia(8%) saturate(487%) hue-rotate(183deg) brightness(92%) contrast(87%);
+  user-select: none;
+}
+
 .feature-point .point-text h4 {
   font-size: calc(22 * var(--s) * 1px);
   font-weight: 700;
