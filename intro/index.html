@@ -551,7 +551,7 @@
         <!-- Scene: Skill Marketplace -->
         <div class="scene" id="scene-marketplace" style="background:#f3f4f6;">
             <div style="position:absolute; top:7%; left:50%; transform:translateX(-50%); font-size: 3.5vw; font-weight: 800; color:#111827; letter-spacing:-0.03em; white-space:nowrap;" id="marketplace-title">Skill <span style="color:#3b82f6;">Marketplace</span></div>
-            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%) perspective(1200px) rotateY(-14deg) rotateX(4deg); width: 52vw;">
+            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%) perspective(1200px) rotateY(-14deg) rotateX(4deg); width: 48vw;">
                 <div id="marketplace-window" style="background:#fff; border-radius:14px; box-shadow: 0 24px 60px rgba(0,0,0,0.18); overflow:hidden; opacity:0; transform: translateY(30px);">
                     <div style="height:38px; background:#e5e7eb; display:flex; align-items:center; padding:0 14px;">
                         <div style="flex:1;"></div>
@@ -561,26 +561,36 @@
                             <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">✕</div>
                         </div>
                     </div>
-                    <div style="padding: 20px 24px; display:flex; flex-direction:column; gap:14px;" id="marketplace-list">
-                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
-                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#ef4444,#f97316); flex-shrink:0;"></div>
-                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Jira Integration</div><div style="color:#6b7280; font-size:12px;">Connect to project boards</div></div>
-                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                    <div style="padding: 24px; display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;" id="marketplace-list">
+                        <div class="mp-card" style="background:#f8fafc; border-radius:14px; border:1px solid #e5e7eb; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; transform: scale(0.85);">
+                            <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg,#3b82f6,#6366f1); display:flex; align-items:center; justify-content:center; font-size:22px;">📅</div>
+                            <div style="font-weight:700; color:#111827; font-size:14px;">일정</div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
                         </div>
-                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
-                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#3b82f6,#6366f1); flex-shrink:0;"></div>
-                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Confluence Wiki</div><div style="color:#6b7280; font-size:12px;">Search & summarize docs</div></div>
-                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        <div class="mp-card" style="background:#f8fafc; border-radius:14px; border:1px solid #e5e7eb; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; transform: scale(0.85);">
+                            <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg,#ef4444,#f97316); display:flex; align-items:center; justify-content:center; font-size:22px;">✉️</div>
+                            <div style="font-weight:700; color:#111827; font-size:14px;">메일</div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
                         </div>
-                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
-                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#10b981,#14b8a6); flex-shrink:0;"></div>
-                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Expense Report</div><div style="color:#6b7280; font-size:12px;">Auto-fill receipt data</div></div>
-                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        <div class="mp-card" style="background:#f8fafc; border-radius:14px; border:1px solid #e5e7eb; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; transform: scale(0.85);">
+                            <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg,#10b981,#14b8a6); display:flex; align-items:center; justify-content:center; font-size:22px;">🏢</div>
+                            <div style="font-weight:700; color:#111827; font-size:14px;">회의실</div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
                         </div>
-                        <div class="mp-row" style="display:flex; align-items:center; gap:14px; padding:14px 16px; background:#f8fafc; border-radius:10px; border:1px solid #e5e7eb; opacity:0; transform: translateX(-20px);">
-                            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#f59e0b,#eab308); flex-shrink:0;"></div>
-                            <div style="flex:1;"><div style="font-weight:700; color:#111827; font-size:14px;">Calendar Sync</div><div style="color:#6b7280; font-size:12px;">Schedule & manage events</div></div>
-                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; cursor:pointer; flex-shrink:0; transition: background 0.3s;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div></div>
+                        <div class="mp-card" style="background:#f8fafc; border-radius:14px; border:1px solid #e5e7eb; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; transform: scale(0.85);">
+                            <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg,#f59e0b,#eab308); display:flex; align-items:center; justify-content:center; font-size:22px;">✈️</div>
+                            <div style="font-weight:700; color:#111827; font-size:14px;">출장</div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
+                        </div>
+                        <div class="mp-card" style="background:#f8fafc; border-radius:14px; border:1px solid #e5e7eb; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; transform: scale(0.85);">
+                            <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg,#8b5cf6,#a78bfa); display:flex; align-items:center; justify-content:center; font-size:22px;">⏰</div>
+                            <div style="font-weight:700; color:#111827; font-size:14px;">근태</div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
+                        </div>
+                        <div class="mp-card" style="background:#f8fafc; border-radius:14px; border:1px solid #e5e7eb; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; opacity:0; transform: scale(0.85);">
+                            <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg,#ec4899,#f43f5e); display:flex; align-items:center; justify-content:center; font-size:22px;">📝</div>
+                            <div style="font-weight:700; color:#111827; font-size:14px;">결재</div>
+                            <div class="mp-toggle" style="width:40px; height:22px; border-radius:11px; background:#d1d5db; position:relative; flex-shrink:0;"><div style="width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:2px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
                         </div>
                     </div>
                 </div>
@@ -1342,19 +1352,19 @@
               .to({}, { duration: 0.4 })
               .to("#scene-browserskill", { opacity: 0, duration: 0.5 });
 
-            // Skill Marketplace: tilted window with toggle rows
+            // Skill Marketplace: tilted window with 3x2 grid cards
             tl.set("#scene-marketplace", { opacity: 1 })
               .to("#marketplace-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
-              .to(".mp-row", { opacity: 1, x: 0, duration: 0.5, stagger: 0.15, ease: "power3.out" })
-              .to({}, { duration: 0.6 })
-              // Toggle ON animation: slide dots right, bg turns blue
+              .to(".mp-card", { opacity: 1, scale: 1, duration: 0.45, stagger: 0.12, ease: "back.out(1.4)" })
+              .to({}, { duration: 0.5 })
+              // Toggle ON: slide dots right, bg turns blue one by one
               .call(() => {
-                  document.querySelectorAll(".mp-toggle").forEach((t, i) => {
-                      gsap.to(t, { backgroundColor: "#3b82f6", duration: 0.3, delay: i * 0.2 });
-                      gsap.to(t.querySelector("div"), { left: "20px", duration: 0.3, delay: i * 0.2 });
+                  document.querySelectorAll("#marketplace-list .mp-toggle").forEach((t, i) => {
+                      gsap.to(t, { backgroundColor: "#3b82f6", duration: 0.3, delay: i * 0.18 });
+                      gsap.to(t.querySelector("div"), { left: "20px", duration: 0.3, delay: i * 0.18 });
                   });
               })
-              .to({}, { duration: 1.6 })
+              .to({}, { duration: 1.8 })
               .to("#scene-marketplace", { opacity: 0, duration: 0.5 });
 
             // 4. Skill is All you Need (3D carousel rotation)
