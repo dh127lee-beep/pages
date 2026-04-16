@@ -420,7 +420,21 @@
                     </div>
                 </div>
             </div>
-            <div id="smart-slogan" style="position: absolute; left: 50%; bottom: 10%; font-size: 2.2vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em; transform: translateX(-50%); line-height: 1.3; max-width: 95%;"></div>
+            <div id="smart-slogan" style="position: absolute; left: 50%; bottom: 10%; font-size: 2.4vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em; transform: translateX(-50%); line-height: 1.3; width: 90vw;"></div>
+        </div>
+
+        <!-- Scene: Browser Link summary -->
+        <div class="scene" id="scene-browserlink" style="background:#ffffff;">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
+                <div id="browserlink-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0; display:inline-flex; align-items:center; gap:0.2em;">
+                    <img src="image/extension-icon.svg" alt="" draggable="false" style="width:0.9em; height:0.9em; border-radius:0.12em; display:block;"/>
+                    <span>Browser</span>
+                    <span id="browserlink-word" style="color:#3b82f6; opacity:0; transform: translateY(12px); display:inline-block;">Link</span>
+                </div>
+                <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
+                    <span id="browserlink-typed" style="display:flex; gap:0.3em; flex-wrap:wrap; justify-content:center;"></span>
+                </div>
+            </div>
         </div>
 
         <!-- Scene: New Tab Button Zoom & Open -->
@@ -459,20 +473,12 @@
             </div>
         </div>
 
-        <!-- Scene: Self-Evolution cosmic orbit -->
-        <div class="scene" id="scene-selfevolution" style="background: #050814; overflow:hidden;">
-            <div id="se-starfield" style="position:absolute; inset:0; overflow:hidden;"></div>
-            <div id="se-glow" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.15) 40%, rgba(0,0,0,0) 70%); opacity:0;"></div>
-            <div id="se-title" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size: 7vw; font-weight: 200; color:#ffffff; letter-spacing:-0.04em; text-align:center; opacity:0; z-index:3; line-height:1.15;">Toward<br><span style="color:#93c5fd; font-weight:400;">Self-Evolution</span></div>
-            <div id="se-orbit" style="position:absolute; top:50%; left:50%; width: 0; height: 0; transform: translate(-50%, -50%); z-index:2;"></div>
-        </div>
-
         <!-- Scene: Browser-Skill summary -->
         <div class="scene" id="scene-browserskill" style="background:#ffffff;">
             <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
                 <div id="browserskill-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0; display:inline-flex; align-items:center; gap:0.2em;">
                     <img src="image/extension-icon.svg" alt="" draggable="false" style="width:0.9em; height:0.9em; border-radius:0.12em; display:block;"/>
-                    <span>SPICA</span>
+                    <span>Browser</span>
                     <span id="browserskill-word" style="color:#3b82f6; opacity:0; transform: translateY(12px); display:inline-block;">Skill</span>
                 </div>
                 <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
@@ -625,12 +631,20 @@
             </div>
         </div>
 
-        <!-- Scene: SPICA Work summary -->
+        <!-- Scene: Self-Evolution cosmic orbit -->
+        <div class="scene" id="scene-selfevolution" style="background: #ffffff; overflow:hidden;">
+            <div id="se-starfield" style="position:absolute; inset:0; overflow:hidden;"></div>
+            <div id="se-glow" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.08) 40%, rgba(0,0,0,0) 70%); opacity:0;"></div>
+            <div id="se-title" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size: 7vw; font-weight: 200; color:#111827; letter-spacing:-0.04em; text-align:center; opacity:0; z-index:3; line-height:1.15; width: 90vw;">Toward<br><span style="color:#3b82f6; font-weight:400;">Self-Evolution</span></div>
+            <div id="se-orbit" style="position:absolute; top:50%; left:50%; width: 0; height: 0; transform: translate(-50%, -50%); z-index:2;"></div>
+        </div>
+
+        <!-- Scene: Browser Work summary -->
         <div class="scene" id="scene-spicawork" style="background:#ffffff;">
             <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.4em;">
                 <div id="spicawork-title" style="font-size: 5.5vw; font-weight: 800; color: #111827; letter-spacing:-0.03em; opacity:0; display:inline-flex; align-items:center; gap:0.2em;">
                     <img src="image/extension-icon.svg" alt="" draggable="false" style="width:0.9em; height:0.9em; border-radius:0.12em; display:block;"/>
-                    <span>SPICA</span>
+                    <span>Browser</span>
                     <span id="spicawork-word" style="color:#3b82f6; opacity:0; transform: translateY(12px); display:inline-block;">Work</span>
                 </div>
                 <div style="font-size: 2.2vw; font-weight: 500; color: #374151; display:flex; align-items:center; min-height:1em;">
@@ -896,13 +910,14 @@
             { key: "partner",   label: "Work Partner",             time: 0,    element: "#scene-partner"  },
             { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
             { key: "smart",       label: "Smart Personal Agent",   time: 19.0, element: "#scene-smart"  },
-            { key: "addtab",         label: "New Tab Button",           time: 27.0, element: "#scene-addtab"   },
-            { key: "selfevolution",  label: "Self-Evolution",          time: 33.0, element: "#scene-selfevolution" },
-            { key: "browserskill",   label: "SPICA Skill",              time: 49.5, element: "#scene-browserskill" },
-            { key: "marketplace",    label: "Skill Marketplace",        time: 53.5, element: "#scene-marketplace" },
-            { key: "webmcp",         label: "WebMCP Tools",             time: 59.5, element: "#scene-webmcp" },
-            { key: "harness",        label: "Agent Harness",            time: 65.5, element: "#scene-harness" },
-            { key: "spicawork",      label: "SPICA Work",              time: 73.5, element: "#scene-spicawork" },
+            { key: "browserlink",    label: "Browser Link",             time: 27.0, element: "#scene-browserlink" },
+            { key: "addtab",         label: "New Tab Button",           time: 31.5, element: "#scene-addtab"   },
+            { key: "browserskill",   label: "Browser Skill",            time: 37.5, element: "#scene-browserskill" },
+            { key: "marketplace",    label: "Skill Marketplace",        time: 41.5, element: "#scene-marketplace" },
+            { key: "webmcp",         label: "WebMCP Tools",             time: 47.5, element: "#scene-webmcp" },
+            { key: "harness",        label: "Agent Harness",            time: 53.5, element: "#scene-harness" },
+            { key: "selfevolution",  label: "Self-Evolution",           time: 59.5, element: "#scene-selfevolution" },
+            { key: "spicawork",      label: "Browser Work",             time: 65.5, element: "#scene-spicawork" },
             { key: "skill",          label: "Skill is All You Need",    time: 78.0, element: "#scene-skill"  },
             { key: "onemore",        label: "One More Thing",          time: 86.0, element: "#scene-onemore" },
             { key: "receipt",        label: "Receipt Prompt",          time: 90.0, element: "#scene-receipt" },
@@ -1111,7 +1126,7 @@
                 for (let i = 0; i < 90; i++) {
                     const s = document.createElement("div");
                     const size = Math.random() * 2.2 + 0.6;
-                    s.style.cssText = `position:absolute; left:${Math.random()*100}%; top:${Math.random()*100}%; width:${size}px; height:${size}px; border-radius:50%; background:#ffffff; opacity:${0.25 + Math.random()*0.7}; box-shadow: 0 0 ${size*2}px rgba(255,255,255,0.6);`;
+                    s.style.cssText = `position:absolute; left:${Math.random()*100}%; top:${Math.random()*100}%; width:${size}px; height:${size}px; border-radius:50%; background:#93c5fd; opacity:${0.15 + Math.random()*0.4}; box-shadow: 0 0 ${size*2}px rgba(59,130,246,0.3);`;
                     stars.appendChild(s);
                 }
                 const orbit = document.getElementById("se-orbit");
@@ -1131,7 +1146,7 @@
                         const opac = ri === 0 ? 0.85 : 0.55;
                         const win = document.createElement("div");
                         win.className = "se-window";
-                        win.style.cssText = `position:absolute; left:${x}vw; top:${y}vw; transform: translate(-50%, -50%) scale(${scale}) rotate(${rot}deg); width:${ring.w}vw; height:${ring.h}vw; background:rgba(15,23,42,${opac}); backdrop-filter: blur(6px); border:1px solid rgba(148,163,184,${ri === 0 ? 0.22 : 0.14}); border-radius:${ri === 0 ? 10 : 8}px; box-shadow: 0 10px 28px rgba(59,130,246,${ri === 0 ? 0.18 : 0.10}); opacity:0; overflow:hidden;`;
+                        win.style.cssText = `position:absolute; left:${x}vw; top:${y}vw; transform: translate(-50%, -50%) scale(${scale}) rotate(${rot}deg); width:${ring.w}vw; height:${ring.h}vw; background:rgba(255,255,255,${ri === 0 ? 0.95 : 0.8}); backdrop-filter: blur(6px); border:1px solid rgba(59,130,246,${ri === 0 ? 0.18 : 0.10}); border-radius:${ri === 0 ? 10 : 8}px; box-shadow: 0 10px 28px rgba(59,130,246,${ri === 0 ? 0.15 : 0.08}); opacity:0; overflow:hidden;`;
                         const g = ri === 0 ? 4 : 3;
                         const ds = ring.dotS;
                         win.innerHTML = `
@@ -1266,8 +1281,25 @@
 
               .to({}, { duration: 0.5 })
 
-              // Smart fades out, then New Tab
+              // Smart fades out, then Browser Link
               .to("#scene-smart", { opacity: 0, duration: 0.5 })
+
+              // Browser Link summary
+              .set("#scene-browserlink", { opacity: 1 })
+              .to("#browserlink-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
+              .to("#browserlink-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
+              .call(() => {
+                  const el = document.getElementById("browserlink-typed");
+                  el.innerHTML = "";
+                  "Fastest way to navigate internal systems".split(" ").forEach(w => {
+                      const s = document.createElement("span"); s.textContent = w;
+                      s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
+                      s.className = "bl-word"; el.appendChild(s);
+                  });
+              })
+              .to(".bl-word", { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" })
+              .to({}, { duration: 0.8 })
+              .to("#scene-browserlink", { opacity: 0, duration: 0.5 })
 
               .set("#scene-addtab", { opacity: 1 })
 
@@ -1281,17 +1313,7 @@
               .to("#addtab-new", { opacity: 1, scaleX: 1, duration: 0.825, ease: "back.out(1.6)" }, "-=0.5")
               .to("#addtab-browser", { scale: 1, xPercent: 0, yPercent: 0, duration: 1.95, ease: "expo.inOut" }, "-=0.45")
               .to({}, { duration: 0.6 })
-              .to("#scene-addtab", { opacity: 0, duration: 0.75 })
-
-              // Self-Evolution cosmic scene
-              .set("#scene-selfevolution", { opacity: 1 })
-              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
-              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
-              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
-              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
-              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
-              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
-              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5");
+              .to("#scene-addtab", { opacity: 0, duration: 0.75 });
 
             // Helper for Text & Mockup Scenes
             function animateScene(sceneId, textClass, mockupClass) {
@@ -1311,7 +1333,7 @@
               .call(() => {
                   const el = document.getElementById("browserskill-typed");
                   el.innerHTML = "";
-                  "Powered by WebSkills & WebMCP".split(" ").forEach(w => {
+                  "Extend agent capabilities with plug-and-play skills".split(" ").forEach(w => {
                       const s = document.createElement("span"); s.textContent = w;
                       s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
                       s.className = "bs-word"; el.appendChild(s);
@@ -1353,14 +1375,24 @@
               .to({}, { duration: 2.5 })
               .to("#scene-harness", { opacity: 0, duration: 0.5 });
 
-            // SPICA Work summary (after New Tab)
+            // Self-Evolution cosmic scene
+            tl.set("#scene-selfevolution", { opacity: 1 })
+              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
+              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
+              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
+              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
+              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
+              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
+              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5");
+
+            // Browser Work summary
             tl.set("#scene-spicawork", { opacity: 1 })
               .to("#spicawork-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
               .to("#spicawork-word", { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, "+=0.2")
               .call(() => {
                   const el = document.getElementById("spicawork-typed");
                   el.innerHTML = "";
-                  "Your AI-powered workspace for every task".split(" ").forEach(w => {
+                  "Seamless AI workspace for every workflow".split(" ").forEach(w => {
                       const s = document.createElement("span"); s.textContent = w;
                       s.style.cssText = "display:inline-block; opacity:0; transform:translateY(10px);";
                       s.className = "sw-word"; el.appendChild(s);
