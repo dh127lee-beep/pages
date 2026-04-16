@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 3 - System Prompt</title>
+  <link rel="stylesheet" href="slide.css">
+</head>
+<body data-current="3" data-total="12">
+
+  <div class="slide-viewport">
+    <div class="slide-page theme-feature">
+      <div class="feature-header">
+        <div class="feature-eyebrow">Harness &middot; 01</div>
+        <div class="feature-title">System Prompt</div>
+        <div class="feature-subtitle">브라우저 상태의 가변성을 제어하고, 현재 페이지·사내 지식을 실행 루프로 엮는 상위 지침</div>
+      </div>
+
+      <div class="feature-body">
+        <div class="feature-visual">
+          <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- OS window (Windows style) -->
+            <rect x="30" y="30" width="460" height="280" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+            <rect x="30" y="30" width="460" height="36" fill="#f1f5f9"/>
+            <text x="46" y="53" font-size="13" fill="#334155" font-family="'Segoe UI', sans-serif">system.prompt</text>
+            <!-- Minimize -->
+            <rect x="398" y="30" width="32" height="36" fill="transparent"/>
+            <line x1="408" y1="50" x2="420" y2="50" stroke="#475569" stroke-width="1.5"/>
+            <!-- Maximize -->
+            <rect x="430" y="30" width="32" height="36" fill="transparent"/>
+            <rect x="440" y="42" width="12" height="12" fill="none" stroke="#475569" stroke-width="1.5"/>
+            <!-- Close -->
+            <rect x="462" y="30" width="28" height="36" fill="transparent"/>
+            <line x1="470" y1="42" x2="482" y2="54" stroke="#475569" stroke-width="1.5"/>
+            <line x1="482" y1="42" x2="470" y2="54" stroke="#475569" stroke-width="1.5"/>
+
+            <!-- Content lines -->
+            <rect x="56" y="94" width="60" height="14" rx="3" fill="#3b82f6"/>
+            <rect x="126" y="94" width="280" height="14" rx="3" fill="#e2e8f0"/>
+
+            <rect x="56" y="122" width="90" height="10" rx="2" fill="#94a3b8"/>
+            <rect x="56" y="140" width="380" height="10" rx="2" fill="#e2e8f0"/>
+            <rect x="56" y="156" width="340" height="10" rx="2" fill="#e2e8f0"/>
+            <rect x="56" y="172" width="360" height="10" rx="2" fill="#e2e8f0"/>
+
+            <rect x="56" y="200" width="70" height="10" rx="2" fill="#94a3b8"/>
+            <rect x="56" y="218" width="390" height="10" rx="2" fill="#e2e8f0"/>
+            <rect x="56" y="234" width="300" height="10" rx="2" fill="#e2e8f0"/>
+
+            <rect x="56" y="262" width="50" height="10" rx="2" fill="#94a3b8"/>
+            <rect x="56" y="280" width="400" height="10" rx="2" fill="#e2e8f0"/>
+
+            <!-- floating tag -->
+            <rect x="380" y="85" width="96" height="26" rx="13" fill="#dbeafe"/>
+            <text x="428" y="102" font-size="12" fill="#1e40af" text-anchor="middle" font-weight="600">persona</text>
+          </svg>
+        </div>
+
+        <div class="feature-content">
+          <div class="feature-point">
+            <div class="point-icon"><span class="material-symbols-rounded">autorenew</span></div>
+            <div class="point-text">
+              <h4>증거 기반 실행 루프 유도</h4>
+              <p>가변적인 브라우저 상태에서 <strong>관찰 &rarr; 판단 &rarr; 행동</strong> 루프를 강제 — 추측 대신 실제 상태를 근거로</p>
+            </div>
+          </div>
+          <div class="feature-point">
+            <div class="point-icon"><span class="material-symbols-rounded">travel_explore</span></div>
+            <div class="point-text">
+              <h4>현재 페이지 &amp; 사내 정보의 활용</h4>
+              <p>현재 탭 컨텍스트와 사내 시스템 검색을 기본 도구로 — <strong>검증된 사내 정보를 활용한 행동</strong></p>
+            </div>
+          </div>
+          <div class="feature-point">
+            <div class="point-icon"><span class="material-symbols-rounded">dashboard_customize</span></div>
+            <div class="point-text">
+              <h4>시스템 프롬프트 모듈화 &amp; 구조화</h4>
+              <p>불변 &rarr; 준-불변 &rarr; 가변 순으로 블록 분리 — <strong>KV-cache 재사용 극대화</strong>로 지연·비용 절감</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>

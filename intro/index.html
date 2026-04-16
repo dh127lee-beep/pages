@@ -914,11 +914,11 @@
             { key: "addtab",         label: "New Tab Button",           time: 31.5, element: "#scene-addtab"   },
             { key: "browserskill",   label: "Browser Skill",            time: 37.5, element: "#scene-browserskill" },
             { key: "marketplace",    label: "Skill Marketplace",        time: 41.5, element: "#scene-marketplace" },
-            { key: "webmcp",         label: "WebMCP Tools",             time: 47.5, element: "#scene-webmcp" },
-            { key: "harness",        label: "Agent Harness",            time: 53.5, element: "#scene-harness" },
-            { key: "selfevolution",  label: "Self-Evolution",           time: 59.5, element: "#scene-selfevolution" },
-            { key: "spicawork",      label: "Browser Work",             time: 65.5, element: "#scene-spicawork" },
-            { key: "skill",          label: "Skill is All You Need",    time: 78.0, element: "#scene-skill"  },
+            { key: "spicawork",      label: "Browser Work",             time: 47.5, element: "#scene-spicawork" },
+            { key: "skill",          label: "Skill is All You Need",    time: 53.5, element: "#scene-skill"  },
+            { key: "harness",        label: "Agent Harness",            time: 65.5, element: "#scene-harness" },
+            { key: "webmcp",         label: "WebMCP Tools",             time: 71.5, element: "#scene-webmcp" },
+            { key: "selfevolution",  label: "Self-Evolution",           time: 77.5, element: "#scene-selfevolution" },
             { key: "onemore",        label: "One More Thing",          time: 86.0, element: "#scene-onemore" },
             { key: "receipt",        label: "Receipt Prompt",          time: 90.0, element: "#scene-receipt" },
             { key: "browserdesktop", label: "Browser-Desktop",         time: 96.0, element: "#scene-browserdesktop" },
@@ -1361,33 +1361,6 @@
               .to({}, { duration: 1.8 })
               .to("#scene-marketplace", { opacity: 0, duration: 0.5 });
 
-            // WebMCP: tilted window with tools popping out + connecting to agent
-            tl.set("#scene-webmcp", { opacity: 1 })
-              .to("#webmcp-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
-              .to("#webmcp-agent", { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.8)" })
-              .to(".mcp-tool", { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, stagger: 0.18, ease: "back.out(1.6)" })
-              .to("#webmcp-svg", { opacity: 1, duration: 0.4 })
-              .fromTo(".mcp-line", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.8, stagger: 0.12, ease: "power2.out" })
-              .to({}, { duration: 1.8 })
-              .to("#scene-webmcp", { opacity: 0, duration: 0.5 });
-
-            // Agent Harness Engineering diagram
-            tl.set("#scene-harness", { opacity: 1 })
-              .to(".harness-layer", { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.25, ease: "expo.out" })
-              .to(".harness-node", { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "back.out(1.4)" })
-              .to({}, { duration: 2.5 })
-              .to("#scene-harness", { opacity: 0, duration: 0.5 });
-
-            // Self-Evolution cosmic scene
-            tl.set("#scene-selfevolution", { opacity: 1 })
-              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
-              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
-              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
-              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
-              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
-              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
-              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5");
-
             // Browser Work summary
             tl.set("#scene-spicawork", { opacity: 1 })
               .to("#spicawork-title", { opacity: 1, duration: 0.6, ease: "power2.out" })
@@ -1411,6 +1384,33 @@
               .call(() => setSkillCaption("Learn Skill Easily"), null, "-=0.6")
               .to({}, { duration: 1.8 })
               .to("#scene-skill", { opacity: 0, duration: 0.5 });
+
+            // Agent Harness Engineering diagram
+            tl.set("#scene-harness", { opacity: 1 })
+              .to(".harness-layer", { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.25, ease: "expo.out" })
+              .to(".harness-node", { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "back.out(1.4)" })
+              .to({}, { duration: 2.5 })
+              .to("#scene-harness", { opacity: 0, duration: 0.5 });
+
+            // WebMCP: tilted window with tools popping out + connecting to agent
+            tl.set("#scene-webmcp", { opacity: 1 })
+              .to("#webmcp-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
+              .to("#webmcp-agent", { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.8)" })
+              .to(".mcp-tool", { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, stagger: 0.18, ease: "back.out(1.6)" })
+              .to("#webmcp-svg", { opacity: 1, duration: 0.4 })
+              .fromTo(".mcp-line", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.8, stagger: 0.12, ease: "power2.out" })
+              .to({}, { duration: 1.8 })
+              .to("#scene-webmcp", { opacity: 0, duration: 0.5 });
+
+            // Self-Evolution cosmic scene
+            tl.set("#scene-selfevolution", { opacity: 1 })
+              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
+              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
+              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
+              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
+              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
+              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
+              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5");
 
             // 6. One More Thing!! dramatic reveal
             tl.set("#scene-onemore", { opacity: 1 })
