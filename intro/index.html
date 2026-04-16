@@ -609,22 +609,101 @@
             </div>
         </div>
 
-        <!-- Scene: Work Starts with New Tab -->
-        <div class="scene flex-col" id="scene-newtab">
-            <div class="text-wrapper" style="position: absolute; top: 15%; z-index: 10;">
-                <div class="title-text st8" data-text="newtab.title"></div>
-            </div>
-            <div class="mockup-container sm8" style="margin-top: 5%; justify-content: center; align-items: center; background: white;">
-                <div class="new-tab-content">
-                    <div style="font-size: 48px; font-weight: 800; color: #111827;" data-text="newtab.headline"></div>
-                    <div class="search-box" data-text="newtab.placeholder"></div>
-                    <div class="quick-links">
-                        <div class="quick-link"></div><div class="quick-link"></div><div class="quick-link"></div><div class="quick-link"></div>
+        <!-- Scene: WebMCP tools connecting to Agent -->
+        <div class="scene" id="scene-webmcp" style="background:#f3f4f6;">
+            <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); font-size: 3.5vw; font-weight: 800; color:#111827; letter-spacing:-0.03em; white-space:nowrap;">Web<span style="color:#3b82f6;">MCP</span></div>
+            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%) perspective(1200px) rotateY(10deg) rotateX(3deg); width: 42vw;">
+                <div id="webmcp-window" style="background:#fff; border-radius:14px; box-shadow: 0 24px 60px rgba(0,0,0,0.18); overflow:visible; opacity:0; transform: translateY(30px); position:relative;">
+                    <div style="height:38px; background:#e5e7eb; display:flex; align-items:center; padding:0 14px; border-radius:14px 14px 0 0;">
+                        <div style="flex:1;"></div>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">─</div>
+                            <div style="width:12px; height:12px; border:1px solid #94a3b8; border-radius:1px;"></div>
+                            <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">✕</div>
+                        </div>
                     </div>
+                    <div style="padding: 28px; display:flex; flex-direction:column; align-items:center; gap: 16px;">
+                        <div style="font-size: 16px; font-weight:700; color:#111827;">Agent Connected</div>
+                        <div id="webmcp-agent" style="width:56px; height:56px; border-radius:16px; background: linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 24px rgba(59,130,246,0.4); opacity:0; transform: scale(0.5);">
+                            <img src="image/extension-icon.svg" alt="" width="32" height="32" style="display:block; border-radius:6px;"/>
+                        </div>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;" id="webmcp-lines"></div>
+                    </div>
+                    <!-- Floating tool cards that pop out -->
+                    <div class="mcp-tool" style="position:absolute; top:-20px; left:-60px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(-20px, 20px) scale(0.7); z-index:5;">
+                        <div style="font-size:20px; text-align:center;">🔍</div>
+                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Web Search</div>
+                    </div>
+                    <div class="mcp-tool" style="position:absolute; top:-40px; right:-50px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(20px, 20px) scale(0.7); z-index:5;">
+                        <div style="font-size:20px; text-align:center;">📊</div>
+                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Data Fetch</div>
+                    </div>
+                    <div class="mcp-tool" style="position:absolute; bottom:-30px; left:-70px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(-20px, -20px) scale(0.7); z-index:5;">
+                        <div style="font-size:20px; text-align:center;">📄</div>
+                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Page Read</div>
+                    </div>
+                    <div class="mcp-tool" style="position:absolute; bottom:-50px; right:-60px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(20px, -20px) scale(0.7); z-index:5;">
+                        <div style="font-size:20px; text-align:center;">⚙️</div>
+                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Form Fill</div>
+                    </div>
+                    <!-- Connection lines placeholder -->
+                    <svg id="webmcp-svg" style="position:absolute; inset:-80px; width:calc(100% + 160px); height:calc(100% + 160px); pointer-events:none; z-index:4; opacity:0;">
+                        <line class="mcp-line" x1="20%" y1="25%" x2="45%" y2="50%" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+                        <line class="mcp-line" x1="80%" y1="20%" x2="55%" y2="50%" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+                        <line class="mcp-line" x1="18%" y1="78%" x2="45%" y2="55%" stroke="#10b981" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+                        <line class="mcp-line" x1="82%" y1="82%" x2="55%" y2="55%" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+                    </svg>
                 </div>
             </div>
         </div>
 
+        <!-- Scene: Agent Harness Engineering diagram -->
+        <div class="scene" id="scene-harness" style="background:#ffffff;">
+            <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); font-size: 3.2vw; font-weight: 800; color:#111827; letter-spacing:-0.03em; white-space:nowrap;">Agent <span style="color:#3b82f6;">Harness</span> Engineering</div>
+            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 58vw; display:flex; flex-direction:column; align-items:center; gap:0;">
+                <!-- Top layer: Guardrails -->
+                <div class="harness-layer" style="width:100%; padding:14px 20px; background:#fef2f2; border:2px solid #fecaca; border-radius:14px 14px 0 0; display:flex; align-items:center; gap:14px; opacity:0; transform: translateY(-20px);">
+                    <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#ef4444,#f97316); display:flex; align-items:center; justify-content:center; font-size:18px;">🛡️</div>
+                    <div style="font-weight:700; color:#991b1b; font-size:15px;">Guardrails</div>
+                    <div style="flex:1;"></div>
+                    <div style="font-size:12px; color:#b91c1c;">Safety · Validation · Compliance</div>
+                </div>
+                <!-- Middle: Agent core -->
+                <div class="harness-layer" style="width:90%; padding:28px 24px; background:linear-gradient(135deg,#eff6ff,#f5f3ff); border-left:2px solid #bfdbfe; border-right:2px solid #c4b5fd; display:flex; align-items:center; justify-content:center; gap:28px; opacity:0; transform: scale(0.9);">
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+                        <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center;">
+                            <img src="image/extension-icon.svg" alt="" width="28" height="28" style="border-radius:6px;"/>
+                        </div>
+                        <div style="font-size:14px; font-weight:800; color:#1e3a5f;">Agent</div>
+                    </div>
+                    <div style="display:flex; gap:16px;">
+                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
+                            <div style="font-size:16px;">🧩</div>
+                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Skills</div>
+                        </div>
+                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
+                            <div style="font-size:16px;">🔧</div>
+                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Tools</div>
+                        </div>
+                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
+                            <div style="font-size:16px;">📋</div>
+                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Prompts</div>
+                        </div>
+                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
+                            <div style="font-size:16px;">🧠</div>
+                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Memory</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom layer: Orchestration -->
+                <div class="harness-layer" style="width:100%; padding:14px 20px; background:#f0fdf4; border:2px solid #bbf7d0; border-radius:0 0 14px 14px; display:flex; align-items:center; gap:14px; opacity:0; transform: translateY(20px);">
+                    <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#10b981,#14b8a6); display:flex; align-items:center; justify-content:center; font-size:18px;">⚡</div>
+                    <div style="font-weight:700; color:#065f46; font-size:15px;">Orchestration</div>
+                    <div style="flex:1;"></div>
+                    <div style="font-size:12px; color:#047857;">Planning · Routing · Execution</div>
+                </div>
+            </div>
+        </div>
 
         <!-- Scene: SPICA Work summary -->
         <div class="scene" id="scene-spicawork" style="background:#ffffff;">
@@ -891,12 +970,13 @@
             { key: "browserskill",   label: "SPICA Skill",              time: 49.5, element: "#scene-browserskill" },
             { key: "marketplace",    label: "Skill Marketplace",        time: 53.5, element: "#scene-marketplace" },
             { key: "skill",          label: "Skill is All You Need",    time: 59.5, element: "#scene-skill"  },
-            { key: "newtab",         label: "New Tab",                  time: 67.5, element: "#scene-newtab"  },
-            { key: "spicawork",      label: "SPICA Work",              time: 75.5, element: "#scene-spicawork" },
-            { key: "onemore",        label: "One More Thing",          time: 80.0, element: "#scene-onemore" },
-            { key: "receipt",        label: "Receipt Prompt",          time: 84.0, element: "#scene-receipt" },
-            { key: "browserdesktop", label: "Browser-Desktop",         time: 90.0, element: "#scene-browserdesktop" },
-            { key: "outro",          label: "AX Team Outro",           time: 97.5, element: "#scene-outro" },
+            { key: "webmcp",         label: "WebMCP Tools",             time: 67.5, element: "#scene-webmcp" },
+            { key: "harness",        label: "Agent Harness",            time: 73.5, element: "#scene-harness" },
+            { key: "spicawork",      label: "SPICA Work",              time: 81.5, element: "#scene-spicawork" },
+            { key: "onemore",        label: "One More Thing",          time: 86.0, element: "#scene-onemore" },
+            { key: "receipt",        label: "Receipt Prompt",          time: 90.0, element: "#scene-receipt" },
+            { key: "browserdesktop", label: "Browser-Desktop",         time: 96.0, element: "#scene-browserdesktop" },
+            { key: "outro",          label: "AX Team Outro",           time: 103.5, element: "#scene-outro" },
         ];
         const SCENE_BY_KEY = Object.fromEntries(SCENES.map(s => [s.key, s]));
         // Key used to start the post-logo animation (first non-logo entry).
@@ -1385,8 +1465,22 @@
               .to({}, { duration: 1.8 })
               .to("#scene-skill", { opacity: 0, duration: 0.5 });
 
-            // 5. Work Starts with New Tab
-            animateScene("#scene-newtab", ".st8", ".sm8");
+            // WebMCP: tilted window with tools popping out + connecting to agent
+            tl.set("#scene-webmcp", { opacity: 1 })
+              .to("#webmcp-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
+              .to("#webmcp-agent", { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.8)" })
+              .to(".mcp-tool", { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, stagger: 0.18, ease: "back.out(1.6)" })
+              .to("#webmcp-svg", { opacity: 1, duration: 0.4 })
+              .fromTo(".mcp-line", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.8, stagger: 0.12, ease: "power2.out" })
+              .to({}, { duration: 1.8 })
+              .to("#scene-webmcp", { opacity: 0, duration: 0.5 });
+
+            // Agent Harness Engineering diagram
+            tl.set("#scene-harness", { opacity: 1 })
+              .to(".harness-layer", { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.25, ease: "expo.out" })
+              .to(".harness-node", { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "back.out(1.4)" })
+              .to({}, { duration: 2.5 })
+              .to("#scene-harness", { opacity: 0, duration: 0.5 });
 
             // SPICA Work summary (after New Tab)
             tl.set("#scene-spicawork", { opacity: 1 })
