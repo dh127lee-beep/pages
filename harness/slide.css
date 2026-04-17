@@ -364,6 +364,373 @@ html, body {
 }
 
 /* =========================================================
+   THEME: Exec (executive-style slides)
+   ========================================================= */
+
+.slide-page.theme-exec {
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: calc(56 * var(--s) * 1px) calc(72 * var(--s) * 1px);
+  background: #fafafa;
+}
+
+.exec-header {
+  width: 100%;
+  margin-bottom: calc(28 * var(--s) * 1px);
+}
+
+.exec-eyebrow {
+  font-size: calc(14 * var(--s) * 1px);
+  font-weight: 600;
+  color: #3b82f6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: calc(8 * var(--s) * 1px);
+}
+
+.exec-title {
+  font-size: calc(40 * var(--s) * 1px);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.exec-subtitle {
+  font-size: calc(18 * var(--s) * 1px);
+  color: #64748b;
+  margin-top: calc(10 * var(--s) * 1px);
+  line-height: 1.5;
+}
+
+.exec-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(18 * var(--s) * 1px);
+}
+
+.exec-punchline {
+  margin-top: auto;
+  padding: calc(16 * var(--s) * 1px) calc(24 * var(--s) * 1px);
+  background: #0f172a;
+  color: #fff;
+  border-radius: calc(10 * var(--s) * 1px);
+  font-size: calc(20 * var(--s) * 1px);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.exec-punchline .accent { color: #60a5fa; }
+
+/* Card grid (3 cards) */
+.exec-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(20 * var(--s) * 1px);
+}
+
+.exec-card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: calc(12 * var(--s) * 1px);
+  padding: calc(24 * var(--s) * 1px) calc(22 * var(--s) * 1px);
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--s) * 1px);
+}
+
+.exec-card .card-icon {
+  width: calc(44 * var(--s) * 1px);
+  height: calc(44 * var(--s) * 1px);
+  border-radius: calc(10 * var(--s) * 1px);
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: calc(4 * var(--s) * 1px);
+}
+
+.exec-card .card-icon img {
+  width: calc(26 * var(--s) * 1px);
+  height: calc(26 * var(--s) * 1px);
+  filter: brightness(0) saturate(100%) invert(40%) sepia(95%) saturate(1700%) hue-rotate(211deg) brightness(94%) contrast(92%);
+}
+
+.exec-card .card-title {
+  font-size: calc(20 * var(--s) * 1px);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.exec-card .card-desc {
+  font-size: calc(15 * var(--s) * 1px);
+  color: #475569;
+  line-height: 1.55;
+}
+
+/* Problem list */
+.exec-problems {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(16 * var(--s) * 1px);
+}
+
+.exec-problem {
+  background: #fff;
+  border: 1.5px solid #fee2e2;
+  border-left: calc(4 * var(--s) * 1px) solid #ef4444;
+  border-radius: calc(10 * var(--s) * 1px);
+  padding: calc(20 * var(--s) * 1px) calc(22 * var(--s) * 1px);
+  display: flex;
+  gap: calc(14 * var(--s) * 1px);
+  align-items: flex-start;
+}
+
+.exec-problem .prob-icon {
+  width: calc(36 * var(--s) * 1px);
+  height: calc(36 * var(--s) * 1px);
+  flex-shrink: 0;
+}
+
+.exec-problem .prob-icon img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) saturate(100%) invert(45%) sepia(92%) saturate(3070%) hue-rotate(338deg) brightness(94%) contrast(96%);
+}
+
+.exec-problem .prob-text h4 {
+  font-size: calc(18 * var(--s) * 1px);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: calc(4 * var(--s) * 1px);
+}
+
+.exec-problem .prob-text p {
+  font-size: calc(14 * var(--s) * 1px);
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Before/After comparison within improvement slides */
+.ba-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: calc(20 * var(--s) * 1px);
+  align-items: stretch;
+  width: 100%;
+}
+
+.ba-col {
+  border: 1.5px solid #e2e8f0;
+  border-radius: calc(10 * var(--s) * 1px);
+  padding: calc(20 * var(--s) * 1px);
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--s) * 1px);
+}
+
+.ba-col.before {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.ba-col.after {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.ba-col .ba-label {
+  font-size: calc(12 * var(--s) * 1px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: calc(6 * var(--s) * 1px);
+}
+
+.ba-col.before .ba-label { color: #94a3b8; }
+.ba-col.after .ba-label { color: #2563eb; }
+
+.ba-col .ba-item {
+  font-size: calc(15 * var(--s) * 1px);
+  color: #334155;
+  line-height: 1.6;
+  padding-left: calc(16 * var(--s) * 1px);
+  position: relative;
+}
+
+.ba-col .ba-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(10 * var(--s) * 1px);
+  width: calc(6 * var(--s) * 1px);
+  height: calc(6 * var(--s) * 1px);
+  border-radius: 50%;
+}
+
+.ba-col.before .ba-item::before { background: #cbd5e1; }
+.ba-col.after .ba-item::before { background: #2563eb; }
+
+.ba-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(32 * var(--s) * 1px);
+  color: #cbd5e1;
+  font-weight: 300;
+}
+
+/* Results metric cards (big numbers) */
+.exec-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(16 * var(--s) * 1px);
+}
+
+.exec-metric {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: calc(12 * var(--s) * 1px);
+  padding: calc(22 * var(--s) * 1px) calc(18 * var(--s) * 1px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--s) * 1px);
+}
+
+.exec-metric .metric-label {
+  font-size: calc(12 * var(--s) * 1px);
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.exec-metric .metric-value {
+  font-size: calc(42 * var(--s) * 1px);
+  font-weight: 800;
+  color: #2563eb;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.exec-metric .metric-unit {
+  font-size: calc(13 * var(--s) * 1px);
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Problem → Approach mapping grid (2x2) */
+.pa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(18 * var(--s) * 1px);
+}
+
+.pa-card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: calc(12 * var(--s) * 1px);
+  padding: calc(18 * var(--s) * 1px) calc(22 * var(--s) * 1px);
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--s) * 1px);
+}
+
+.pa-card .pa-num {
+  font-size: calc(12 * var(--s) * 1px);
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+}
+
+.pa-card .pa-problem {
+  font-size: calc(16 * var(--s) * 1px);
+  font-weight: 700;
+  color: #64748b;
+  text-decoration: line-through;
+  text-decoration-color: #ef4444;
+  text-decoration-thickness: 2px;
+}
+
+.pa-card .pa-approach {
+  font-size: calc(20 * var(--s) * 1px);
+  font-weight: 800;
+  color: #1e40af;
+  margin-top: calc(2 * var(--s) * 1px);
+  padding-left: calc(16 * var(--s) * 1px);
+  border-left: calc(3 * var(--s) * 1px) solid #3b82f6;
+}
+
+.pa-card .pa-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(6 * var(--s) * 1px);
+  margin-top: calc(4 * var(--s) * 1px);
+}
+
+.pa-card .pa-tag {
+  font-size: calc(12 * var(--s) * 1px);
+  background: #eff6ff;
+  color: #1e40af;
+  padding: calc(4 * var(--s) * 1px) calc(10 * var(--s) * 1px);
+  border-radius: calc(10 * var(--s) * 1px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Comparison table style */
+.exec-compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.exec-compare-table th,
+.exec-compare-table td {
+  padding: calc(14 * var(--s) * 1px) calc(18 * var(--s) * 1px);
+  text-align: left;
+  font-size: calc(15 * var(--s) * 1px);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.exec-compare-table th {
+  font-size: calc(13 * var(--s) * 1px);
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: calc(2 * var(--s) * 1px) solid #e2e8f0;
+}
+
+.exec-compare-table th.th-axis { width: 22%; color: #0f172a; }
+.exec-compare-table th.th-before { color: #94a3b8; }
+.exec-compare-table th.th-after { color: #2563eb; }
+
+.exec-compare-table td {
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.exec-compare-table td.axis {
+  font-weight: 700;
+  color: #0f172a;
+  background: #fafafa;
+}
+
+.exec-compare-table td.after {
+  color: #1e40af;
+  font-weight: 600;
+  background: #f0f7ff;
+}
+
+/* =========================================================
    THEME: Feature (component explanation slides)
    ========================================================= */
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slide 7 - Guardrails</title>
+  <title>Slide 7 - 개선 ② 일반화 어려움 해결</title>
   <link rel="stylesheet" href="slide.css">
 </head>
 <body data-current="7" data-total="12">
@@ -11,89 +11,88 @@
   <div class="slide-viewport">
     <div class="slide-page theme-feature">
       <div class="feature-header">
-        <div class="feature-eyebrow">Harness &middot; 05</div>
-        <div class="feature-title">Guardrails <span style="color:#94a3b8; font-weight:600;">(+ HITL)</span></div>
-        <div class="feature-subtitle">안전 경계와 사람의 승인 — 위험한 행동 전에 멈추는 장치</div>
+        <div class="feature-eyebrow">개선 ② &middot; Generalization</div>
+        <div class="feature-title">일반화 어려움 해결</div>
+        <div class="feature-subtitle">다양한 사내·레거시 시스템에 대응하는 <strong>재사용 가능한 스킬 체계</strong></div>
       </div>
 
       <div class="feature-body">
         <div class="feature-visual">
           <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
-            <!-- Shield -->
-            <g transform="translate(90, 40)">
-              <path d="M70 0 L130 22 L130 100 Q130 160 70 190 Q10 160 10 100 L10 22 Z"
-                    fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
-              <path d="M45 100 L65 120 L100 80" stroke="#92400e" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <text x="70" y="220" font-size="13" fill="#92400e" text-anchor="middle" font-weight="700">Guardrails</text>
-            </g>
+            <!-- Root -->
+            <rect x="210" y="14" width="100" height="40" rx="8" fill="#3b82f6"/>
+            <text x="260" y="39" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">/agent</text>
 
-            <!-- Flow: Agent -> checkpoint -> action -->
-            <g transform="translate(260, 60)">
-              <!-- Agent -->
-              <rect x="0" y="0" width="90" height="42" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
-              <text x="45" y="27" font-size="13" fill="#065f46" text-anchor="middle" font-weight="700">Agent</text>
+            <!-- Connectors: root to domains -->
+            <path d="M260 54 L90 130" stroke="#cbd5e1" stroke-width="2" fill="none"/>
+            <path d="M260 54 L260 130" stroke="#cbd5e1" stroke-width="2" fill="none"/>
+            <path d="M260 54 L430 130" stroke="#cbd5e1" stroke-width="2" fill="none"/>
 
-              <!-- Arrow down -->
-              <path d="M45 42 L45 78" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow7)"/>
-              <defs>
-                <marker id="arrow7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="#cbd5e1"/>
-                </marker>
-              </defs>
+            <!-- Level 2: Domains -->
+            <rect x="30" y="130" width="120" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="90" y="159" font-size="13" fill="#1e40af" text-anchor="middle" font-weight="700">/mail</text>
 
-              <!-- Checkpoint -->
-              <rect x="-10" y="82" width="110" height="56" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/>
-              <text x="45" y="106" font-size="12" fill="#92400e" text-anchor="middle" font-weight="700">HITL</text>
-              <text x="45" y="124" font-size="10" fill="#92400e" text-anchor="middle">Checkpoint</text>
+            <rect x="200" y="130" width="120" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="260" y="159" font-size="13" fill="#1e40af" text-anchor="middle" font-weight="700">/legacy-erp</text>
 
-              <!-- Split -->
-              <path d="M45 138 L10 180" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow7)"/>
-              <path d="M45 138 L80 180" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow7)"/>
+            <rect x="370" y="130" width="120" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="430" y="159" font-size="13" fill="#1e40af" text-anchor="middle" font-weight="700">/meeting-room</text>
 
-              <!-- Allow -->
-              <rect x="-30" y="182" width="80" height="38" rx="8" fill="#d1fae5" stroke="#10b981"/>
-              <text x="10" y="206" font-size="12" fill="#065f46" text-anchor="middle" font-weight="700">Approve</text>
+            <!-- Level 3 connectors -->
+            <path d="M65 176 L55 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+            <path d="M110 176 L140 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+            <path d="M240 176 L210 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+            <path d="M290 176 L310 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+            <path d="M410 176 L395 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+            <path d="M450 176 L465 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
 
-              <!-- Block -->
-              <rect x="60" y="182" width="80" height="38" rx="8" fill="#fee2e2" stroke="#ef4444"/>
-              <text x="100" y="206" font-size="12" fill="#991b1b" text-anchor="middle" font-weight="700">Reject</text>
-            </g>
+            <!-- Level 3: Sub-skills -->
+            <rect x="14" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
+            <text x="54" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/compose</text>
 
-            <!-- Human icon -->
-            <g transform="translate(430, 100)">
-              <circle cx="20" cy="10" r="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
-              <path d="M0 50 Q0 28 20 28 Q40 28 40 50 L40 60 L0 60 Z" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
-              <text x="20" y="82" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="700">Human</text>
-              <path d="M0 50 L-30 80" stroke="#3b82f6" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#arrow7b)" fill="none"/>
-              <defs>
-                <marker id="arrow7b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="#3b82f6"/>
-                </marker>
-              </defs>
+            <rect x="100" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
+            <text x="140" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/reply</text>
+
+            <rect x="170" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
+            <text x="210" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/lookup</text>
+
+            <rect x="270" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
+            <text x="310" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/submit</text>
+
+            <rect x="355" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
+            <text x="395" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/search</text>
+
+            <rect x="441" y="220" width="60" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
+            <text x="471" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/book</text>
+
+            <!-- Deep link entry -->
+            <g transform="translate(130, 278)">
+              <rect x="0" y="0" width="260" height="36" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+              <text x="130" y="23" font-size="12" fill="#92400e" text-anchor="middle" font-weight="700">🔗 Deep Link &middot; 사이트별 진입점</text>
             </g>
           </svg>
         </div>
 
         <div class="feature-content">
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/users.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/link.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>다중 HITL 도구 도입</h4>
-              <p>승인·확인·중단 등 상황별 사람 개입 지점을 여러 레이어로 배치</p>
+              <h4>딥링크 시스템 + AutoResearch</h4>
+              <p>사내 시스템 검색 진입점 등록 &middot; <strong>AutoResearch로 성능 자가 개선</strong></p>
             </div>
           </div>
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/lock.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/wand-sparkles.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>민감 정보 수집 금지</h4>
-              <p>개인·결제·인증 정보는 프롬프트·로그에 남기지 않도록 차단</p>
+              <h4>AI 스킬 자동 작성 &middot; 빠른 적응</h4>
+              <p>매뉴얼 번역 &middot; 자동 생성 &middot; 사람 시연 기반으로 신규 시스템 즉시 대응</p>
             </div>
           </div>
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/shield-check.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/store.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>중요 액션 전 명시적 승인</h4>
-              <p>결제·삭제·외부 전송 등 비가역 행동은 실행 직전 사용자 확인</p>
+              <h4>스킬 마켓플레이스</h4>
+              <p>팀 간 스킬 공유·버전 관리로 조직 전체 대응력 확장</p>
             </div>
           </div>
         </div>

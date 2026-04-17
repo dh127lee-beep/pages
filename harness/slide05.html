@@ -3,93 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slide 5 - Memory</title>
+  <title>Slide 5 - Agent = Model + Harness</title>
   <link rel="stylesheet" href="slide.css">
 </head>
 <body data-current="5" data-total="12">
 
   <div class="slide-viewport">
-    <div class="slide-page theme-feature">
-      <div class="feature-header">
-        <div class="feature-eyebrow">Harness &middot; 03</div>
-        <div class="feature-title">Memory <span style="color:#94a3b8; font-weight:600;">(Short / Long Term)</span></div>
-        <div class="feature-subtitle">대화를 이어가는 단기 메모리와 축적되는 장기 메모리</div>
-      </div>
+    <div class="slide-page theme-body" style="padding: calc(60 * var(--s) * 1px) calc(96 * var(--s) * 1px);">
+      <div class="arch-diagram">
 
-      <div class="feature-body">
-        <div class="feature-visual">
-          <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
-            <!-- Short-term memory: RAM strip -->
-            <g>
-              <rect x="40" y="50" width="200" height="130" rx="10" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
-              <text x="140" y="78" font-size="14" fill="#1e40af" text-anchor="middle" font-weight="700">Short-term</text>
-              <text x="140" y="96" font-size="11" fill="#64748b" text-anchor="middle">Context Window</text>
+        <!-- Formula -->
+        <div class="arch-formula">Agent = Model + <span style="color:#3b82f6;">Harness</span></div>
 
-              <!-- RAM slots -->
-              <rect x="56" y="110" width="168" height="10" rx="2" fill="#dbeafe"/>
-              <rect x="56" y="124" width="168" height="10" rx="2" fill="#dbeafe"/>
-              <rect x="56" y="138" width="120" height="10" rx="2" fill="#bfdbfe"/>
-              <rect x="56" y="152" width="168" height="10" rx="2" fill="#dbeafe"/>
-              <circle cx="222" cy="143" r="5" fill="#10b981"/>
-            </g>
+        <!-- Outer Agent box -->
+        <div class="agent-outer">
 
-            <!-- Long-term: Database cylinder -->
-            <g>
-              <ellipse cx="380" cy="70" rx="70" ry="18" fill="#fff" stroke="#8b5cf6" stroke-width="2"/>
-              <path d="M310 70 L310 200 Q310 218 380 218 Q450 218 450 200 L450 70" fill="#fff" stroke="#8b5cf6" stroke-width="2"/>
-              <ellipse cx="380" cy="70" rx="70" ry="18" fill="#f5f3ff"/>
-              <ellipse cx="380" cy="110" rx="70" ry="18" fill="none" stroke="#c4b5fd" stroke-width="1" stroke-dasharray="3,3"/>
-              <ellipse cx="380" cy="150" rx="70" ry="18" fill="none" stroke="#c4b5fd" stroke-width="1" stroke-dasharray="3,3"/>
-              <text x="380" y="195" font-size="14" fill="#5b21b6" text-anchor="middle" font-weight="700">Long-term</text>
-              <text x="380" y="212" font-size="11" fill="#64748b" text-anchor="middle">Knowledge Base</text>
-            </g>
+          <div class="agent-inner">
+            <!-- Left: Harness -->
+            <div class="harness-outer">
+              <div class="harness-title">Harness</div>
 
-            <!-- Arrow between -->
-            <path d="M250 115 L305 115" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
-            <path d="M305 130 L250 130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow)" fill="none"/>
-            <defs>
-              <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
-              </marker>
-            </defs>
-            <text x="278" y="108" font-size="10" fill="#64748b" text-anchor="middle">save</text>
-            <text x="278" y="146" font-size="10" fill="#64748b" text-anchor="middle">recall</text>
-
-            <!-- Bottom tags -->
-            <rect x="60" y="260" width="110" height="28" rx="14" fill="#eff6ff"/>
-            <text x="115" y="279" font-size="12" fill="#1e40af" text-anchor="middle" font-weight="600">Conversation</text>
-
-            <rect x="190" y="260" width="140" height="28" rx="14" fill="#f5f3ff"/>
-            <text x="260" y="279" font-size="12" fill="#5b21b6" text-anchor="middle" font-weight="600">Institutional</text>
-
-            <rect x="350" y="260" width="120" height="28" rx="14" fill="#f5f3ff"/>
-            <text x="410" y="279" font-size="12" fill="#5b21b6" text-anchor="middle" font-weight="600">Auto-learned</text>
-          </svg>
-        </div>
-
-        <div class="feature-content">
-          <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/timer.svg" alt="" draggable="true"></div>
-            <div class="point-text">
-              <h4>Short-term</h4>
-              <p>현재 세션의 대화와 도구 호출 기록을 실시간으로 유지</p>
+              <div class="harness-grid">
+                <div class="harness-cell">System Prompt</div>
+                <div class="harness-cell">Hierarchical Skills</div>
+                <div class="harness-cell">Auto Compaction</div>
+                <div class="harness-cell">Memory (Short / Long Term)</div>
+                <div class="harness-cell">Guardrails (+ HITL)</div>
+                <div class="harness-cell">Evaluation Infra</div>
+                <div class="harness-cell">Sub-agent Management</div>
+                <div class="harness-cell">Hooks / Middleware</div>
+                <div class="harness-cell full-width">Tools</div>
+                <div class="harness-cell dashed square full-width">Web Browser</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/database.svg" alt="" draggable="true"></div>
-            <div class="point-text">
-              <h4>Long-term</h4>
-              <p>반복되는 패턴, 사용자 선호, 조직 지식을 축적</p>
-            </div>
-          </div>
-          <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/refresh-cw.svg" alt="" draggable="true"></div>
-            <div class="point-text">
-              <h4>Self-learning Loop</h4>
-              <p>세션 종료 시 중요한 정보를 자동으로 장기 기억으로 승격</p>
+
+            <!-- Plus -->
+            <div class="plus-sign">+</div>
+
+            <!-- Right: Model -->
+            <div class="model-box">
+              <div class="model-label">Model</div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

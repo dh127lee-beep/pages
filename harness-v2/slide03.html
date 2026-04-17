@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 3 - 4가지 개선</title>
+  <link rel="stylesheet" href="slide.css">
+</head>
+<body data-current="3" data-total="5">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <div class="title-bar">
+        <div class="tb-num">03</div>
+        <div class="tb-title">Harness 4가지 개선 &mdash; <span class="accent">핵심 메커니즘</span></div>
+        <div class="tb-sub">각 문제별 실제 솔루션<br>사용한 기법</div>
+      </div>
+
+      <div class="imp-grid">
+
+        <!-- ① 불확실성 -->
+        <div class="imp-col">
+          <div class="i-num">① UNCERTAINTY</div>
+          <div class="i-title">증거 기반 실행</div>
+          <div class="i-problem">페이지 상태·액션 결과의 일관성 부족</div>
+          <div class="i-points">
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/mouse-pointer-click.svg" alt="">
+              <span><strong>브라우저 도구 &amp; Middleware</strong>상태 불완전성 보완, 일관된 액션 결과</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/refresh-cw.svg" alt="">
+              <span><strong>System Prompt + HITL</strong>관찰&rarr;판단&rarr;행동 루프, 비가역 확인</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/activity.svg" alt="">
+              <span><strong>Observability &rarr; Evolution</strong>Trace 기반 자동 개선 루프</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/rabbit.svg" alt="">
+              <span><strong>Rabbit Hole 방지</strong>반복·무한 루프 감지, 폴백 로직</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ② 일반화 -->
+        <div class="imp-col">
+          <div class="i-num">② GENERALIZATION</div>
+          <div class="i-title">스킬 생태계</div>
+          <div class="i-problem">다양한 사내·레거시 시스템 대응 불가</div>
+          <div class="i-points">
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/link.svg" alt="">
+              <span><strong>딥링크 + AutoResearch</strong>사내 검색 진입점, 성능 자가 개선</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/wand-sparkles.svg" alt="">
+              <span><strong>AI 스킬 자동 작성</strong>매뉴얼 번역, 자동 생성, 사람 시연</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/git-branch.svg" alt="">
+              <span><strong>Hierarchical Skills</strong>도메인별 재사용 가능한 스킬 트리</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/store.svg" alt="">
+              <span><strong>Skill Marketplace</strong>팀 간 공유 &middot; 버전 관리</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ 긴 업무 -->
+        <div class="imp-col">
+          <div class="i-num">③ LONG WORKFLOW</div>
+          <div class="i-title">장기 실행 구조</div>
+          <div class="i-problem">멀티 시스템 &middot; 수십 스텝 작업 중단</div>
+          <div class="i-points">
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/database.svg" alt="">
+              <span><strong>Memory (단기/장기)</strong>세션 흐름 + 조직 지식 축적</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/list-checks.svg" alt="">
+              <span><strong>To-Do 도구</strong>업무 분해·추적, 중단 후 재개</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/share-2.svg" alt="">
+              <span><strong>Sub-agent 연계</strong>시스템별 병렬 실행 &middot; 결과 통합</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/minimize-2.svg" alt="">
+              <span><strong>Auto Compaction</strong>긴 컨텍스트 유지 &middot; 요약</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ④ 효율/속도 -->
+        <div class="imp-col">
+          <div class="i-num">④ SPEED</div>
+          <div class="i-title">실행 효율화</div>
+          <div class="i-problem">한 스텝씩 예측 &middot; 과다 스냅샷 지연</div>
+          <div class="i-points">
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/wand-sparkles.svg" alt="">
+              <span><strong>AutoHarness</strong>WebMCP 자동 추출 &mdash; 첫번째</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/puzzle.svg" alt="">
+              <span><strong>WebMCP</strong>멀티 스텝 번들 실행</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/zap.svg" alt="">
+              <span><strong>URL 코드 Injection</strong>페이지 직접 주입 실행</span>
+            </div>
+            <div class="i-point">
+              <img src="https://unpkg.com/lucide-static@latest/icons/minimize-2.svg" alt="">
+              <span><strong>스냅샷 효율화</strong>필요한 정보만 추출 &middot; 압축</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>

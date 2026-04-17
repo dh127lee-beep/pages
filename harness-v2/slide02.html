@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 2 - 아키텍처 &amp; 4가지 접근</title>
+  <link rel="stylesheet" href="slide.css">
+</head>
+<body data-current="2" data-total="5">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <div class="title-bar">
+        <div class="tb-num">02</div>
+        <div class="tb-title">Agent = <span class="accent">Model + Harness</span> &mdash; 4가지 접근</div>
+        <div class="tb-sub">"모델" 개선이 아닌<br>"시스템"으로 풀어낸 해법</div>
+      </div>
+
+      <div class="p2-main">
+
+        <!-- LEFT: Architecture -->
+        <div class="arch-panel">
+          <div class="arch-formula">Agent = Model + <span class="accent">Harness</span></div>
+          <div class="agent-outer">
+            <div class="harness">
+              <div class="harness-label">Harness</div>
+              <div class="h-grid">
+                <div class="h-cell">System Prompt</div>
+                <div class="h-cell">Hierarchical Skills</div>
+                <div class="h-cell">Auto Compaction</div>
+                <div class="h-cell">Memory (S/L)</div>
+                <div class="h-cell">Guardrails (HITL)</div>
+                <div class="h-cell">Evaluation Infra</div>
+                <div class="h-cell">Sub-agent Mgmt</div>
+                <div class="h-cell">Hooks / Middleware</div>
+                <div class="h-cell full">Tools</div>
+                <div class="h-cell full dashed">Web Browser</div>
+              </div>
+            </div>
+            <div class="plus">+</div>
+            <div class="model-box">Model</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: 4 approach cards (2x2) -->
+        <div class="approaches">
+          <div class="approach">
+            <div class="a-num">① UNCERTAINTY</div>
+            <div class="a-problem">브라우저의 불확실성</div>
+            <div class="a-title">증거 기반 실행</div>
+            <div class="a-tags">
+              <span class="a-tag">브라우저 도구</span>
+              <span class="a-tag">Middleware</span>
+              <span class="a-tag">System Prompt</span>
+              <span class="a-tag">HITL</span>
+              <span class="a-tag">Observability</span>
+              <span class="a-tag">Rabbit Hole 방지</span>
+            </div>
+          </div>
+
+          <div class="approach">
+            <div class="a-num">② GENERALIZATION</div>
+            <div class="a-problem">일반화의 어려움</div>
+            <div class="a-title">스킬 생태계</div>
+            <div class="a-tags">
+              <span class="a-tag">Skills</span>
+              <span class="a-tag">딥링크</span>
+              <span class="a-tag">AutoResearch</span>
+              <span class="a-tag">AI 스킬 작성</span>
+              <span class="a-tag">Marketplace</span>
+            </div>
+          </div>
+
+          <div class="approach">
+            <div class="a-num">③ LONG WORKFLOW</div>
+            <div class="a-problem">긴 업무 &middot; 연계 불가</div>
+            <div class="a-title">장기 실행 구조</div>
+            <div class="a-tags">
+              <span class="a-tag">Memory (S/L)</span>
+              <span class="a-tag">To-Do</span>
+              <span class="a-tag">Sub-agent</span>
+              <span class="a-tag">Auto Compaction</span>
+              <span class="a-tag">체크포인트</span>
+            </div>
+          </div>
+
+          <div class="approach">
+            <div class="a-num">④ SPEED</div>
+            <div class="a-problem">비효율 &middot; 속도 이슈</div>
+            <div class="a-title">실행 효율화</div>
+            <div class="a-tags">
+              <span class="a-tag">AutoHarness</span>
+              <span class="a-tag">WebMCP</span>
+              <span class="a-tag">스냅샷 압축</span>
+              <span class="a-tag">URL Injection</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>

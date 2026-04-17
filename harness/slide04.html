@@ -3,99 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slide 4 - Hierarchical Skills</title>
+  <title>Slide 4 - 핵심 개선 방향</title>
   <link rel="stylesheet" href="slide.css">
 </head>
 <body data-current="4" data-total="12">
 
   <div class="slide-viewport">
-    <div class="slide-page theme-feature">
-      <div class="feature-header">
-        <div class="feature-eyebrow">Harness &middot; 02</div>
-        <div class="feature-title">Hierarchical Skills</div>
-        <div class="feature-subtitle">Skills이 Skills를 호출 — 컴포저블한 능력의 체인</div>
+    <div class="slide-page theme-exec">
+      <div class="exec-header">
+        <div class="exec-eyebrow">03 &middot; Direction</div>
+        <div class="exec-title">4가지 문제 &rarr; 4가지 Harness 접근</div>
+        <div class="exec-subtitle">&ldquo;모델&rdquo; 개선을 기다리지 않고 <strong>&ldquo;에이전트 시스템&rdquo;</strong>으로 풀어낸다</div>
       </div>
 
-      <div class="feature-body">
-        <div class="feature-visual">
-          <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
-            <!-- Root -->
-            <rect x="210" y="14" width="100" height="40" rx="8" fill="#3b82f6"/>
-            <text x="260" y="39" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">/agent</text>
+      <div class="exec-body">
+        <div class="pa-grid">
 
-            <!-- Connectors: root to domains -->
-            <path d="M260 54 L90 130" stroke="#cbd5e1" stroke-width="2" fill="none"/>
-            <path d="M260 54 L260 130" stroke="#cbd5e1" stroke-width="2" fill="none"/>
-            <path d="M260 54 L430 130" stroke="#cbd5e1" stroke-width="2" fill="none"/>
+          <!-- ① 불확실성 → 증거 기반 실행 -->
+          <div class="pa-card">
+            <div class="pa-num">① UNCERTAINTY</div>
+            <div class="pa-problem">브라우저의 불확실성</div>
+            <div class="pa-approach">증거 기반 실행 구조</div>
+            <div class="pa-tags">
+              <span class="pa-tag">브라우저 도구</span>
+              <span class="pa-tag">Hook / Middleware</span>
+              <span class="pa-tag">System Prompt</span>
+              <span class="pa-tag">HITL</span>
+              <span class="pa-tag">Observability</span>
+              <span class="pa-tag">Rabbit Hole 방지</span>
+            </div>
+          </div>
 
-            <!-- Level 2: Domains -->
-            <!-- Mail -->
-            <rect x="30" y="130" width="120" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-            <text x="90" y="159" font-size="13" fill="#1e40af" text-anchor="middle" font-weight="700">/mail</text>
+          <!-- ② 일반화 → 스킬 생태계 -->
+          <div class="pa-card">
+            <div class="pa-num">② GENERALIZATION</div>
+            <div class="pa-problem">일반화의 어려움</div>
+            <div class="pa-approach">스킬 생태계</div>
+            <div class="pa-tags">
+              <span class="pa-tag">Hierarchical Skills</span>
+              <span class="pa-tag">딥링크 &middot; 사이트 검색</span>
+              <span class="pa-tag">AutoResearch</span>
+              <span class="pa-tag">AI 스킬 작성</span>
+              <span class="pa-tag">Skill Marketplace</span>
+            </div>
+          </div>
 
-            <!-- Calendar -->
-            <rect x="200" y="130" width="120" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-            <text x="260" y="159" font-size="13" fill="#1e40af" text-anchor="middle" font-weight="700">/calendar</text>
+          <!-- ③ 긴 업무 → 장기 실행 구조 -->
+          <div class="pa-card">
+            <div class="pa-num">③ LONG WORKFLOW</div>
+            <div class="pa-problem">긴 업무 &middot; 시스템 연계 불가</div>
+            <div class="pa-approach">장기 실행 구조</div>
+            <div class="pa-tags">
+              <span class="pa-tag">Memory (단/장기)</span>
+              <span class="pa-tag">To-Do 도구</span>
+              <span class="pa-tag">Sub-agent</span>
+              <span class="pa-tag">Auto Compaction</span>
+              <span class="pa-tag">체크포인트 &middot; 재개</span>
+            </div>
+          </div>
 
-            <!-- Meeting Room -->
-            <rect x="370" y="130" width="120" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-            <text x="430" y="159" font-size="13" fill="#1e40af" text-anchor="middle" font-weight="700">/meeting-room</text>
+          <!-- ④ 비효율·속도 → 실행 효율화 -->
+          <div class="pa-card">
+            <div class="pa-num">④ SPEED</div>
+            <div class="pa-problem">비효율성 &middot; 속도 이슈</div>
+            <div class="pa-approach">실행 효율화</div>
+            <div class="pa-tags">
+              <span class="pa-tag">AutoHarness</span>
+              <span class="pa-tag">WebMCP</span>
+              <span class="pa-tag">스냅샷 &middot; 스크린샷 압축</span>
+              <span class="pa-tag">URL 코드 Injection</span>
+            </div>
+          </div>
 
-            <!-- Level 3 connectors -->
-            <path d="M65 176 L55 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
-            <path d="M110 176 L140 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
-            <path d="M240 176 L210 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
-            <path d="M290 176 L310 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
-            <path d="M410 176 L395 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
-            <path d="M450 176 L465 220" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
-
-            <!-- Level 3: Sub-skills -->
-            <!-- /mail children -->
-            <rect x="14" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
-            <text x="54" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/compose</text>
-
-            <rect x="100" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
-            <text x="140" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/reply</text>
-
-            <!-- /calendar children -->
-            <rect x="170" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
-            <text x="210" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/find-slot</text>
-
-            <rect x="270" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
-            <text x="310" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/create</text>
-
-            <!-- /meeting-room children -->
-            <rect x="355" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
-            <text x="395" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/search</text>
-
-            <rect x="441" y="220" width="60" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/>
-            <text x="471" y="239" font-size="11" fill="#1e40af" text-anchor="middle">/book</text>
-
-          </svg>
         </div>
 
-        <div class="feature-content">
-          <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/sparkles.svg" alt="" draggable="true"></div>
-            <div class="point-text">
-              <h4>Auto-choosing</h4>
-              <p>컨텍스트에 따라 적절한 하위 스킬을 스스로 선택</p>
-            </div>
-          </div>
-          <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/git-branch.svg" alt="" draggable="true"></div>
-            <div class="point-text">
-              <h4>Composable Chain</h4>
-              <p>복잡한 작업을 선언적 파이프라인으로 조합</p>
-            </div>
-          </div>
-          <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/store.svg" alt="" draggable="true"></div>
-            <div class="point-text">
-              <h4>스킬 생성 &amp; 마켓플레이스</h4>
-              <p>AI 자동 작성·검증·수정, 매뉴얼·시연 기반 생성, 마켓플레이스 운영</p>
-            </div>
-          </div>
+        <div class="exec-punchline">
+          Model은 공용 자산 &mdash; 우리의 경쟁력은 <span class="accent">Harness Engineering</span>에서 나온다
         </div>
       </div>
     </div>

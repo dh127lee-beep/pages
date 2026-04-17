@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slide 9 - Sub-agent Management</title>
+  <title>Slide 9 - 개선 ④ 비효율성 · 속도 해결</title>
   <link rel="stylesheet" href="slide.css">
 </head>
 <body data-current="9" data-total="12">
@@ -11,102 +11,104 @@
   <div class="slide-viewport">
     <div class="slide-page theme-feature">
       <div class="feature-header">
-        <div class="feature-eyebrow">Harness &middot; 07</div>
-        <div class="feature-title">Sub-agent Management</div>
-        <div class="feature-subtitle">필요에 따라 전문 에이전트를 소환하고 조율한다</div>
+        <div class="feature-eyebrow">개선 ④ &middot; Speed &amp; Efficiency</div>
+        <div class="feature-title">비효율성 &middot; 속도 이슈 해결</div>
+        <div class="feature-subtitle">스냅샷·스크린샷을 <strong>최소 정보로 압축</strong>하고 멀티 스텝을 묶어 실행</div>
       </div>
 
       <div class="feature-body">
         <div class="feature-visual">
           <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- Long context before -->
+            <g>
+              <text x="90" y="30" font-size="11" fill="#64748b" font-weight="700">BEFORE</text>
+              <rect x="30" y="42" width="160" height="180" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+              <g fill="#e2e8f0">
+                <rect x="46" y="58" width="128" height="7" rx="2"/>
+                <rect x="46" y="70" width="100" height="7" rx="2"/>
+                <rect x="46" y="82" width="128" height="7" rx="2"/>
+                <rect x="46" y="94" width="90" height="7" rx="2"/>
+                <rect x="46" y="106" width="128" height="7" rx="2"/>
+                <rect x="46" y="118" width="108" height="7" rx="2"/>
+                <rect x="46" y="130" width="128" height="7" rx="2"/>
+                <rect x="46" y="142" width="96" height="7" rx="2"/>
+                <rect x="46" y="154" width="128" height="7" rx="2"/>
+                <rect x="46" y="166" width="100" height="7" rx="2"/>
+                <rect x="46" y="178" width="128" height="7" rx="2"/>
+                <rect x="46" y="190" width="88" height="7" rx="2"/>
+                <rect x="46" y="202" width="120" height="7" rx="2"/>
+              </g>
+              <text x="110" y="240" font-size="10" fill="#94a3b8" text-anchor="middle">스냅샷 &middot; 스크린샷 과다</text>
+            </g>
+
+            <!-- Gear / compaction arrow -->
             <defs>
-              <marker id="arrow9" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#3b82f6"/>
+              <marker id="arr9" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#f59e0b"/>
               </marker>
             </defs>
+            <g transform="translate(265, 132)">
+              <path d="M-75 0 L-30 0" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr9)" fill="none"/>
+              <circle cx="0" cy="0" r="24" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+              <text x="0" y="8" font-size="22" text-anchor="middle">&#9881;</text>
+              <path d="M26 0 L75 0" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr9)" fill="none"/>
+            </g>
 
-            <!-- User task bubble -->
-            <rect x="140" y="8" width="240" height="30" rx="15" fill="#f1f5f9" stroke="#cbd5e1"/>
-            <text x="260" y="28" font-size="11" fill="#334155" text-anchor="middle">&ldquo;다음주 팀 점심 일정 잡아줘&rdquo;</text>
-
-            <!-- Main Browser Agent -->
+            <!-- Compacted after -->
             <g>
-              <rect x="190" y="52" width="140" height="58" rx="10" fill="#1e40af"/>
-              <text x="260" y="76" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">Browser Agent</text>
-              <text x="260" y="94" font-size="10" fill="#bfdbfe" text-anchor="middle">Orchestrator</text>
-              <text x="260" y="128" font-size="10" fill="#64748b" text-anchor="middle" font-style="italic">delegates to domain sub-agents</text>
+              <text x="420" y="30" font-size="11" fill="#10b981" font-weight="700">AFTER</text>
+              <rect x="340" y="80" width="160" height="84" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+              <g fill="#a7f3d0">
+                <rect x="356" y="96" width="128" height="9" rx="2"/>
+                <rect x="356" y="112" width="108" height="9" rx="2"/>
+                <rect x="356" y="128" width="128" height="9" rx="2"/>
+                <rect x="356" y="144" width="90" height="9" rx="2"/>
+              </g>
+              <rect x="370" y="182" width="100" height="22" rx="11" fill="#10b981"/>
+              <text x="420" y="197" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">compact view</text>
             </g>
 
-            <!-- Spawn arrows -->
-            <path d="M220 110 L90 170" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow9)" fill="none"/>
-            <path d="M260 110 L260 170" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow9)" fill="none"/>
-            <path d="M300 110 L430 170" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow9)" fill="none"/>
-
-            <!-- Sub-agent 1: Calendar -->
-            <g transform="translate(30, 170)">
-              <rect x="0" y="0" width="120" height="96" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-              <!-- mini calendar icon -->
-              <rect x="44" y="12" width="32" height="28" rx="3" fill="#fff" stroke="#3b82f6" stroke-width="1.5"/>
-              <line x1="44" y1="20" x2="76" y2="20" stroke="#3b82f6" stroke-width="1.5"/>
-              <circle cx="53" cy="30" r="1.5" fill="#3b82f6"/>
-              <circle cx="60" cy="30" r="1.5" fill="#3b82f6"/>
-              <circle cx="67" cy="30" r="1.5" fill="#3b82f6"/>
-              <text x="60" y="58" font-size="12" fill="#1e40af" text-anchor="middle" font-weight="700">Calendar</text>
-              <text x="60" y="74" font-size="9" fill="#64748b" text-anchor="middle">가용 시간 탐색</text>
-              <text x="60" y="87" font-size="9" fill="#64748b" text-anchor="middle">일정 생성</text>
+            <!-- WebMCP multi-step -->
+            <g transform="translate(30, 260)">
+              <rect x="0" y="0" width="460" height="54" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+              <text x="18" y="22" font-size="12" fill="#5b21b6" font-weight="700">WebMCP &middot; multi-step bundling</text>
+              <text x="18" y="40" font-size="11" fill="#64748b">여러 스텝을 한 번에 묶어 실행 &middot; URL 기반 코드 Injection</text>
+              <!-- step dots -->
+              <g>
+                <circle cx="300" cy="32" r="5" fill="#8b5cf6"/>
+                <line x1="305" y1="32" x2="325" y2="32" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="330" cy="32" r="5" fill="#8b5cf6"/>
+                <line x1="335" y1="32" x2="355" y2="32" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="360" cy="32" r="5" fill="#8b5cf6"/>
+                <line x1="365" y1="32" x2="385" y2="32" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="390" cy="32" r="5" fill="#8b5cf6"/>
+                <rect x="398" y="22" width="52" height="20" rx="10" fill="#8b5cf6"/>
+                <text x="424" y="36" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">bundle</text>
+              </g>
             </g>
-
-            <!-- Sub-agent 2: Restaurant Research -->
-            <g transform="translate(200, 170)">
-              <rect x="0" y="0" width="120" height="96" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
-              <!-- magnifier icon -->
-              <circle cx="54" cy="26" r="10" fill="#fff" stroke="#10b981" stroke-width="2"/>
-              <line x1="62" y1="34" x2="70" y2="42" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
-              <text x="60" y="58" font-size="12" fill="#065f46" text-anchor="middle" font-weight="700">Research</text>
-              <text x="60" y="74" font-size="9" fill="#64748b" text-anchor="middle">식당 검색 &amp; 비교</text>
-              <text x="60" y="87" font-size="9" fill="#64748b" text-anchor="middle">리뷰 요약</text>
-            </g>
-
-            <!-- Sub-agent 3: Mail -->
-            <g transform="translate(370, 170)">
-              <rect x="0" y="0" width="120" height="96" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-              <!-- mail icon -->
-              <rect x="44" y="14" width="32" height="22" rx="2" fill="#fff" stroke="#f59e0b" stroke-width="1.5"/>
-              <path d="M44 16 L60 28 L76 16" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
-              <text x="60" y="58" font-size="12" fill="#92400e" text-anchor="middle" font-weight="700">Mail</text>
-              <text x="60" y="74" font-size="9" fill="#64748b" text-anchor="middle">참석자에게 초대</text>
-              <text x="60" y="87" font-size="9" fill="#64748b" text-anchor="middle">응답 수집</text>
-            </g>
-
-            <!-- Return arrows (curved back to orchestrator) -->
-            <path d="M90 266 Q 100 300 250 300" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
-            <path d="M260 266 L260 300" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
-            <path d="M430 266 Q 420 300 270 300" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
-
-            <text x="260" y="322" font-size="11" fill="#64748b" text-anchor="middle" font-style="italic">parallel execution &middot; merged into one answer</text>
           </svg>
         </div>
 
         <div class="feature-content">
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/share-2.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/wand-sparkles.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>Delegation</h4>
-              <p>서브태스크를 전문 에이전트에 위임 — 컨텍스트 분리</p>
+              <h4>AutoHarness &rarr; WebMCP 자동 추출</h4>
+              <p>업무 흐름을 관찰해 <strong>WebMCP를 자동 생성</strong> &mdash; 사람이 만들지 않아도 확장</p>
             </div>
           </div>
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/zap.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/minimize-2.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>Parallel Execution</h4>
-              <p>독립된 작업은 병렬로 실행해 전체 레이턴시 단축</p>
+              <h4>스냅샷 &middot; 스크린샷 효율화</h4>
+              <p>필요한 정보만 추려 Auto Compaction &mdash; 지연·비용 최소화</p>
             </div>
           </div>
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/package.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/puzzle.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>Context Isolation</h4>
-              <p>각 서브에이전트가 자신만의 토큰 예산으로 작동</p>
+              <h4>WebMCP &middot; 멀티 스텝 &amp; URL 코드 Injection</h4>
+              <p>여러 스텝을 묶어 한 번에 실행 &middot; URL 기반 코드 주입으로 왕복 최소화</p>
             </div>
           </div>
         </div>

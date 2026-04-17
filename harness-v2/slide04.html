@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 4 - 결과 &amp; 기존 대비 고민</title>
+  <link rel="stylesheet" href="slide.css">
+</head>
+<body data-current="4" data-total="5">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <div class="title-bar">
+        <div class="tb-num">04</div>
+        <div class="tb-title">개선 결과 &amp; <span class="accent">기존 에이전트 대비 우리의 고민</span></div>
+        <div class="tb-sub">Results<br>Differentiation</div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="metrics">
+        <div class="metric">
+          <div class="m-label">작업 성공률</div>
+          <div class="m-value">97<span class="u">%</span></div>
+          <div class="m-note">Baseline 92% &rarr; 97%</div>
+        </div>
+        <div class="metric">
+          <div class="m-label">처리 시간</div>
+          <div class="m-value">&minus;62<span class="u">%</span></div>
+          <div class="m-note">반복 업무 처리 시간 단축</div>
+        </div>
+        <div class="metric">
+          <div class="m-label">멀티 스텝 완주</div>
+          <div class="m-value">31<span class="u">step</span></div>
+          <div class="m-note">연속 스텝 안정 수행</div>
+        </div>
+        <div class="metric">
+          <div class="m-label">적용 시스템</div>
+          <div class="m-value">10+</div>
+          <div class="m-note">사내 주요 시스템 대응</div>
+        </div>
+      </div>
+
+      <!-- Comparison -->
+      <div class="compare">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th class="th-axis">고민 포인트</th>
+              <th class="th-before">기존 에이전트</th>
+              <th class="th-after">Harness Agent (우리)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="axis">재현 가능성</td>
+              <td>같은 입력에도 매번 다른 결과</td>
+              <td class="after">Skills &middot; Memory &middot; KV-cache 기반 일관성 확보</td>
+            </tr>
+            <tr>
+              <td class="axis">장시간 작업</td>
+              <td>수 분 대화 수준에 국한</td>
+              <td class="after">시간·일 단위 Long-running workflow 지원</td>
+            </tr>
+            <tr>
+              <td class="axis">사내 시스템 특화</td>
+              <td>범용 검색 &middot; 범용 툴에 의존</td>
+              <td class="after">사내 시스템 Skill Marketplace로 지식 축적</td>
+            </tr>
+            <tr>
+              <td class="axis">안전성 &amp; 거버넌스</td>
+              <td>사후 로그 확인 중심</td>
+              <td class="after">다중 HITL + 민감정보 차단 + 감사 추적</td>
+            </tr>
+            <tr>
+              <td class="axis">운영성</td>
+              <td>개선은 사람이 수동으로</td>
+              <td class="after">Observability + Eval + Auto Research 자동 루프</td>
+            </tr>
+            <tr>
+              <td class="axis">확장성</td>
+              <td>단일 에이전트 &middot; 고정 파이프라인</td>
+              <td class="after">Sub-agent + Middleware로 조직 전체 확장</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>

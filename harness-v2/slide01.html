@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 1 - 목표 &amp; 기존 한계</title>
+  <link rel="stylesheet" href="slide.css">
+</head>
+<body data-current="1" data-total="5">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <!-- Title bar -->
+      <div class="title-bar">
+        <div class="tb-num">01</div>
+        <div class="tb-title">Agent Harness Engineering <span class="accent">for Browser Agent</span></div>
+        <div class="tb-sub">Development Group<br>2026.04</div>
+      </div>
+
+      <!-- Main split: Goals (left) + Problems (right) -->
+      <div class="p1-main">
+
+        <!-- LEFT: Goals -->
+        <div class="col">
+          <div class="section-label">프로젝트 목표</div>
+          <div class="goals">
+            <div class="goal-item">
+              <div class="g-icon"><img src="https://unpkg.com/lucide-static@latest/icons/building-2.svg" alt=""></div>
+              <div class="g-text">
+                <div class="g-title">사내 시스템 특화</div>
+                <div class="g-desc">범용 AI가 아닌 우리 조직의 도구·데이터에 맞춰 동작하는 전용 에이전트</div>
+              </div>
+            </div>
+            <div class="goal-item">
+              <div class="g-icon"><img src="https://unpkg.com/lucide-static@latest/icons/network.svg" alt=""></div>
+              <div class="g-text">
+                <div class="g-title">수많은 시스템 &middot; 레거시까지 직접 실행</div>
+                <div class="g-desc">최신·레거시 구분 없이 사내 모든 시스템을 브라우저에서 직접 조작</div>
+              </div>
+            </div>
+            <div class="goal-item">
+              <div class="g-icon"><img src="https://unpkg.com/lucide-static@latest/icons/layout-grid.svg" alt=""></div>
+              <div class="g-text">
+                <div class="g-title">다양한 업무 활동 통합 지원</div>
+                <div class="g-desc">조회 &middot; 입력 &middot; 결재 &middot; 협업 등 브라우저 기반 활동을 End-to-End로</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Problems -->
+        <div class="col">
+          <div class="section-label">기존 에이전트 접근법의 한계</div>
+          <div class="problems">
+            <div class="problem-item">
+              <div class="p-icon"><img src="https://unpkg.com/lucide-static@latest/icons/shuffle.svg" alt=""></div>
+              <div class="p-text">
+                <div class="p-title">브라우저의 불확실성</div>
+                <div class="p-desc">페이지 상태·액션 결과가 매번 달라 실행 결과의 일관성 확보 어려움</div>
+              </div>
+            </div>
+            <div class="problem-item">
+              <div class="p-icon"><img src="https://unpkg.com/lucide-static@latest/icons/grid-2x2-x.svg" alt=""></div>
+              <div class="p-text">
+                <div class="p-title">일반화의 어려움</div>
+                <div class="p-desc">다양한 사내·레거시 시스템에 동일 방식으로 대응 불가</div>
+              </div>
+            </div>
+            <div class="problem-item">
+              <div class="p-icon"><img src="https://unpkg.com/lucide-static@latest/icons/link-2-off.svg" alt=""></div>
+              <div class="p-text">
+                <div class="p-title">긴 업무 &middot; 시스템 연계 불가</div>
+                <div class="p-desc">수십 스텝의 멀티 시스템 작업에서 컨텍스트 소실·연결 고리 끊김</div>
+              </div>
+            </div>
+            <div class="problem-item">
+              <div class="p-icon"><img src="https://unpkg.com/lucide-static@latest/icons/gauge.svg" alt=""></div>
+              <div class="p-text">
+                <div class="p-title">비효율성 &middot; 속도 이슈</div>
+                <div class="p-desc">사용자 행동을 한 스텝씩 예측, 스냅샷·스크린샷 과다로 지연 발생</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="punchline">
+        실험 단계 AI &rarr; <span class="accent">실제 업무 가능한 에이전트</span>로 전환
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <div class="keyboard-hint">&larr; &rarr; 키로 이동할 수 있습니다</div>
+  <script src="slide.js"></script>
+</body>
+</html>

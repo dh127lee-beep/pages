@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slide 6 - Auto Compaction</title>
+  <title>Slide 6 - 개선 ① 브라우저의 불확실성 해결</title>
   <link rel="stylesheet" href="slide.css">
 </head>
 <body data-current="6" data-total="12">
@@ -11,93 +11,89 @@
   <div class="slide-viewport">
     <div class="slide-page theme-feature">
       <div class="feature-header">
-        <div class="feature-eyebrow">Harness &middot; 04</div>
-        <div class="feature-title">Auto Compaction</div>
-        <div class="feature-subtitle">긴 컨텍스트를 자동으로 요약·압축하여 창을 관리</div>
+        <div class="feature-eyebrow">개선 ① &middot; Browser Uncertainty</div>
+        <div class="feature-title">브라우저의 불확실성 해결</div>
+        <div class="feature-subtitle">상태·액션 결과의 일관성 확보 &mdash; 추측이 아닌 <strong>증거 기반 실행</strong></div>
       </div>
 
       <div class="feature-body">
         <div class="feature-visual">
           <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
-            <!-- Long context before -->
-            <g>
-              <text x="90" y="40" font-size="12" fill="#64748b" font-weight="600">BEFORE</text>
-              <rect x="30" y="52" width="160" height="240" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
-              <g fill="#e2e8f0">
-                <rect x="46" y="68" width="128" height="8" rx="2"/>
-                <rect x="46" y="82" width="100" height="8" rx="2"/>
-                <rect x="46" y="96" width="128" height="8" rx="2"/>
-                <rect x="46" y="110" width="90" height="8" rx="2"/>
-                <rect x="46" y="124" width="120" height="8" rx="2"/>
-                <rect x="46" y="138" width="128" height="8" rx="2"/>
-                <rect x="46" y="152" width="108" height="8" rx="2"/>
-                <rect x="46" y="166" width="128" height="8" rx="2"/>
-                <rect x="46" y="180" width="96" height="8" rx="2"/>
-                <rect x="46" y="194" width="128" height="8" rx="2"/>
-                <rect x="46" y="208" width="100" height="8" rx="2"/>
-                <rect x="46" y="222" width="128" height="8" rx="2"/>
-                <rect x="46" y="236" width="88" height="8" rx="2"/>
-                <rect x="46" y="250" width="120" height="8" rx="2"/>
-                <rect x="46" y="264" width="108" height="8" rx="2"/>
-                <rect x="46" y="278" width="100" height="8" rx="2"/>
-              </g>
-              <text x="110" y="308" font-size="10" fill="#94a3b8" text-anchor="middle">~100k tokens</text>
-            </g>
+            <!-- OS window (Windows style) -->
+            <rect x="30" y="30" width="460" height="280" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+            <rect x="30" y="30" width="460" height="36" fill="#f1f5f9"/>
+            <text x="46" y="53" font-size="13" fill="#334155" font-family="'Segoe UI', sans-serif">browser-agent.loop</text>
+            <line x1="408" y1="50" x2="420" y2="50" stroke="#475569" stroke-width="1.5"/>
+            <rect x="440" y="42" width="12" height="12" fill="none" stroke="#475569" stroke-width="1.5"/>
+            <line x1="470" y1="42" x2="482" y2="54" stroke="#475569" stroke-width="1.5"/>
+            <line x1="482" y1="42" x2="470" y2="54" stroke="#475569" stroke-width="1.5"/>
 
-            <!-- Arrow with gear (centered between BEFORE and AFTER) -->
+            <!-- Observe → Decide → Act loop -->
             <defs>
-              <marker id="arrow6" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-                <path d="M0,0 L10,5 L0,10 Z" fill="#f59e0b"/>
+              <marker id="arr6" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#3b82f6"/>
               </marker>
             </defs>
-            <g transform="translate(265, 172)">
-              <!-- Left arrow into gear -->
-              <path d="M-75 0 L-30 0" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow6)" fill="none"/>
-              <!-- Gear circle -->
-              <circle cx="0" cy="0" r="24" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-              <text x="0" y="8" font-size="22" text-anchor="middle">&#9881;</text>
-              <!-- Right arrow out of gear -->
-              <path d="M26 0 L75 0" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow6)" fill="none"/>
-            </g>
 
-            <!-- Compacted after -->
-            <g>
-              <text x="400" y="40" font-size="12" fill="#10b981" font-weight="600">AFTER</text>
-              <rect x="340" y="120" width="160" height="104" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
-              <g fill="#a7f3d0">
-                <rect x="356" y="136" width="128" height="10" rx="2"/>
-                <rect x="356" y="152" width="108" height="10" rx="2"/>
-                <rect x="356" y="168" width="128" height="10" rx="2"/>
-                <rect x="356" y="184" width="90" height="10" rx="2"/>
-                <rect x="356" y="200" width="118" height="10" rx="2"/>
-              </g>
-              <text x="420" y="246" font-size="10" fill="#065f46" text-anchor="middle">~12k tokens</text>
-              <rect x="370" y="256" width="100" height="22" rx="11" fill="#10b981"/>
-              <text x="420" y="271" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">summarized</text>
+            <!-- Observe -->
+            <rect x="70" y="110" width="120" height="56" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="130" y="134" font-size="14" fill="#1e40af" text-anchor="middle" font-weight="700">Observe</text>
+            <text x="130" y="152" font-size="11" fill="#64748b" text-anchor="middle">브라우저 상태 파악</text>
+
+            <!-- Decide -->
+            <rect x="200" y="110" width="120" height="56" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="260" y="134" font-size="14" fill="#1e40af" text-anchor="middle" font-weight="700">Decide</text>
+            <text x="260" y="152" font-size="11" fill="#64748b" text-anchor="middle">다음 행동 판단</text>
+
+            <!-- Act -->
+            <rect x="330" y="110" width="120" height="56" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="390" y="134" font-size="14" fill="#1e40af" text-anchor="middle" font-weight="700">Act</text>
+            <text x="390" y="152" font-size="11" fill="#64748b" text-anchor="middle">도구 실행</text>
+
+            <!-- Forward arrows -->
+            <path d="M192 138 L200 138" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr6)"/>
+            <path d="M322 138 L330 138" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr6)"/>
+
+            <!-- Loop back arrow -->
+            <path d="M390 166 Q390 220 260 220 Q130 220 130 166" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,4" fill="none" marker-end="url(#arr6)"/>
+            <text x="260" y="243" font-size="11" fill="#64748b" text-anchor="middle" font-style="italic">매 스텝마다 실제 상태를 근거로 재관찰</text>
+
+            <!-- HITL shield overlay -->
+            <g transform="translate(220, 255)">
+              <path d="M40 0 L80 14 L80 44 Q80 62 40 70 Q0 62 0 44 L0 14 Z" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+              <path d="M20 38 L34 50 L60 26" stroke="#92400e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <text x="40" y="90" font-size="11" fill="#92400e" text-anchor="middle" font-weight="700">HITL checkpoint</text>
             </g>
           </svg>
         </div>
 
         <div class="feature-content">
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/monitor.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/mouse-pointer-click.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>브라우저 스냅샷 / 스크린샷 컴팩션</h4>
-              <p>페이지 데이터가 컨텍스트를 지나치게 잡아먹는 것을 방지</p>
+              <h4>브라우저 도구 강화 &amp; Hook/Middleware</h4>
+              <p>정확한 상태 파악 도구 + Hook·Middleware로 <strong>상태 불완전성 보완</strong></p>
             </div>
           </div>
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/minimize-2.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/refresh-cw.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>Context Window 관리</h4>
-              <p>한계 전 오래된 메시지를 자동 요약 — 중요한 결정·결과는 반드시 유지</p>
+              <h4>시스템 프롬프트 + HITL</h4>
+              <p>관찰&rarr;판단&rarr;행동 루프 강제 &middot; 비가역 순간엔 사람 확인</p>
             </div>
           </div>
           <div class="feature-point">
-            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/zap.svg" alt="" draggable="true"></div>
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/activity.svg" alt="" draggable="true"></div>
             <div class="point-text">
-              <h4>Latency &amp; Cost 최적화</h4>
-              <p>프롬프트 크기를 줄여 응답 지연과 토큰 비용을 절감</p>
+              <h4>Observability Tracing &rarr; Evolution Pipeline</h4>
+              <p>실행 Trace를 수집해 <strong>자동 개선 루프</strong>로 연결</p>
+            </div>
+          </div>
+          <div class="feature-point">
+            <div class="point-icon"><img class="point-icon-img" src="https://unpkg.com/lucide-static@latest/icons/rabbit.svg" alt="" draggable="true"></div>
+            <div class="point-text">
+              <h4>Rabbit Hole 방지</h4>
+              <p>에러 패턴 분석 &middot; 같은 액션 반복·무한 루프 감지 &middot; 폴백 로직</p>
             </div>
           </div>
         </div>
