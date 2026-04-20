@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 6 - Appendix: Snapshot Builder</title>
+  <link rel="stylesheet" href="slide.css">
+  <style>
+    /* Appendix-specific styles */
+    .app-main {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: calc(16 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .app-left {
+      display: flex;
+      flex-direction: column;
+      gap: calc(12 * var(--s) * 1px);
+    }
+
+    .app-right {
+      display: flex;
+      flex-direction: column;
+      gap: calc(12 * var(--s) * 1px);
+    }
+
+    /* Challenge category grid */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: calc(6 * var(--s) * 1px);
+    }
+
+    .challenge-chip {
+      background: #fef3c7;
+      border: 1.5px solid #d97706;
+      border-radius: calc(6 * var(--s) * 1px);
+      padding: calc(8 * var(--s) * 1px) calc(10 * var(--s) * 1px);
+      text-align: center;
+      font-size: calc(11 * var(--s) * 1px);
+      font-weight: 700;
+      color: #92400e;
+      line-height: 1.3;
+    }
+
+    /* Improvement pillars */
+    .pillar-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(10 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      border-top: 5px solid #10b981;
+      border-radius: calc(10 * var(--s) * 1px);
+      padding: calc(14 * var(--s) * 1px);
+      display: flex;
+      flex-direction: column;
+      gap: calc(8 * var(--s) * 1px);
+    }
+
+    .pillar .pil-title {
+      font-size: calc(15 * var(--s) * 1px);
+      font-weight: 800;
+      color: #065f46;
+      line-height: 1.3;
+    }
+
+    .pillar .pil-desc {
+      font-size: calc(12 * var(--s) * 1px);
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .pillar .pil-items {
+      display: flex;
+      flex-direction: column;
+      gap: calc(5 * var(--s) * 1px);
+      margin-top: auto;
+    }
+
+    .pillar .pil-item {
+      font-size: calc(11 * var(--s) * 1px);
+      color: #334155;
+      padding-left: calc(14 * var(--s) * 1px);
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .pillar .pil-item::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body data-current="6" data-total="7">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <div class="title-bar" style="background: linear-gradient(90deg, #1a1a2e, #374151);">
+        <div class="tb-num" style="border-color: #94a3b8; color: #94a3b8;">A1</div>
+        <div class="tb-title">Appendix &mdash; <span class="accent">Snapshot Builder</span></div>
+        <div class="tb-sub">사내 시스템 DOM 분석<br>&amp; 추출 로직 안정화</div>
+      </div>
+
+      <div class="app-main">
+
+        <!-- LEFT: SVG pipeline diagram + challenge categories -->
+        <div class="app-left">
+
+          <!-- SVG: DOM Extraction Pipeline -->
+          <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; flex-shrink:0;">
+            <defs>
+              <marker id="arrA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#3b82f6"/>
+              </marker>
+            </defs>
+
+            <!-- Step 1: Raw Page -->
+            <rect x="10" y="30" width="100" height="140" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+            <text x="60" y="22" font-size="10" fill="#64748b" text-anchor="middle" font-weight="700">RAW PAGE</text>
+            <!-- Nested DOM tree lines -->
+            <g fill="#e2e8f0">
+              <rect x="22" y="48" width="76" height="6" rx="2"/>
+              <rect x="32" y="60" width="66" height="6" rx="2"/>
+              <rect x="42" y="72" width="56" height="6" rx="2"/>
+              <rect x="32" y="84" width="66" height="6" rx="2"/>
+              <rect x="22" y="96" width="76" height="6" rx="2"/>
+              <rect x="42" y="108" width="56" height="6" rx="2"/>
+              <rect x="22" y="120" width="76" height="6" rx="2"/>
+              <rect x="32" y="132" width="66" height="6" rx="2"/>
+              <rect x="22" y="144" width="76" height="6" rx="2"/>
+              <rect x="42" y="156" width="56" height="6" rx="2"/>
+            </g>
+            <!-- Danger markers -->
+            <circle cx="96" cy="72" r="5" fill="#ef4444" fill-opacity="0.8"/>
+            <circle cx="96" cy="108" r="5" fill="#ef4444" fill-opacity="0.8"/>
+            <circle cx="96" cy="156" r="5" fill="#f59e0b" fill-opacity="0.8"/>
+
+            <!-- Arrow -->
+            <path d="M114 100 L148 100" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrA)"/>
+
+            <!-- Step 2: Analyzer -->
+            <rect x="152" y="40" width="110" height="120" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="207" y="30" font-size="10" fill="#1e40af" text-anchor="middle" font-weight="700">ANALYZER</text>
+            <text x="207" y="68" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="600">Shadow DOM</text>
+            <text x="207" y="84" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="600">Nested iframes</text>
+            <text x="207" y="100" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="600">SPA Framework</text>
+            <text x="207" y="116" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="600">CSS-in-JS</text>
+            <text x="207" y="132" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="600">Dynamic Render</text>
+            <text x="207" y="148" font-size="11" fill="#1e40af" text-anchor="middle" font-weight="600">FrameSet</text>
+
+            <!-- Arrow -->
+            <path d="M266 100 L300 100" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrA)"/>
+
+            <!-- Step 3: Extractor -->
+            <rect x="304" y="40" width="110" height="120" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+            <text x="359" y="30" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">EXTRACTOR</text>
+            <!-- Two sections -->
+            <rect x="314" y="52" width="90" height="44" rx="5" fill="#d1fae5" stroke="#6ee7b7"/>
+            <text x="359" y="72" font-size="11" fill="#065f46" text-anchor="middle" font-weight="700">Interactive</text>
+            <text x="359" y="86" font-size="9" fill="#065f46" text-anchor="middle">클릭·입력·선택</text>
+
+            <rect x="314" y="104" width="90" height="44" rx="5" fill="#d1fae5" stroke="#6ee7b7"/>
+            <text x="359" y="124" font-size="11" fill="#065f46" text-anchor="middle" font-weight="700">Contents</text>
+            <text x="359" y="138" font-size="9" fill="#065f46" text-anchor="middle">텍스트·이미지·테이블</text>
+
+            <!-- Arrow -->
+            <path d="M418 100 L452 100" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrA)"/>
+
+            <!-- Step 4: Snapshot -->
+            <rect x="456" y="50" width="94" height="100" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="503" y="40" font-size="10" fill="#5b21b6" text-anchor="middle" font-weight="700">SNAPSHOT</text>
+            <!-- Clean output lines -->
+            <g fill="#ddd6fe">
+              <rect x="468" y="68" width="70" height="6" rx="2"/>
+              <rect x="468" y="80" width="58" height="6" rx="2"/>
+              <rect x="468" y="92" width="70" height="6" rx="2"/>
+              <rect x="468" y="104" width="48" height="6" rx="2"/>
+              <rect x="468" y="116" width="66" height="6" rx="2"/>
+              <rect x="468" y="128" width="54" height="6" rx="2"/>
+            </g>
+            <circle cx="540" cy="68" r="5" fill="#10b981"/>
+            <circle cx="540" cy="80" r="5" fill="#10b981"/>
+            <circle cx="540" cy="92" r="5" fill="#10b981"/>
+
+            <!-- Pipeline label -->
+            <text x="280" y="192" font-size="11" fill="#64748b" text-anchor="middle" font-style="italic">Raw Page &rarr; Pattern Analyze &rarr; Element Extract &rarr; Clean Snapshot</text>
+          </svg>
+
+          <!-- Challenge categories: 4x2 grid of chips -->
+          <div class="section-label">실패 케이스 분류 &mdash; 8가지 패턴</div>
+          <div class="challenge-grid">
+            <div class="challenge-chip">SPA<br>Framework</div>
+            <div class="challenge-chip">Shadow<br>DOM</div>
+            <div class="challenge-chip">Nested<br>iframes</div>
+            <div class="challenge-chip">Legacy<br>FrameSet</div>
+            <div class="challenge-chip">CSS-in-JS</div>
+            <div class="challenge-chip">Non-standard<br>Interactions</div>
+            <div class="challenge-chip">Framework<br>Events</div>
+            <div class="challenge-chip">Dynamic<br>Rendering</div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: 3 improvement pillars -->
+        <div class="app-right">
+          <div class="section-label">개선 3축</div>
+
+          <div class="pillar-row" style="flex-direction:column;">
+
+            <div class="pillar">
+              <div class="pil-title">DOM 추출 로직 보완</div>
+              <div class="pil-desc">사내 시스템·레거시 구조의 실패 패턴을 정밀 분석해 8가지 유형별 처리 로직 구축</div>
+              <div class="pil-items">
+                <div class="pil-item">Shadow DOM 탐색 &middot; 재귀 탐색기</div>
+                <div class="pil-item">iframe &middot; FrameSet 내부 접근 로직</div>
+                <div class="pil-item">SPA 가상 DOM 대응 (React, Vue, Angular)</div>
+                <div class="pil-item">CSS-in-JS 런타임 스타일 추출</div>
+              </div>
+            </div>
+
+            <div class="pillar">
+              <div class="pil-title">Interactive &amp; Content 요소 추출 보강</div>
+              <div class="pil-desc">클릭·입력 가능한 Interactive 요소와 텍스트·이미지 등 Contents 요소를 구분해 정밀 추출</div>
+              <div class="pil-items">
+                <div class="pil-item">Non-standard 인터랙션 패턴 감지</div>
+                <div class="pil-item">Framework 전용 이벤트 바인딩 처리</div>
+                <div class="pil-item">Dynamic Rendering 대기 &middot; 재추출</div>
+              </div>
+            </div>
+
+            <div class="pillar">
+              <div class="pil-title">회귀 테스트 &middot; 추출 로직 안정화</div>
+              <div class="pil-desc">추출 로직 변경 시 기존 케이스가 깨지지 않도록 자동 회귀 테스트 파이프라인 운영</div>
+              <div class="pil-items">
+                <div class="pil-item">8가지 패턴별 골든 테스트 셋</div>
+                <div class="pil-item">CI 연동 자동 검증</div>
+                <div class="pil-item">실패 시 자동 리포트 &middot; 롤백 트리거</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>
