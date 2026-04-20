@@ -231,8 +231,8 @@
         .scene-smart-item {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 14px;
+            align-items: flex-start;
+            gap: 10px;
             flex-shrink: 0;
             width: 576px;
         }
@@ -282,15 +282,34 @@
             bottom: -0.35em;
         }
         .scene-smart-caption {
-            font-family: 'Nanum Pen Script', 'Inter', cursive;
-            font-size: 34px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
             font-weight: 400;
-            color: #111827;
-            white-space: nowrap;
-            line-height: 1.1;
+            color: #64748b;
+            white-space: normal;
+            line-height: 1.5;
+            text-align: left;
+            max-width: 480px;
+            padding: 0 20px;
         }
-        .scene-smart-caption::before { content: '\201C'; margin-right: 0.1em; color: #94a3b8; }
-        .scene-smart-caption::after { content: '\201D'; margin-left: 0.1em; color: #94a3b8; }
+        .scene-smart-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 20px;
+        }
+        .scene-smart-label .material-symbols-outlined {
+            font-size: 20px;
+            color: #3b82f6;
+        }
+        .scene-smart-label span:last-child {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3b82f6;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
 
         /* Bottom Nav Bar (fixed to viewport so it stays visible regardless of video box size) */
         #navBar {
@@ -400,22 +419,27 @@
                 <div id="scene-smart-track" style="display: flex; gap: 40px; white-space: nowrap; width: max-content; padding: 0 calc(50vw - 288px);">
                     <div class="scene-smart-item">
                         <video src="video/atlas-easy-001.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-label"><span class="material-symbols-outlined">campaign</span><span>마케팅 / 기획</span></div>
                         <div class="scene-smart-caption" data-text="smart.caption.1"></div>
                     </div>
                     <div class="scene-smart-item">
                         <video src="video/atlas-easy-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-label"><span class="material-symbols-outlined">devices</span><span>구매 / IT</span></div>
                         <div class="scene-smart-caption" data-text="smart.caption.2"></div>
                     </div>
                     <div class="scene-smart-item">
                         <video src="video/claude-easy-001.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-label"><span class="material-symbols-outlined">trending_up</span><span>경영전략 / IR</span></div>
                         <div class="scene-smart-caption" data-text="smart.caption.3"></div>
                     </div>
                     <div class="scene-smart-item">
                         <video src="video/claude-easy-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-label"><span class="material-symbols-outlined">monitoring</span><span>운영 / 재무</span></div>
                         <div class="scene-smart-caption" data-text="smart.caption.4"></div>
                     </div>
                     <div class="scene-smart-item">
                         <video src="video/claude-medium-002.mp4" class="scene-smart-clip" autoplay muted loop playsinline></video>
+                        <div class="scene-smart-label"><span class="material-symbols-outlined">person_search</span><span>인사</span></div>
                         <div class="scene-smart-caption" data-text="smart.caption.5"></div>
                     </div>
                 </div>
@@ -536,107 +560,59 @@
         </div>
 
         <!-- Scene: WebMCP tools connecting to Agent -->
-        <div class="scene" id="scene-webmcp" style="background:#f3f4f6;">
-            <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); font-size: 3.5vw; font-weight: 800; color:#111827; letter-spacing:-0.03em; white-space:nowrap;">Web<span style="color:#3b82f6;">MCP</span></div>
-            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%) perspective(1200px) rotateY(10deg) rotateX(3deg); width: 42vw;">
-                <div id="webmcp-window" style="background:#fff; border-radius:14px; box-shadow: 0 24px 60px rgba(0,0,0,0.18); overflow:visible; opacity:0; transform: translateY(30px); position:relative;">
-                    <div style="height:38px; background:#e5e7eb; display:flex; align-items:center; padding:0 14px; border-radius:14px 14px 0 0;">
-                        <div style="flex:1;"></div>
-                        <div style="display:flex; gap:6px; align-items:center;">
-                            <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">─</div>
-                            <div style="width:12px; height:12px; border:1px solid #94a3b8; border-radius:1px;"></div>
-                            <div style="width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#475569; font-size:13px;">✕</div>
+        <!-- Scene: Engineering Roadmap (merged Harness + WebMCP + Self-Evolution) -->
+        <div class="scene" id="scene-engineering" style="background:#0f172a; overflow:hidden;">
+            <!-- Subtle grid background -->
+            <div style="position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
+            <!-- Cards container -->
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+                <div id="eng-cards" style="display:grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 64vw; max-width: 900px;">
+                    <!-- Card 1: Agent Harness -->
+                    <div class="eng-card" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px 28px; opacity:0; transform: translateX(-80px) scale(0.8);">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <div style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:22px;">precision_manufacturing</span>
+                            </div>
+                            <div style="font-size:20px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Agent Harness</div>
                         </div>
+                        <div style="font-size:14px; color:#94a3b8; line-height:1.6;">Skills, Tools, Guardrails, Memory를 하나의 프레임워크로 통합 관리</div>
                     </div>
-                    <div style="padding: 28px; display:flex; flex-direction:column; align-items:center; gap: 16px;">
-                        <div style="font-size: 16px; font-weight:700; color:#111827;">Agent Connected</div>
-                        <div id="webmcp-agent" style="width:56px; height:56px; border-radius:16px; background: linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 24px rgba(59,130,246,0.4); opacity:0; transform: scale(0.5);">
-                            <img src="image/extension-icon.svg" alt="" width="32" height="32" style="display:block; border-radius:6px;"/>
+                    <!-- Card 2: WebMCP -->
+                    <div class="eng-card" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px 28px; opacity:0; transform: translateX(80px) scale(0.8);">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <div style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#10b981,#14b8a6); display:flex; align-items:center; justify-content:center;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:22px;">hub</span>
+                            </div>
+                            <div style="font-size:20px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">WebMCP</div>
                         </div>
-                        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;" id="webmcp-lines"></div>
+                        <div style="font-size:14px; color:#94a3b8; line-height:1.6;">웹 페이지에서 직접 도구를 주입하고 에이전트와 실시간 연결</div>
                     </div>
-                    <!-- Floating tool cards that pop out -->
-                    <div class="mcp-tool" style="position:absolute; top:-20px; left:-60px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(-20px, 20px) scale(0.7); z-index:5;">
-                        <div style="font-size:20px; text-align:center;">🔍</div>
-                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Web Search</div>
+                    <!-- Card 3: Auto Harness -->
+                    <div class="eng-card" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px 28px; opacity:0; transform: translateY(80px) scale(0.8);">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <div style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#f59e0b,#f97316); display:flex; align-items:center; justify-content:center;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:22px;">auto_fix_high</span>
+                            </div>
+                            <div style="font-size:20px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Auto Harness</div>
+                        </div>
+                        <div style="font-size:14px; color:#94a3b8; line-height:1.6;">사용자 행동 학습 기반 Harness 자동 생성 및 최적화</div>
                     </div>
-                    <div class="mcp-tool" style="position:absolute; top:-40px; right:-50px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(20px, 20px) scale(0.7); z-index:5;">
-                        <div style="font-size:20px; text-align:center;">📊</div>
-                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Data Fetch</div>
+                    <!-- Card 4: Self-Evolution -->
+                    <div class="eng-card" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px 28px; opacity:0; transform: translateY(80px) scale(0.8);">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <div style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#8b5cf6,#ec4899); display:flex; align-items:center; justify-content:center;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:22px;">psychology</span>
+                            </div>
+                            <div style="font-size:20px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Self-Evolution</div>
+                        </div>
+                        <div style="font-size:14px; color:#94a3b8; line-height:1.6;">에이전트가 스스로 학습하고 진화하는 자율 개선 아키텍처</div>
                     </div>
-                    <div class="mcp-tool" style="position:absolute; bottom:-30px; left:-70px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(-20px, -20px) scale(0.7); z-index:5;">
-                        <div style="font-size:20px; text-align:center;">📄</div>
-                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Page Read</div>
-                    </div>
-                    <div class="mcp-tool" style="position:absolute; bottom:-50px; right:-60px; width:120px; padding:12px 14px; background:#fff; border-radius:12px; border:1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.14); opacity:0; transform: translate(20px, -20px) scale(0.7); z-index:5;">
-                        <div style="font-size:20px; text-align:center;">⚙️</div>
-                        <div style="font-size:11px; font-weight:700; color:#111827; text-align:center; margin-top:6px;">Form Fill</div>
-                    </div>
-                    <!-- Connection lines placeholder -->
-                    <svg id="webmcp-svg" style="position:absolute; inset:-80px; width:calc(100% + 160px); height:calc(100% + 160px); pointer-events:none; z-index:4; opacity:0;">
-                        <line class="mcp-line" x1="20%" y1="25%" x2="45%" y2="50%" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
-                        <line class="mcp-line" x1="80%" y1="20%" x2="55%" y2="50%" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
-                        <line class="mcp-line" x1="18%" y1="78%" x2="45%" y2="55%" stroke="#10b981" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
-                        <line class="mcp-line" x1="82%" y1="82%" x2="55%" y2="55%" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
-                    </svg>
                 </div>
             </div>
-        </div>
-
-        <!-- Scene: Agent Harness Engineering diagram -->
-        <div class="scene" id="scene-harness" style="background:#ffffff;">
-            <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); font-size: 3.2vw; font-weight: 800; color:#111827; letter-spacing:-0.03em; white-space:nowrap;">Agent <span style="color:#3b82f6;">Harness</span> Engineering</div>
-            <div style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 58vw; display:flex; flex-direction:column; align-items:center; gap:0;">
-                <!-- Top layer: Guardrails -->
-                <div class="harness-layer" style="width:100%; padding:14px 20px; background:#fef2f2; border:2px solid #fecaca; border-radius:14px 14px 0 0; display:flex; align-items:center; gap:14px; opacity:0; transform: translateY(-20px);">
-                    <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#ef4444,#f97316); display:flex; align-items:center; justify-content:center; font-size:18px;">🛡️</div>
-                    <div style="font-weight:700; color:#991b1b; font-size:15px;">Guardrails</div>
-                    <div style="flex:1;"></div>
-                    <div style="font-size:12px; color:#b91c1c;">Safety · Validation · Compliance</div>
-                </div>
-                <!-- Middle: Agent core -->
-                <div class="harness-layer" style="width:90%; padding:28px 24px; background:linear-gradient(135deg,#eff6ff,#f5f3ff); border-left:2px solid #bfdbfe; border-right:2px solid #c4b5fd; display:flex; align-items:center; justify-content:center; gap:28px; opacity:0; transform: scale(0.9);">
-                    <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
-                        <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center;">
-                            <img src="image/extension-icon.svg" alt="" width="28" height="28" style="border-radius:6px;"/>
-                        </div>
-                        <div style="font-size:14px; font-weight:800; color:#1e3a5f;">Agent</div>
-                    </div>
-                    <div style="display:flex; gap:16px;">
-                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
-                            <div style="font-size:16px;">🧩</div>
-                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Skills</div>
-                        </div>
-                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
-                            <div style="font-size:16px;">🔧</div>
-                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Tools</div>
-                        </div>
-                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
-                            <div style="font-size:16px;">📋</div>
-                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Prompts</div>
-                        </div>
-                        <div class="harness-node" style="padding:10px 16px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align:center; opacity:0; transform: translateY(10px);">
-                            <div style="font-size:16px;">🧠</div>
-                            <div style="font-size:11px; font-weight:700; color:#111827; margin-top:4px;">Memory</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bottom layer: Orchestration -->
-                <div class="harness-layer" style="width:100%; padding:14px 20px; background:#f0fdf4; border:2px solid #bbf7d0; border-radius:0 0 14px 14px; display:flex; align-items:center; gap:14px; opacity:0; transform: translateY(20px);">
-                    <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#10b981,#14b8a6); display:flex; align-items:center; justify-content:center; font-size:18px;">⚡</div>
-                    <div style="font-weight:700; color:#065f46; font-size:15px;">Orchestration</div>
-                    <div style="flex:1;"></div>
-                    <div style="font-size:12px; color:#047857;">Planning · Routing · Execution</div>
-                </div>
+            <!-- Title overlay -->
+            <div id="eng-title" style="position:absolute; top:8%; left:50%; transform:translateX(-50%); text-align:center; opacity:0;">
+                <div style="font-size:3.2vw; font-weight:800; color:#f1f5f9; letter-spacing:-0.03em;">Engineering <span style="color:#3b82f6;">Roadmap</span></div>
             </div>
-        </div>
-
-        <!-- Scene: Self-Evolution cosmic orbit -->
-        <div class="scene" id="scene-selfevolution" style="background: #ffffff; overflow:hidden;">
-            <div id="se-starfield" style="position:absolute; inset:0; overflow:hidden;"></div>
-            <div id="se-glow" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.08) 40%, rgba(0,0,0,0) 70%); opacity:0;"></div>
-            <div id="se-title" style="position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size: 7vw; font-weight: 200; color:#111827; letter-spacing:-0.04em; text-align:center; opacity:0; z-index:3; line-height:1.15; width: 90vw;">Toward<br><span style="color:#3b82f6; font-weight:400;">Self-Evolution</span></div>
-            <div id="se-orbit" style="position:absolute; top:50%; left:50%; width: 0; height: 0; transform: translate(-50%, -50%); z-index:2;"></div>
         </div>
 
         <!-- Scene: Browser Work summary -->
@@ -786,11 +762,11 @@
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
       "smart.title": "<span id=\"smart-title-part1\"><span class=\"highlight-pill\">Eliminate</span> routine</span><span id=\"smart-title-part2\" style=\"display:none; opacity:0; white-space:nowrap;\"><span style=\"color:#9ca3af; font-size:0.7em; font-weight:500; margin:0 0.6em;\">&amp;</span><span class=\"highlight-pill\">Unlock</span> productivity</span>",
-      "smart.caption.1": "주가 검색해줘",
-      "smart.caption.2": "오늘 일정 알려줘",
-      "smart.caption.3": "이메일 요약해줘",
-      "smart.caption.4": "회의록 작성해줘",
-      "smart.caption.5": "분기 보고서 만들어줘",
+      "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 컨플루언스에 작성해줘.",
+      "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code, Antigravity 비교 관련 된 것들 정리해줘",
+      "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 메일로 보내줘",
+      "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 비교해서 틀린게 없는지 확인해줘.",
+      "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 될만한 요소들 파악해줘.",
       "link.title": "Link to Your Work Site",
       "link.url": "https://workspace.integration",
       "skill.title": "Skill is All You Need",
@@ -909,16 +885,14 @@
             { key: "logo",      label: "로고 비디오 (처음부터)",   time: 0,    element: null,               isLogo: true },
             { key: "partner",   label: "Work Partner",             time: 0,    element: "#scene-partner"  },
             { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
-            { key: "smart",       label: "Smart Personal Agent",   time: 19.0, element: "#scene-smart"  },
-            { key: "browserlink",    label: "Browser Link",             time: 27.0, element: "#scene-browserlink" },
-            { key: "addtab",         label: "New Tab Button",           time: 31.5, element: "#scene-addtab"   },
-            { key: "browserskill",   label: "Browser Skill",            time: 37.5, element: "#scene-browserskill" },
-            { key: "marketplace",    label: "Skill Marketplace",        time: 41.5, element: "#scene-marketplace" },
-            { key: "spicawork",      label: "Browser Work",             time: 47.5, element: "#scene-spicawork" },
-            { key: "skill",          label: "Skill is All You Need",    time: 53.5, element: "#scene-skill"  },
-            { key: "harness",        label: "Agent Harness",            time: 65.5, element: "#scene-harness" },
-            { key: "webmcp",         label: "WebMCP Tools",             time: 71.5, element: "#scene-webmcp" },
-            { key: "selfevolution",  label: "Self-Evolution",           time: 77.5, element: "#scene-selfevolution" },
+            { key: "browserlink",    label: "Browser Link",             time: 19.0, element: "#scene-browserlink" },
+            { key: "addtab",         label: "New Tab Button",           time: 23.5, element: "#scene-addtab"   },
+            { key: "browserskill",   label: "Browser Skill",            time: 29.5, element: "#scene-browserskill" },
+            { key: "marketplace",    label: "Skill Marketplace",        time: 33.5, element: "#scene-marketplace" },
+            { key: "spicawork",      label: "Browser Work",             time: 39.5, element: "#scene-spicawork" },
+            { key: "skill",          label: "Skill is All You Need",    time: 45.5, element: "#scene-skill"  },
+            { key: "smart",          label: "Smart Personal Agent",     time: 57.5, element: "#scene-smart"  },
+            { key: "engineering",    label: "Engineering Roadmap",       time: 65.5, element: "#scene-engineering" },
             { key: "onemore",        label: "One More Thing",          time: 86.0, element: "#scene-onemore" },
             { key: "receipt",        label: "Receipt Prompt",          time: 90.0, element: "#scene-receipt" },
             { key: "browserdesktop", label: "Browser-Desktop",         time: 96.0, element: "#scene-browserdesktop" },
@@ -1118,56 +1092,7 @@
             gsap.set("#extension-click-ring", { opacity: 0, scale: 0.5 });
             gsap.set("#scene-addtab", { opacity: 0 });
 
-            // Build Self-Evolution starfield + orbiting windows
-            (function buildSelfEvolution() {
-                const stars = document.getElementById("se-starfield");
-                if (!stars) return;
-                stars.innerHTML = "";
-                for (let i = 0; i < 90; i++) {
-                    const s = document.createElement("div");
-                    const size = Math.random() * 2.2 + 0.6;
-                    s.style.cssText = `position:absolute; left:${Math.random()*100}%; top:${Math.random()*100}%; width:${size}px; height:${size}px; border-radius:50%; background:#93c5fd; opacity:${0.15 + Math.random()*0.4}; box-shadow: 0 0 ${size*2}px rgba(59,130,246,0.3);`;
-                    stars.appendChild(s);
-                }
-                const orbit = document.getElementById("se-orbit");
-                orbit.innerHTML = "";
-                const rings = [
-                    { n: 7, r: 22, w: 12, h: 7.4, barH: 14, pad: 8, dotS: 5, lineH: [5, 4, 4] },
-                    { n: 7, r: 36, w: 8.5, h: 5.2, barH: 10, pad: 6, dotS: 4, lineH: [4, 3, 3] },
-                ];
-                rings.forEach((ring, ri) => {
-                    const offsetAngle = ri * Math.PI / ring.n;
-                    for (let i = 0; i < ring.n; i++) {
-                        const angle = (i / ring.n) * Math.PI * 2 + offsetAngle;
-                        const x = Math.cos(angle) * ring.r;
-                        const y = Math.sin(angle) * ring.r * 0.55;
-                        const scale = 0.85 + Math.random() * 0.3;
-                        const rot = (Math.random() - 0.5) * 16;
-                        const opac = ri === 0 ? 0.85 : 0.55;
-                        const win = document.createElement("div");
-                        win.className = "se-window";
-                        win.style.cssText = `position:absolute; left:${x}vw; top:${y}vw; transform: translate(-50%, -50%) scale(${scale}) rotate(${rot}deg); width:${ring.w}vw; height:${ring.h}vw; background:rgba(255,255,255,${ri === 0 ? 0.95 : 0.8}); backdrop-filter: blur(6px); border:1px solid rgba(59,130,246,${ri === 0 ? 0.18 : 0.10}); border-radius:${ri === 0 ? 10 : 8}px; box-shadow: 0 10px 28px rgba(59,130,246,${ri === 0 ? 0.15 : 0.08}); opacity:0; overflow:hidden;`;
-                        const g = ri === 0 ? 4 : 3;
-                        const ds = ring.dotS;
-                        win.innerHTML = `
-                            <div style="height:${ring.barH}px; background:rgba(148,163,184,0.18); display:flex; align-items:center; padding:0 ${ring.pad}px;">
-                                <div style="flex:1;"></div>
-                                <div style="display:flex; gap:${g}px; align-items:center;">
-                                    <div style="width:${ds+2}px; height:${ds}px; display:flex; align-items:center; justify-content:center; color:rgba(148,163,184,0.7); font-size:${ds+3}px; line-height:1;">─</div>
-                                    <div style="width:${ds}px; height:${ds}px; border:1px solid rgba(148,163,184,0.5); border-radius:1px;"></div>
-                                    <div style="width:${ds+2}px; height:${ds}px; display:flex; align-items:center; justify-content:center; color:rgba(148,163,184,0.7); font-size:${ds+3}px; line-height:1;">✕</div>
-                                </div>
-                            </div>
-                            <div style="padding:${ring.pad}px; display:flex; flex-direction:column; gap:${g}px;">
-                                <div style="height:${ring.lineH[0]}px; width:70%; background:rgba(147,197,253,${ri === 0 ? 0.5 : 0.35}); border-radius:2px;"></div>
-                                <div style="height:${ring.lineH[1]}px; width:55%; background:rgba(148,163,184,${ri === 0 ? 0.3 : 0.2}); border-radius:2px;"></div>
-                                <div style="height:${ring.lineH[2]}px; width:60%; background:rgba(148,163,184,${ri === 0 ? 0.2 : 0.12}); border-radius:2px;"></div>
-                            </div>`;
-                        orbit.appendChild(win);
-                    }
-                });
-            })();
-            gsap.set("#scene-smart", { opacity: 1, xPercent: 100 });
+            gsap.set("#scene-smart", { opacity: 0 });
             // Build smart slogan words
             (function buildSmartSlogan() {
                 const container = document.getElementById("smart-slogan");
@@ -1268,42 +1193,20 @@
               .to("#extension-browser", { transformOrigin: "bottom right", scale: 3.0, xPercent: -6, yPercent: 6, duration: 1.4, ease: "expo.inOut" })
               .to("#extension-typed-cursor", { opacity: 1, duration: 0.1 })
               .call(() => {
-                  const msg = "오늘 오후 2시 일정 추가해줘";
+                  const msg = "5월 인공지능 관련 행사 찾아보고, 해당 날짜에 일정 추가해줘. 그리고 내용 요약해서 홍길동 상무에게 메일 보내줘";
                   const el = document.getElementById("extension-typed");
                   el.textContent = "";
                   let i = 0;
                   const iv = setInterval(() => {
                       if (i >= msg.length) { clearInterval(iv); return; }
                       el.textContent += msg[i++];
-                  }, 110);
+                  }, 60);
               })
-              // Hold while typing plays out (~14 chars * 0.11s ≈ 1.55s) + read time
-              .to({}, { duration: 2.8 })
+              // Hold while typing plays out (~50 chars * 0.06s ≈ 3.0s) + read time
+              .to({}, { duration: 4.5 })
               .to("#extension-typed-cursor", { opacity: 0, duration: 0.2 })
               .to({}, { duration: 0.4 })
-              .to("#scene-extension", { opacity: 0, duration: 0.75 }, "trans2-=0.6")
-
-              // Transition → Smart scene
-              .to("#scene-smart", { xPercent: 0, duration: 0.8, ease: "expo.inOut" }, "trans2")
-              // Slogan words rise from below, one by one
-              .to(".smart-slogan-word", { opacity: 1, y: 0, duration: 0.6, stagger: 0.18, ease: "expo.out" }, "trans2+=0.8")
-              
-              // Scene 1B track: Snap & Drift multiple screens
-              // Note: item width 576 + gap 40 = 616px per item jump
-              .to("#scene-smart-track", { x: -60, duration: 1.2, ease: "linear" }, "trans2+=0.8") // Drift item 1
-              .to("#scene-smart-track", { x: -616, duration: 0.7, ease: "expo.inOut" }) // Snap item 2
-              .to("#scene-smart-track", { x: -676, duration: 1.2, ease: "linear" }) // Drift item 2
-              .to("#scene-smart-track", { x: -1232, duration: 0.7, ease: "expo.inOut" }) // Snap item 3
-              .to("#scene-smart-track", { x: -1292, duration: 1.2, ease: "linear" }) // Drift item 3
-              .to("#scene-smart-track", { x: -1848, duration: 0.7, ease: "expo.inOut" }) // Snap item 4
-              .to("#scene-smart-track", { x: -1908, duration: 1.2, ease: "linear" }) // Drift item 4
-              .to("#scene-smart-track", { x: -2464, duration: 0.7, ease: "expo.inOut" }) // Snap item 5
-              .to("#scene-smart-track", { x: -2524, duration: 1.2, ease: "linear" }) // Drift item 5
-
-              .to({}, { duration: 0.5 })
-
-              // Smart fades out, then Browser Link
-              .to("#scene-smart", { opacity: 0, duration: 0.5 })
+              .to("#scene-extension", { opacity: 0, duration: 0.75 })
 
               // Browser Link summary
               .set("#scene-browserlink", { opacity: 1 })
@@ -1385,32 +1288,31 @@
               .to({}, { duration: 1.8 })
               .to("#scene-skill", { opacity: 0, duration: 0.5 });
 
-            // Agent Harness Engineering diagram
-            tl.set("#scene-harness", { opacity: 1 })
-              .to(".harness-layer", { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.25, ease: "expo.out" })
-              .to(".harness-node", { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "back.out(1.4)" })
+            // Smart Personal Agent scene
+            tl.set("#scene-smart", { opacity: 1, xPercent: 0 })
+              .to(".smart-slogan-word", { opacity: 1, y: 0, duration: 0.6, stagger: 0.18, ease: "expo.out" })
+              // Scene track: Snap & Drift multiple screens
+              .to("#scene-smart-track", { x: -60, duration: 1.2, ease: "linear" })
+              .to("#scene-smart-track", { x: -616, duration: 0.7, ease: "expo.inOut" })
+              .to("#scene-smart-track", { x: -676, duration: 1.2, ease: "linear" })
+              .to("#scene-smart-track", { x: -1232, duration: 0.7, ease: "expo.inOut" })
+              .to("#scene-smart-track", { x: -1292, duration: 1.2, ease: "linear" })
+              .to("#scene-smart-track", { x: -1848, duration: 0.7, ease: "expo.inOut" })
+              .to("#scene-smart-track", { x: -1908, duration: 1.2, ease: "linear" })
+              .to("#scene-smart-track", { x: -2464, duration: 0.7, ease: "expo.inOut" })
+              .to("#scene-smart-track", { x: -2524, duration: 1.2, ease: "linear" })
+              .to({}, { duration: 0.5 })
+              .to("#scene-smart", { opacity: 0, duration: 0.5 });
+
+            // Engineering Roadmap: cards thrown in dynamically
+            tl.set("#scene-engineering", { opacity: 1 })
+              .to("#eng-title", { opacity: 1, duration: 0.5, ease: "power2.out" })
+              .to(".eng-card:nth-child(1)", { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" })
+              .to(".eng-card:nth-child(2)", { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, "-=0.2")
+              .to(".eng-card:nth-child(3)", { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, "-=0.2")
+              .to(".eng-card:nth-child(4)", { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, "-=0.2")
               .to({}, { duration: 2.5 })
-              .to("#scene-harness", { opacity: 0, duration: 0.5 });
-
-            // WebMCP: tilted window with tools popping out + connecting to agent
-            tl.set("#scene-webmcp", { opacity: 1 })
-              .to("#webmcp-window", { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" })
-              .to("#webmcp-agent", { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.8)" })
-              .to(".mcp-tool", { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.5, stagger: 0.18, ease: "back.out(1.6)" })
-              .to("#webmcp-svg", { opacity: 1, duration: 0.4 })
-              .fromTo(".mcp-line", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.8, stagger: 0.12, ease: "power2.out" })
-              .to({}, { duration: 1.8 })
-              .to("#scene-webmcp", { opacity: 0, duration: 0.5 });
-
-            // Self-Evolution cosmic scene
-            tl.set("#scene-selfevolution", { opacity: 1 })
-              .to("#se-starfield > div", { opacity: (i, t) => parseFloat(t.style.opacity) || 0.6, scale: "+=0", duration: 0 })
-              .fromTo(".se-window", { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.08, ease: "power2.out" })
-              .to("#se-glow", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=0.8")
-              .to("#se-title", { opacity: 1, duration: 1.0, ease: "expo.out" }, "-=0.6")
-              .to("#se-orbit", { rotation: 30, duration: 5.0, ease: "none" }, "-=1.0")
-              .to(".se-window", { y: "+=8", duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.1, from: "random" } }, "-=4.8")
-              .to("#scene-selfevolution", { opacity: 0, duration: 0.8 }, "-=0.5");
+              .to("#scene-engineering", { opacity: 0, duration: 0.6 });
 
             // 6. One More Thing!! dramatic reveal
             tl.set("#scene-onemore", { opacity: 1 })
