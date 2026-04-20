@@ -4,11 +4,11 @@
   "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
 
   "smart.title": "<span id=\"smart-title-part1\"><span class=\"highlight-pill\">Eliminate</span> routine</span><span id=\"smart-title-part2\" style=\"display:none; opacity:0; white-space:nowrap;\"><span style=\"color:#9ca3af; font-size:0.7em; font-weight:500; margin:0 0.6em;\">&amp;</span><span class=\"highlight-pill\">Unlock</span> productivity</span>",
-  "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 ...",
-  "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code ...",
-  "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 ...",
-  "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 ...",
-  "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 ...",
+  "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 컨플루언스에 작성해줘.",
+  "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code, Antigravity 비교 관련 된 것들 정리해줘",
+  "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 메일로 보내줘",
+  "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 비교해서 틀린게 없는지 확인해줘.",
+  "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 될만한 요소들 파악해줘.",
 
   "link.title": "Link to Your Work Site",
   "link.url": "https://workspace.integration",

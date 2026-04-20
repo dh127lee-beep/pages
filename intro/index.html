@@ -283,28 +283,28 @@
         }
         .scene-smart-caption {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 15px;
+            font-size: 22px;
             font-weight: 400;
             color: #64748b;
             white-space: normal;
             line-height: 1.5;
             text-align: left;
-            max-width: 480px;
+            max-width: 560px;
             padding: 0 20px;
         }
         .scene-smart-label {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             padding: 0 20px;
         }
         .scene-smart-label .material-symbols-outlined {
-            font-size: 26px;
+            font-size: 52px;
             color: #3b82f6;
         }
         .scene-smart-label span:last-child {
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
+            font-size: 36px;
             font-weight: 700;
             color: #3b82f6;
             letter-spacing: 0.3px;
@@ -690,8 +690,7 @@
 
         <!-- Scene: Receipt typing prompt -->
         <div class="scene" id="scene-receipt" style="background:#ffffff;">
-            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 1.5em; padding: 0 8%;">
-                <div style="font-size: 1.4vw; font-weight:600; color:#9ca3af; letter-spacing:0.2em; text-transform:uppercase;">User Prompt</div>
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 0 8%;">
                 <div style="font-size: 3.2vw; font-weight: 700; color:#111827; line-height:1.35; text-align:center; min-height:1em; display:flex; align-items:center; justify-content:center;">
                     <span id="receipt-typed"></span><span id="receipt-cursor" class="partner-cursor"></span>
                 </div>
@@ -701,7 +700,7 @@
         <!-- Scene: Browser-Desktop (desktop app reveal) -->
         <div class="scene" id="scene-browserdesktop" style="background: #0a0a0a; overflow:hidden;">
             <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 3vh;">
-                <div id="desktop-title" style="font-size: 5.5vw; font-weight: 800; color:#ffffff; letter-spacing:-0.03em; opacity:0;">Browser-<span style="color:#3b82f6;">Desktop</span></div>
+                <div id="desktop-title" style="font-size: 5.5vw; font-weight: 800; color:#ffffff; letter-spacing:-0.03em; opacity:0;">My AI, Browser <span style="color:#3b82f6;">Desktop</span></div>
                 <div id="desktop-app" style="width: 56vw; aspect-ratio: 16/10; border-radius: 18px; overflow:hidden; box-shadow: 0 30px 80px rgba(59,130,246,0.35), 0 0 0 1px rgba(255,255,255,0.08); opacity:0; transform: translateY(40px) scale(0.92);">
                     <div style="height:38px; background: linear-gradient(180deg, #1f2937, #111827); display:flex; align-items:center; padding:0 14px; gap:8px;">
                         <div style="width:10px; height:10px; border-radius:50%; background:#ef4444;"></div>
@@ -734,7 +733,6 @@
                         </div>
                     </div>
                 </div>
-                <div id="desktop-tagline" style="font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 3vw; color:#e5e7eb; opacity:0;">Beyond the Browser.</div>
             </div>
         </div>
 
@@ -801,11 +799,11 @@
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
       "smart.title": "<span id=\"smart-title-part1\"><span class=\"highlight-pill\">Eliminate</span> routine</span><span id=\"smart-title-part2\" style=\"display:none; opacity:0; white-space:nowrap;\"><span style=\"color:#9ca3af; font-size:0.7em; font-weight:500; margin:0 0.6em;\">&amp;</span><span class=\"highlight-pill\">Unlock</span> productivity</span>",
-      "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 ...",
-      "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code ...",
-      "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 ...",
-      "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 ...",
-      "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 ...",
+      "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 컨플루언스에 작성해줘.",
+      "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code, Antigravity 비교 관련 된 것들 정리해줘",
+      "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 메일로 보내줘",
+      "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 비교해서 틀린게 없는지 확인해줘.",
+      "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 될만한 요소들 파악해줘.",
       "link.title": "Link to Your Work Site",
       "link.url": "https://workspace.integration",
       "skill.title": "Skill is All You Need",
@@ -1433,7 +1431,6 @@
               .to("#desktop-title", { opacity: 1, duration: 0.8, ease: "power2.out" })
               .to("#desktop-app", { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "expo.out" }, "-=0.4")
               .to("#desktop-app", { y: -12, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 })
-              .to("#desktop-tagline", { opacity: 1, duration: 0.9, ease: "power2.out" }, "-=4.0")
               .to({}, { duration: 0.5 })
               .to("#scene-browserdesktop", { opacity: 0, duration: 0.6 });
 
