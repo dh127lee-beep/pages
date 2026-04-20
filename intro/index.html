@@ -413,6 +413,11 @@
             </div>
         </div>
 
+        <!-- Scene: Extension Demo Video -->
+        <div class="scene" id="scene-extdemo" style="background:#000;">
+            <video id="extdemo-video" src="video/atlas-easy-001.mp4" muted playsinline style="width:100%; height:100%; object-fit:contain;"></video>
+        </div>
+
         <!-- Scene: Smart Personal Agent Showcase -->
         <div class="scene" id="scene-smart" style="background:#ffffff;">
             <div style="position: absolute; top: 20%; width: 100vw; height: 55%; display: flex; align-items: center; overflow: hidden;">
@@ -956,7 +961,8 @@
             { key: "logo",      label: "로고 비디오 (처음부터)",   time: 0,    element: null,               isLogo: true },
             { key: "partner",   label: "Work Partner",             time: 0,    element: "#scene-partner"  },
             { key: "extension", label: "Chrome Extension Panel",   time: 8.0,  element: "#scene-extension" },
-            { key: "browserlink",    label: "Browser Link",             time: 19.0, element: "#scene-browserlink" },
+            { key: "extdemo",   label: "Extension Demo",             time: 16.0, element: "#scene-extdemo" },
+            { key: "browserlink",    label: "Browser Link",             time: 24.0, element: "#scene-browserlink" },
             { key: "addtab",         label: "New Tab Button",           time: 23.5, element: "#scene-addtab"   },
             { key: "browserskill",   label: "Browser Skill",            time: 29.5, element: "#scene-browserskill" },
             { key: "marketplace",    label: "Skill Marketplace",        time: 33.5, element: "#scene-marketplace" },
@@ -1278,6 +1284,18 @@
               .to("#extension-typed-cursor", { opacity: 0, duration: 0.2 })
               .to({}, { duration: 0.4 })
               .to("#scene-extension", { opacity: 0, duration: 0.75 })
+
+              // Extension Demo video
+              .set("#scene-extdemo", { opacity: 1 })
+              .call(() => {
+                  const v = document.getElementById("extdemo-video");
+                  v.currentTime = 0;
+                  v.play();
+              })
+              .to("#scene-extdemo", { opacity: 1, duration: 0.3 })
+              .to({}, { duration: 8 })
+              .to("#scene-extdemo", { opacity: 0, duration: 0.5 })
+              .call(() => { document.getElementById("extdemo-video").pause(); })
 
               // Browser Link summary
               .set("#scene-browserlink", { opacity: 1 })
