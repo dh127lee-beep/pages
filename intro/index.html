@@ -299,16 +299,15 @@
             padding: 0 20px;
         }
         .scene-smart-label .material-symbols-outlined {
-            font-size: 20px;
+            font-size: 26px;
             color: #3b82f6;
         }
         .scene-smart-label span:last-child {
             font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: #3b82f6;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         /* Bottom Nav Bar (fixed to viewport so it stays visible regardless of video box size) */
@@ -449,7 +448,7 @@
                     </div>
                 </div>
             </div>
-            <div id="smart-slogan" style="position: absolute; left: 50%; bottom: 10%; font-size: 2.4vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em; transform: translateX(-50%); line-height: 1.3; width: 90vw;"></div>
+            <div id="smart-slogan" style="position: absolute; left: 50%; top: 50%; font-size: 2.4vw; font-weight: 700; color: #111827; letter-spacing: -0.02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em; transform: translate(-50%, -50%); line-height: 1.3; width: 90vw;"></div>
         </div>
 
         <!-- Scene: Browser Link summary -->
@@ -564,127 +563,98 @@
             </div>
         </div>
 
-        <!-- Scene: WebMCP tools connecting to Agent -->
-        <!-- Scene: Agent = Model + Harness (merged engineering scene) -->
+        <!-- Scene: Powerful Agent Harness -->
         <div class="scene" id="scene-engineering" style="background:#0f172a; overflow:hidden;">
             <!-- Subtle grid bg -->
             <div style="position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
 
-            <!-- Phase 1: Formula -->
-            <div id="eng-formula" style="position:absolute; top:7%; left:50%; transform:translateX(-50%); text-align:center; opacity:0; z-index:5;">
-                <div style="font-size:3.4vw; font-weight:800; color:#f1f5f9; letter-spacing:-0.03em;">
-                    Agent = Model + <span style="color:#3b82f6;">Harness</span>
+            <!-- Title: starts centered, animates to top -->
+            <div id="eng-title" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; opacity:0; z-index:5;">
+                <div style="font-size:3.6vw; font-weight:800; color:#f1f5f9; letter-spacing:-0.03em; line-height:1.3;">
+                    Powerful Agent <span style="color:#3b82f6;">Harness</span><br>
+                    <span style="font-size:0.6em; font-weight:500; color:#94a3b8;">for Browser Agent</span>
                 </div>
             </div>
 
-            <!-- Harness Grid diagram (center) -->
-            <div id="eng-harness-grid" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0; z-index:3;">
-                <div style="border:2px solid rgba(59,130,246,0.3); border-radius:16px; padding:20px; background:rgba(59,130,246,0.04);">
-                    <div style="font-size:12px; font-weight:700; color:#60a5fa; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px; text-align:center;">Harness</div>
-                    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:44vw; max-width:620px;">
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">System Prompt</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Hierarchical Skills</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Auto Compaction</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Memory (S/L)</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Guardrails</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Evaluation</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Sub-agent</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center;">Middleware</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:11px; font-weight:600; color:#94a3b8; text-align:center; grid-column: span 2;">Browser Tools (41)</div>
-                        <div class="hg-cell" style="padding:10px 8px; background:rgba(255,255,255,0.04); border:1px dashed rgba(255,255,255,0.12); border-radius:8px; font-size:11px; font-weight:600; color:#64748b; text-align:center; grid-column: span 2;">Web Browser</div>
-                    </div>
-                    <!-- Model chip below -->
-                    <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:14px;">
-                        <div style="width:24px; height:2px; background:rgba(255,255,255,0.15);"></div>
-                        <div style="padding:8px 24px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:8px; font-size:12px; font-weight:700; color:#e2e8f0; letter-spacing:0.5px;">Model</div>
-                        <div style="width:24px; height:2px; background:rgba(255,255,255,0.15);"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phase 2: 4 approach cards (start hidden, each zooms in big then settles into 2x2) -->
-            <div id="eng-cards-wrap" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; z-index:4;">
-                <div id="eng-cards" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 62vw; max-width: 880px;">
+            <!-- 4 cards: 2x2 grid, fills more of the screen -->
+            <div id="eng-cards-wrap" style="position:absolute; top:18%; left:50%; transform:translateX(-50%); width:88vw; max-width:1200px; height:74vh; opacity:0; z-index:4;">
+                <div id="eng-cards" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; width:100%; height:100%;">
                     <!-- Card 1: Agent Harness -->
-                    <div class="eng-card" id="eng-c1" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px 24px; opacity:0; transform-origin: center center;">
-                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-                            <div style="width:44px; height:44px; border-radius:11px; background:linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center;">
-                                <span class="material-symbols-outlined" style="color:#fff; font-size:24px;">precision_manufacturing</span>
+                    <div class="eng-card" id="eng-c1" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px; opacity:0; transform-origin: center center; display:flex; flex-direction:column; justify-content:center;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+                            <div style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#3b82f6,#8b5cf6); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:30px;">precision_manufacturing</span>
                             </div>
                             <div>
-                                <div style="font-size:18px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Agent Harness</div>
-                                <div style="font-size:11px; color:#64748b; margin-top:2px;">통합 제어 프레임워크</div>
+                                <div style="font-size:24px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Agent Harness</div>
+                                <div style="font-size:13px; color:#64748b; margin-top:4px;">통합 제어 프레임워크</div>
                             </div>
                         </div>
-                        <!-- Mini harness grid -->
-                        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:8px;">
-                            <div style="padding:6px; background:rgba(59,130,246,0.12); border-radius:6px; font-size:10px; color:#93c5fd; text-align:center;">Skills</div>
-                            <div style="padding:6px; background:rgba(59,130,246,0.12); border-radius:6px; font-size:10px; color:#93c5fd; text-align:center;">Tools</div>
-                            <div style="padding:6px; background:rgba(59,130,246,0.12); border-radius:6px; font-size:10px; color:#93c5fd; text-align:center;">Guardrails</div>
-                            <div style="padding:6px; background:rgba(59,130,246,0.12); border-radius:6px; font-size:10px; color:#93c5fd; text-align:center;">Memory</div>
-                            <div style="padding:6px; background:rgba(59,130,246,0.12); border-radius:6px; font-size:10px; color:#93c5fd; text-align:center;">Prompts</div>
-                            <div style="padding:6px; background:rgba(59,130,246,0.12); border-radius:6px; font-size:10px; color:#93c5fd; text-align:center;">HITL</div>
+                        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+                            <div style="padding:10px; background:rgba(59,130,246,0.12); border-radius:8px; font-size:13px; color:#93c5fd; text-align:center;">Skills</div>
+                            <div style="padding:10px; background:rgba(59,130,246,0.12); border-radius:8px; font-size:13px; color:#93c5fd; text-align:center;">Tools</div>
+                            <div style="padding:10px; background:rgba(59,130,246,0.12); border-radius:8px; font-size:13px; color:#93c5fd; text-align:center;">Guardrails</div>
+                            <div style="padding:10px; background:rgba(59,130,246,0.12); border-radius:8px; font-size:13px; color:#93c5fd; text-align:center;">Memory</div>
+                            <div style="padding:10px; background:rgba(59,130,246,0.12); border-radius:8px; font-size:13px; color:#93c5fd; text-align:center;">Prompts</div>
+                            <div style="padding:10px; background:rgba(59,130,246,0.12); border-radius:8px; font-size:13px; color:#93c5fd; text-align:center;">HITL</div>
                         </div>
                     </div>
                     <!-- Card 2: WebMCP -->
-                    <div class="eng-card" id="eng-c2" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px 24px; opacity:0; transform-origin: center center;">
-                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-                            <div style="width:44px; height:44px; border-radius:11px; background:linear-gradient(135deg,#10b981,#14b8a6); display:flex; align-items:center; justify-content:center;">
-                                <span class="material-symbols-outlined" style="color:#fff; font-size:24px;">hub</span>
+                    <div class="eng-card" id="eng-c2" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px; opacity:0; transform-origin: center center; display:flex; flex-direction:column; justify-content:center;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+                            <div style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#10b981,#14b8a6); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:30px;">hub</span>
                             </div>
                             <div>
-                                <div style="font-size:18px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">WebMCP</div>
-                                <div style="font-size:11px; color:#64748b; margin-top:2px;">웹 도구 실시간 주입</div>
+                                <div style="font-size:24px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">WebMCP</div>
+                                <div style="font-size:13px; color:#64748b; margin-top:4px;">웹 도구 실시간 주입</div>
                             </div>
                         </div>
-                        <!-- Connection diagram -->
-                        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:8px;">
-                            <div style="padding:6px 10px; background:rgba(16,185,129,0.12); border-radius:6px; font-size:10px; color:#6ee7b7;">Web Page</div>
-                            <div style="color:#475569; font-size:12px;">→</div>
-                            <div style="padding:6px 10px; background:rgba(16,185,129,0.2); border-radius:6px; font-size:10px; color:#6ee7b7; font-weight:700;">MCP</div>
-                            <div style="color:#475569; font-size:12px;">→</div>
-                            <div style="padding:6px 10px; background:rgba(16,185,129,0.12); border-radius:6px; font-size:10px; color:#6ee7b7;">Agent</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+                            <div style="padding:10px 16px; background:rgba(16,185,129,0.12); border-radius:8px; font-size:14px; color:#6ee7b7;">Web Page</div>
+                            <div style="color:#475569; font-size:18px;">→</div>
+                            <div style="padding:10px 16px; background:rgba(16,185,129,0.2); border-radius:8px; font-size:14px; color:#6ee7b7; font-weight:700;">MCP</div>
+                            <div style="color:#475569; font-size:18px;">→</div>
+                            <div style="padding:10px 16px; background:rgba(16,185,129,0.12); border-radius:8px; font-size:14px; color:#6ee7b7;">Agent</div>
                         </div>
                     </div>
                     <!-- Card 3: Auto Harness -->
-                    <div class="eng-card" id="eng-c3" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px 24px; opacity:0; transform-origin: center center;">
-                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-                            <div style="width:44px; height:44px; border-radius:11px; background:linear-gradient(135deg,#f59e0b,#f97316); display:flex; align-items:center; justify-content:center;">
-                                <span class="material-symbols-outlined" style="color:#fff; font-size:24px;">auto_fix_high</span>
+                    <div class="eng-card" id="eng-c3" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px; opacity:0; transform-origin: center center; display:flex; flex-direction:column; justify-content:center;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+                            <div style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#f59e0b,#f97316); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:30px;">auto_fix_high</span>
                             </div>
                             <div>
-                                <div style="font-size:18px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Auto Harness</div>
-                                <div style="font-size:11px; color:#64748b; margin-top:2px;">자동 생성 · 최적화</div>
+                                <div style="font-size:24px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Auto Harness</div>
+                                <div style="font-size:13px; color:#64748b; margin-top:4px;">자동 생성 · 최적화</div>
                             </div>
                         </div>
-                        <!-- Auto generation flow -->
-                        <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:8px;">
-                            <div style="padding:6px 10px; background:rgba(245,158,11,0.12); border-radius:6px; font-size:10px; color:#fbbf24;">사용자 행동</div>
-                            <div style="color:#475569; font-size:12px;">→</div>
-                            <div style="padding:6px 10px; background:rgba(245,158,11,0.12); border-radius:6px; font-size:10px; color:#fbbf24;">패턴 학습</div>
-                            <div style="color:#475569; font-size:12px;">→</div>
-                            <div style="padding:6px 10px; background:rgba(245,158,11,0.2); border-radius:6px; font-size:10px; color:#fbbf24; font-weight:700;">Harness 생성</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <div style="padding:10px 14px; background:rgba(245,158,11,0.12); border-radius:8px; font-size:14px; color:#fbbf24;">사용자 행동</div>
+                            <div style="color:#475569; font-size:18px;">→</div>
+                            <div style="padding:10px 14px; background:rgba(245,158,11,0.12); border-radius:8px; font-size:14px; color:#fbbf24;">패턴 학습</div>
+                            <div style="color:#475569; font-size:18px;">→</div>
+                            <div style="padding:10px 14px; background:rgba(245,158,11,0.2); border-radius:8px; font-size:14px; color:#fbbf24; font-weight:700;">Harness 생성</div>
                         </div>
                     </div>
                     <!-- Card 4: Self-Evolution -->
-                    <div class="eng-card" id="eng-c4" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px 24px; opacity:0; transform-origin: center center;">
-                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-                            <div style="width:44px; height:44px; border-radius:11px; background:linear-gradient(135deg,#8b5cf6,#ec4899); display:flex; align-items:center; justify-content:center;">
-                                <span class="material-symbols-outlined" style="color:#fff; font-size:24px;">psychology</span>
+                    <div class="eng-card" id="eng-c4" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px; opacity:0; transform-origin: center center; display:flex; flex-direction:column; justify-content:center;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+                            <div style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#8b5cf6,#ec4899); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#fff; font-size:30px;">psychology</span>
                             </div>
                             <div>
-                                <div style="font-size:18px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Self-Evolution</div>
-                                <div style="font-size:11px; color:#64748b; margin-top:2px;">자율 진화 아키텍처</div>
+                                <div style="font-size:24px; font-weight:700; color:#f1f5f9; letter-spacing:-0.02em;">Self-Evolution</div>
+                                <div style="font-size:13px; color:#64748b; margin-top:4px;">자율 진화 아키텍처</div>
                             </div>
                         </div>
-                        <!-- Evolution cycle -->
-                        <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:8px;">
-                            <div style="padding:6px 10px; background:rgba(139,92,246,0.12); border-radius:6px; font-size:10px; color:#c4b5fd;">실행</div>
-                            <div style="color:#475569; font-size:12px;">→</div>
-                            <div style="padding:6px 10px; background:rgba(139,92,246,0.12); border-radius:6px; font-size:10px; color:#c4b5fd;">평가</div>
-                            <div style="color:#475569; font-size:12px;">→</div>
-                            <div style="padding:6px 10px; background:rgba(139,92,246,0.12); border-radius:6px; font-size:10px; color:#c4b5fd;">개선</div>
-                            <div style="color:#475569; font-size:12px;">↺</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <div style="padding:10px 14px; background:rgba(139,92,246,0.12); border-radius:8px; font-size:14px; color:#c4b5fd;">실행</div>
+                            <div style="color:#475569; font-size:18px;">→</div>
+                            <div style="padding:10px 14px; background:rgba(139,92,246,0.12); border-radius:8px; font-size:14px; color:#c4b5fd;">평가</div>
+                            <div style="color:#475569; font-size:18px;">→</div>
+                            <div style="padding:10px 14px; background:rgba(139,92,246,0.12); border-radius:8px; font-size:14px; color:#c4b5fd;">개선</div>
+                            <div style="color:#475569; font-size:16px;">↺</div>
                         </div>
                     </div>
                 </div>
@@ -706,15 +676,8 @@
         </div>
 
         <!-- Scene: Skill is All You Need -->
-        <div class="scene" id="scene-skill" style="background:#ffffff;">
-            <div id="skill-caption" style="position: absolute; top: 14%; left: 50%; transform: translateX(-50%); font-family: 'Nanum Pen Script', 'Inter', cursive; font-size: 4vw; color:#111827; line-height:1; white-space:nowrap;"></div>
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48vw; aspect-ratio: 16/9; perspective: 1600px;">
-                <div id="skill-carousel" style="position:relative; width:100%; height:100%; transform-style: preserve-3d; transform: rotateY(0deg);">
-                    <video class="skill-face" data-idx="0" src="video/atlas-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(0deg) translateZ(28vw);"></video>
-                    <video class="skill-face" data-idx="1" src="video/claude-easy-001.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(120deg) translateZ(28vw);"></video>
-                    <video class="skill-face" data-idx="2" src="video/claude-medium-002.mp4" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow: 0 18px 45px rgba(0,0,0,0.2); backface-visibility:hidden; transform: rotateY(240deg) translateZ(28vw);"></video>
-                </div>
-            </div>
+        <div class="scene" id="scene-skill" style="background:#000;">
+            <video id="skill-video" src="video/atlas-easy-002.mp4" muted playsinline style="width:100%; height:100%; object-fit:contain;"></video>
         </div>
 
         <!-- Scene: One More Thing!! (dramatic reveal) -->
@@ -838,11 +801,11 @@
       "browser.typewriter": "Browser Agent",
       "partner.title": "Browser Agent is&nbsp;<span style=\"color:#3b82f6;\">Work Partner</span>",
       "smart.title": "<span id=\"smart-title-part1\"><span class=\"highlight-pill\">Eliminate</span> routine</span><span id=\"smart-title-part2\" style=\"display:none; opacity:0; white-space:nowrap;\"><span style=\"color:#9ca3af; font-size:0.7em; font-weight:500; margin:0 0.6em;\">&amp;</span><span class=\"highlight-pill\">Unlock</span> productivity</span>",
-      "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 컨플루언스에 작성해줘.",
-      "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code, Antigravity 비교 관련 된 것들 정리해줘",
-      "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 메일로 보내줘",
-      "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 비교해서 틀린게 없는지 확인해줘.",
-      "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 될만한 요소들 파악해줘.",
+      "smart.caption.1": "메타의 레이븐 관련된 정보 검색 후 정리해서 ...",
+      "smart.caption.2": "열려 있는 페이지 중에 Codex, Claude Code ...",
+      "smart.caption.3": "2026년 반도체 시장 전망에 대해 정리해서 ...",
+      "smart.caption.4": "이 페이지 내용이랑 열려있는 대시보드 ...",
+      "smart.caption.5": "지원자의 경력에서 우리 팀에 도움이 ...",
       "link.title": "Link to Your Work Site",
       "link.url": "https://workspace.integration",
       "skill.title": "Skill is All You Need",
@@ -968,8 +931,8 @@
             { key: "marketplace",    label: "Skill Marketplace",        time: 33.5, element: "#scene-marketplace" },
             { key: "spicawork",      label: "Browser Work",             time: 39.5, element: "#scene-spicawork" },
             { key: "skill",          label: "Skill is All You Need",    time: 45.5, element: "#scene-skill"  },
-            { key: "smart",          label: "Smart Personal Agent",     time: 57.5, element: "#scene-smart"  },
-            { key: "engineering",    label: "Agent = Model + Harness",   time: 65.5, element: "#scene-engineering" },
+            { key: "engineering",    label: "Agent Harness",             time: 57.5, element: "#scene-engineering" },
+            { key: "smart",          label: "Smart Personal Agent",     time: 65.5, element: "#scene-smart"  },
             { key: "onemore",        label: "One More Thing",          time: 86.0, element: "#scene-onemore" },
             { key: "receipt",        label: "Receipt Prompt",          time: 90.0, element: "#scene-receipt" },
             { key: "browserdesktop", label: "Browser-Desktop",         time: 96.0, element: "#scene-browserdesktop" },
@@ -1361,26 +1324,72 @@
               .to({}, { duration: 0.8 })
               .to("#scene-spicawork", { opacity: 0, duration: 0.5 });
 
-            // Skill is All you Need (3D carousel rotation)
-            function setSkillCaption(text) {
-                const el = document.getElementById("skill-caption");
-                gsap.fromTo(el, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", onStart: () => { el.textContent = text; } });
-            }
-            tl.to("#scene-skill", { opacity: 1, duration: 0.4 })
-              .call(() => setSkillCaption("Inject WebMCP"))
-              .to({}, { duration: 2.0 })
-              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
-              .call(() => setSkillCaption("Manage Skill"), null, "-=0.6")
-              .to({}, { duration: 1.6 })
-              .to("#skill-carousel", { rotationY: "-=120", duration: 1.0, ease: "power3.inOut" })
-              .call(() => setSkillCaption("Learn Skill Easily"), null, "-=0.6")
-              .to({}, { duration: 1.8 })
-              .to("#scene-skill", { opacity: 0, duration: 0.5 });
+            // Skill demo video (same pattern as extdemo)
+            tl.set("#scene-skill", { opacity: 1 })
+              .call(() => {
+                  const v = document.getElementById("skill-video");
+                  v.currentTime = 0;
+                  v.play();
+              })
+              .to("#scene-skill", { opacity: 1, duration: 0.3 })
+              .to({}, { duration: 8 })
+              .to("#scene-skill", { opacity: 0, duration: 0.5 })
+              .call(() => { document.getElementById("skill-video").pause(); });
 
-            // Smart Personal Agent scene
+            // Engineering scene: Title centered → slides up → cards appear one by one
+            tl.set("#scene-engineering", { opacity: 1 })
+
+              // Title appears centered
+              .to("#eng-title", { opacity: 1, duration: 0.8, ease: "power2.out" })
+              .to({}, { duration: 1.5 })
+
+              // Title slides up to top
+              .to("#eng-title", { top: "6%", yPercent: 0, duration: 1.0, ease: "expo.inOut" })
+              .set("#eng-cards-wrap", { opacity: 1 })
+
+              // Card 1: Agent Harness — zooms in BIG, holds, then shrinks into grid
+              .set("#eng-c1", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 1.8, opacity: 0, zIndex: 10 })
+              .to("#eng-c1", { opacity: 1, scale: 1.8, duration: 0.6, ease: "expo.out" })
+              .to("#eng-c1", { borderColor: "rgba(59,130,246,0.5)", boxShadow: "0 0 40px rgba(59,130,246,0.3)", duration: 0.4 })
+              .to({}, { duration: 1.5 })
+              .to("#eng-c1", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
+
+              // Card 2: WebMCP
+              .set("#eng-c2", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 1.8, opacity: 0, zIndex: 10 })
+              .to("#eng-c2", { opacity: 1, scale: 1.8, duration: 0.6, ease: "expo.out" })
+              .to("#eng-c2", { borderColor: "rgba(16,185,129,0.5)", boxShadow: "0 0 40px rgba(16,185,129,0.3)", duration: 0.4 })
+              .to({}, { duration: 1.5 })
+              .to("#eng-c2", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
+
+              // Card 3: Auto Harness
+              .set("#eng-c3", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 1.8, opacity: 0, zIndex: 10 })
+              .to("#eng-c3", { opacity: 1, scale: 1.8, duration: 0.6, ease: "expo.out" })
+              .to("#eng-c3", { borderColor: "rgba(245,158,11,0.5)", boxShadow: "0 0 40px rgba(245,158,11,0.3)", duration: 0.4 })
+              .to({}, { duration: 1.5 })
+              .to("#eng-c3", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
+
+              // Card 4: Self-Evolution
+              .set("#eng-c4", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 1.8, opacity: 0, zIndex: 10 })
+              .to("#eng-c4", { opacity: 1, scale: 1.8, duration: 0.6, ease: "expo.out" })
+              .to("#eng-c4", { borderColor: "rgba(139,92,246,0.5)", boxShadow: "0 0 40px rgba(139,92,246,0.3)", duration: 0.4 })
+              .to({}, { duration: 1.5 })
+              .to("#eng-c4", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
+
+              // Hold final 2x2 grid view
+              .to({}, { duration: 2.5 })
+              .to("#scene-engineering", { opacity: 0, duration: 0.6 });
+
+            // Smart Personal Agent scene: slogan centered → slides down → videos appear
             tl.set("#scene-smart", { opacity: 1, xPercent: 0 })
+              .set("#scene-smart-track", { opacity: 0 })
+              // Slogan appears centered
               .to(".smart-slogan-word", { opacity: 1, y: 0, duration: 0.6, stagger: 0.18, ease: "expo.out" })
-              // Scene track: Snap & Drift multiple screens
+              .to({}, { duration: 1.2 })
+              // Slogan slides down to bottom
+              .to("#smart-slogan", { top: "auto", bottom: "8%", yPercent: 0, duration: 0.8, ease: "expo.inOut" })
+              // Video track fades in
+              .to("#scene-smart-track", { opacity: 1, duration: 0.5 }, "-=0.3")
+              // Snap & Drift through each video
               .to("#scene-smart-track", { x: -60, duration: 1.2, ease: "linear" })
               .to("#scene-smart-track", { x: -616, duration: 0.7, ease: "expo.inOut" })
               .to("#scene-smart-track", { x: -676, duration: 1.2, ease: "linear" })
@@ -1392,54 +1401,6 @@
               .to("#scene-smart-track", { x: -2524, duration: 1.2, ease: "linear" })
               .to({}, { duration: 0.5 })
               .to("#scene-smart", { opacity: 0, duration: 0.5 });
-
-            // Engineering scene: Formula → Harness grid → 4 cards zoom-in one by one
-            tl.set("#scene-engineering", { opacity: 1 })
-
-              // Phase 1: Show "Agent = Model + Harness" formula
-              .to("#eng-formula", { opacity: 1, duration: 0.8, ease: "power2.out" })
-              .to({}, { duration: 1.2 })
-
-              // Phase 2: Harness grid appears behind formula
-              .to("#eng-harness-grid", { opacity: 1, duration: 1.0, ease: "power2.out" })
-              .to(".hg-cell", { color: "#cbd5e1", duration: 0.5, stagger: 0.08, ease: "power2.out" })
-              .to({}, { duration: 1.5 })
-
-              // Fade formula + grid, prepare cards
-              .to(["#eng-formula", "#eng-harness-grid"], { opacity: 0, scale: 0.9, duration: 0.6, ease: "power2.in" })
-              .set("#eng-cards-wrap", { opacity: 1 })
-
-              // Card 1: Agent Harness — zooms in BIG center, then shrinks into grid slot
-              .set("#eng-c1", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 2.2, opacity: 0, zIndex: 10 })
-              .to("#eng-c1", { opacity: 1, scale: 2.2, duration: 0.6, ease: "expo.out" })
-              .to("#eng-c1", { borderColor: "rgba(59,130,246,0.5)", boxShadow: "0 0 40px rgba(59,130,246,0.3)", duration: 0.4 })
-              .to({}, { duration: 1.2 })
-              .to("#eng-c1", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
-
-              // Card 2: WebMCP
-              .set("#eng-c2", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 2.2, opacity: 0, zIndex: 10 })
-              .to("#eng-c2", { opacity: 1, scale: 2.2, duration: 0.6, ease: "expo.out" })
-              .to("#eng-c2", { borderColor: "rgba(16,185,129,0.5)", boxShadow: "0 0 40px rgba(16,185,129,0.3)", duration: 0.4 })
-              .to({}, { duration: 1.2 })
-              .to("#eng-c2", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
-
-              // Card 3: Auto Harness
-              .set("#eng-c3", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 2.2, opacity: 0, zIndex: 10 })
-              .to("#eng-c3", { opacity: 1, scale: 2.2, duration: 0.6, ease: "expo.out" })
-              .to("#eng-c3", { borderColor: "rgba(245,158,11,0.5)", boxShadow: "0 0 40px rgba(245,158,11,0.3)", duration: 0.4 })
-              .to({}, { duration: 1.2 })
-              .to("#eng-c3", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
-
-              // Card 4: Self-Evolution
-              .set("#eng-c4", { position: "fixed", top: "50%", left: "50%", xPercent: -50, yPercent: -50, scale: 2.2, opacity: 0, zIndex: 10 })
-              .to("#eng-c4", { opacity: 1, scale: 2.2, duration: 0.6, ease: "expo.out" })
-              .to("#eng-c4", { borderColor: "rgba(139,92,246,0.5)", boxShadow: "0 0 40px rgba(139,92,246,0.3)", duration: 0.4 })
-              .to({}, { duration: 1.2 })
-              .to("#eng-c4", { position: "relative", top: "auto", left: "auto", xPercent: 0, yPercent: 0, scale: 1, borderColor: "rgba(255,255,255,0.1)", boxShadow: "none", duration: 0.8, ease: "expo.inOut", clearProps: "position,top,left,zIndex" })
-
-              // Hold final 2x2 grid view
-              .to({}, { duration: 2.0 })
-              .to("#scene-engineering", { opacity: 0, duration: 0.6 });
 
             // 6. One More Thing!! dramatic reveal
             tl.set("#scene-onemore", { opacity: 1 })
