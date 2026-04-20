@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 9 - Appendix: HITL Tools</title>
+  <link rel="stylesheet" href="slide.css">
+  <style>
+    .app-main {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: calc(16 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .app-left, .app-right {
+      display: flex;
+      flex-direction: column;
+      gap: calc(10 * var(--s) * 1px);
+    }
+
+    /* HITL tool card */
+    .hitl-cards {
+      display: flex;
+      flex-direction: column;
+      gap: calc(8 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .hitl-card {
+      border: 2px solid #e2e8f0;
+      border-radius: calc(10 * var(--s) * 1px);
+      padding: calc(14 * var(--s) * 1px) calc(16 * var(--s) * 1px);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: calc(12 * var(--s) * 1px);
+      align-items: center;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .hitl-card .hc-badge {
+      width: calc(42 * var(--s) * 1px);
+      height: calc(42 * var(--s) * 1px);
+      border-radius: calc(10 * var(--s) * 1px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(20 * var(--s) * 1px);
+      flex-shrink: 0;
+    }
+
+    .hitl-card .hc-body { min-width: 0; }
+
+    .hitl-card .hc-name {
+      font-size: calc(15 * var(--s) * 1px);
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-bottom: calc(3 * var(--s) * 1px);
+    }
+
+    .hitl-card .hc-name code {
+      font-size: calc(12 * var(--s) * 1px);
+      background: #f1f5f9;
+      color: #475569;
+      padding: calc(2 * var(--s) * 1px) calc(6 * var(--s) * 1px);
+      border-radius: calc(4 * var(--s) * 1px);
+      font-family: monospace;
+      margin-left: calc(6 * var(--s) * 1px);
+    }
+
+    .hitl-card .hc-trigger {
+      font-size: calc(12 * var(--s) * 1px);
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    .hitl-card .hc-arrow {
+      font-size: calc(20 * var(--s) * 1px);
+      color: #cbd5e1;
+      flex-shrink: 0;
+    }
+
+    .hitl-card .hc-mapped {
+      font-size: calc(13 * var(--s) * 1px);
+      font-weight: 700;
+      color: #1e40af;
+      font-family: monospace;
+      white-space: nowrap;
+    }
+
+    /* Color variants */
+    .hitl-card.info { border-color: #bfdbfe; border-left: 5px solid #3b82f6; }
+    .hitl-card.info .hc-badge { background: #eff6ff; color: #1e40af; }
+
+    .hitl-card.action { border-color: #fde68a; border-left: 5px solid #f59e0b; }
+    .hitl-card.action .hc-badge { background: #fef3c7; color: #92400e; }
+
+    .hitl-card.plan { border-color: #c4b5fd; border-left: 5px solid #8b5cf6; }
+    .hitl-card.plan .hc-badge { background: #f5f3ff; color: #5b21b6; }
+
+    .hitl-card.approval { border-color: #fecaca; border-left: 5px solid #ef4444; }
+    .hitl-card.approval .hc-badge { background: #fee2e2; color: #991b1b; }
+
+    /* Trigger scenarios */
+    .trigger-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(6 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .trigger-item {
+      background: #fff;
+      border: 2px solid #fecaca;
+      border-radius: calc(8 * var(--s) * 1px);
+      padding: calc(12 * var(--s) * 1px) calc(10 * var(--s) * 1px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: calc(6 * var(--s) * 1px);
+    }
+
+    .trigger-item .tr-icon {
+      font-size: calc(22 * var(--s) * 1px);
+    }
+
+    .trigger-item .tr-name {
+      font-size: calc(12 * var(--s) * 1px);
+      font-weight: 700;
+      color: #991b1b;
+      line-height: 1.3;
+    }
+
+    .trigger-note {
+      background: #0f172a;
+      color: #fff;
+      border-radius: calc(8 * var(--s) * 1px);
+      padding: calc(12 * var(--s) * 1px) calc(18 * var(--s) * 1px);
+      font-size: calc(14 * var(--s) * 1px);
+      font-weight: 700;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .trigger-note .accent { color: #60a5fa; }
+  </style>
+</head>
+<body data-current="9" data-total="9">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <div class="title-bar" style="background: linear-gradient(90deg, #1a1a2e, #374151);">
+        <div class="tb-num" style="border-color: #94a3b8; color: #94a3b8;">A4</div>
+        <div class="tb-title">Appendix &mdash; <span class="accent">HITL (Human-In-The-Loop) 도구</span></div>
+        <div class="tb-sub">4개 HITL 도구 &middot;<br>6개 트리거 시나리오</div>
+      </div>
+
+      <div class="app-main">
+
+        <!-- LEFT: 4 HITL tool cards -->
+        <div class="app-left">
+          <div class="section-label">4개 HITL 도구</div>
+
+          <div class="hitl-cards">
+
+            <div class="hitl-card info">
+              <div class="hc-badge">&#10067;</div>
+              <div class="hc-body">
+                <div class="hc-name">ask_user <code>정보 부족</code></div>
+                <div class="hc-trigger">에이전트가 판단에 필요한 정보가 부족할 때 사용자에게 질문</div>
+              </div>
+              <div>
+                <div class="hc-arrow">&rarr;</div>
+                <div class="hc-mapped">hitl_multi_info_request</div>
+              </div>
+            </div>
+
+            <div class="hitl-card action">
+              <div class="hc-badge">&#9995;</div>
+              <div class="hc-body">
+                <div class="hc-name">request_user_action <code>수동 작업</code></div>
+                <div class="hc-trigger">로그인, CAPTCHA 등 에이전트가 직접 수행 불가한 수동 작업 요청</div>
+              </div>
+              <div>
+                <div class="hc-arrow">&rarr;</div>
+                <div class="hc-mapped">hitl_action_request</div>
+              </div>
+            </div>
+
+            <div class="hitl-card plan">
+              <div class="hc-badge">&#128203;</div>
+              <div class="hc-body">
+                <div class="hc-name">request_plan_accept <code>계획 검토</code></div>
+                <div class="hc-trigger">복잡한 작업 계획을 사용자에게 보여주고 검토·승인 요청</div>
+              </div>
+              <div>
+                <div class="hc-arrow">&rarr;</div>
+                <div class="hc-mapped">hitl_plan_accept</div>
+              </div>
+            </div>
+
+            <div class="hitl-card approval">
+              <div class="hc-badge">&#128721;</div>
+              <div class="hc-body">
+                <div class="hc-name">approve_message <code>민감 클릭/입력</code></div>
+                <div class="hc-trigger">민감한 버튼 클릭이나 입력 전 명시적 사전 승인 요청</div>
+              </div>
+              <div>
+                <div class="hc-arrow">&rarr;</div>
+                <div class="hc-mapped">hitl_approval</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: Trigger scenarios -->
+        <div class="app-right">
+          <div class="section-label">승인 트리거 시나리오 (approve_message)</div>
+
+          <div class="trigger-grid">
+            <div class="trigger-item">
+              <div class="tr-icon">&#128221;</div>
+              <div class="tr-name">양식 제출<br>(Form Submit)</div>
+            </div>
+            <div class="trigger-item">
+              <div class="tr-icon">&#128233;</div>
+              <div class="tr-name">메시지 전송<br>(Send Message)</div>
+            </div>
+            <div class="trigger-item">
+              <div class="tr-icon">&#128240;</div>
+              <div class="tr-name">콘텐츠 게시<br>(Publish)</div>
+            </div>
+            <div class="trigger-item">
+              <div class="tr-icon">&#128722;</div>
+              <div class="tr-name">주문 &middot; 결제<br>(Order)</div>
+            </div>
+            <div class="trigger-item">
+              <div class="tr-icon">&#128465;</div>
+              <div class="tr-name">데이터 삭제<br>(Delete)</div>
+            </div>
+            <div class="trigger-item">
+              <div class="tr-icon">&#128272;</div>
+              <div class="tr-name">계정 &middot; 권한<br>보안 설정</div>
+            </div>
+          </div>
+
+          <div class="trigger-note">
+            비가역적 행동 전에 반드시 <span class="accent">사용자 확인</span>을 거친다
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>

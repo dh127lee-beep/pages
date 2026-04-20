@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 8 - Appendix: Browser Tools</title>
+  <link rel="stylesheet" href="slide.css">
+  <style>
+    .app-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: calc(16 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .app-left, .app-right {
+      display: flex;
+      flex-direction: column;
+      gap: calc(10 * var(--s) * 1px);
+    }
+
+    /* Tool category grid */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: calc(6 * var(--s) * 1px);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .tool-cat {
+      border: 2px solid #e2e8f0;
+      border-radius: calc(8 * var(--s) * 1px);
+      padding: calc(10 * var(--s) * 1px) calc(8 * var(--s) * 1px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: calc(4 * var(--s) * 1px);
+      transition: border-color 0.2s;
+    }
+
+    .tool-cat .tc-count {
+      font-size: calc(26 * var(--s) * 1px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .tool-cat .tc-name {
+      font-size: calc(11 * var(--s) * 1px);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .tool-cat .tc-unit {
+      font-size: calc(10 * var(--s) * 1px);
+      color: #94a3b8;
+    }
+
+    /* Active (loaded by default) */
+    .tool-cat.active {
+      background: #eff6ff;
+      border-color: #3b82f6;
+    }
+    .tool-cat.active .tc-count { color: #1e40af; }
+    .tool-cat.active .tc-name { color: #1e40af; }
+
+    /* Deferred (loaded on demand) */
+    .tool-cat.deferred {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      border-style: dashed;
+    }
+    .tool-cat.deferred .tc-count { color: #94a3b8; }
+    .tool-cat.deferred .tc-name { color: #64748b; }
+
+    /* Total strip */
+    .tool-total {
+      background: #0f172a;
+      color: #fff;
+      border-radius: calc(8 * var(--s) * 1px);
+      padding: calc(10 * var(--s) * 1px) calc(16 * var(--s) * 1px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .tool-total .tt-left {
+      font-size: calc(14 * var(--s) * 1px);
+      font-weight: 700;
+    }
+
+    .tool-total .tt-right {
+      font-size: calc(24 * var(--s) * 1px);
+      font-weight: 800;
+      color: #60a5fa;
+    }
+
+    /* Legend */
+    .tool-legend {
+      display: flex;
+      gap: calc(18 * var(--s) * 1px);
+      flex-shrink: 0;
+    }
+
+    .tool-legend .tl-item {
+      display: flex;
+      align-items: center;
+      gap: calc(6 * var(--s) * 1px);
+      font-size: calc(12 * var(--s) * 1px);
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .tool-legend .tl-dot {
+      width: calc(12 * var(--s) * 1px);
+      height: calc(12 * var(--s) * 1px);
+      border-radius: calc(4 * var(--s) * 1px);
+    }
+
+    .tool-legend .tl-dot.loaded {
+      background: #3b82f6;
+    }
+
+    .tool-legend .tl-dot.ondemand {
+      background: #e2e8f0;
+      border: 1.5px dashed #94a3b8;
+    }
+  </style>
+</head>
+<body data-current="8" data-total="9">
+
+  <div class="slide-viewport">
+    <div class="slide-page">
+
+      <div class="title-bar" style="background: linear-gradient(90deg, #1a1a2e, #374151);">
+        <div class="tb-num" style="border-color: #94a3b8; color: #94a3b8;">A3</div>
+        <div class="tb-title">Appendix &mdash; <span class="accent">Browser Tool 구성</span></div>
+        <div class="tb-sub">10개 카테고리 &middot; 41개 도구<br>점진적 로딩 전략</div>
+      </div>
+
+      <div class="app-main">
+
+        <!-- LEFT: Tool category grid + total -->
+        <div class="app-left">
+          <div class="section-label">10개 카테고리 &middot; 41개 도구</div>
+
+          <div class="tool-grid">
+            <!-- Row 1 - Active -->
+            <div class="tool-cat active">
+              <div class="tc-count">5</div>
+              <div class="tc-name">Interaction</div>
+              <div class="tc-unit">click &middot; type &middot; select</div>
+            </div>
+            <div class="tool-cat active">
+              <div class="tc-count">4</div>
+              <div class="tc-name">Navigation<br>/ Search</div>
+              <div class="tc-unit">go &middot; search &middot; wait</div>
+            </div>
+
+            <!-- Row 1 - Deferred -->
+            <div class="tool-cat deferred">
+              <div class="tc-count">4</div>
+              <div class="tc-name">Scrolling</div>
+              <div class="tc-unit">scroll &middot; anchor</div>
+            </div>
+            <div class="tool-cat deferred">
+              <div class="tc-count">11</div>
+              <div class="tc-name">Tabs</div>
+              <div class="tc-unit">open &middot; switch &middot; close</div>
+            </div>
+            <div class="tool-cat deferred">
+              <div class="tc-count">3</div>
+              <div class="tc-name">Coordinate</div>
+              <div class="tc-unit">x,y click &middot; hover</div>
+            </div>
+
+            <!-- Row 2 - Deferred -->
+            <div class="tool-cat deferred">
+              <div class="tc-count">4</div>
+              <div class="tc-name">Snapshot<br>/ Capture</div>
+              <div class="tc-unit">DOM &middot; screenshot</div>
+            </div>
+            <div class="tool-cat deferred">
+              <div class="tc-count">3</div>
+              <div class="tc-name">JavaScript</div>
+              <div class="tc-unit">eval &middot; inject</div>
+            </div>
+            <div class="tool-cat deferred">
+              <div class="tc-count">2</div>
+              <div class="tc-name">History</div>
+              <div class="tc-unit">back &middot; forward</div>
+            </div>
+            <div class="tool-cat deferred">
+              <div class="tc-count">3</div>
+              <div class="tc-name">Batch</div>
+              <div class="tc-unit">multi-step bundle</div>
+            </div>
+            <div class="tool-cat deferred">
+              <div class="tc-count">2</div>
+              <div class="tc-name">Meta</div>
+              <div class="tc-unit">tool-search &middot; info</div>
+            </div>
+          </div>
+
+          <div class="tool-legend">
+            <div class="tl-item"><div class="tl-dot loaded"></div> 기본 로드 (9개)</div>
+            <div class="tl-item"><div class="tl-dot ondemand"></div> On-demand 확장 (32개)</div>
+          </div>
+
+          <div class="tool-total">
+            <div class="tt-left">전체 도구</div>
+            <div class="tt-right">10 카테고리 &middot; 41 tools</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Progressive loading concept SVG -->
+        <div class="app-right">
+          <div class="section-label">점진적 로딩 전략</div>
+
+          <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style="width:100%; flex:1;">
+            <defs>
+              <marker id="arrT" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#3b82f6"/>
+              </marker>
+            </defs>
+
+            <!-- Stage 1: Initial load (top) -->
+            <rect x="20" y="14" width="440" height="80" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+            <text x="40" y="36" font-size="12" fill="#1e40af" font-weight="800">STAGE 1 &mdash; 기본 로드</text>
+            <text x="40" y="54" font-size="14" fill="#0f172a" font-weight="700">Interaction (5) + Navigation (4)</text>
+            <text x="40" y="72" font-size="11" fill="#64748b">모든 세션에서 항상 사용 &mdash; 핵심 9개 도구만 먼저 로드</text>
+
+            <!-- Arrow down -->
+            <path d="M240 94 L240 120" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrT)"/>
+
+            <!-- Stage 2: Agent encounters need -->
+            <rect x="20" y="124" width="440" height="68" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+            <text x="40" y="146" font-size="12" fill="#92400e" font-weight="800">STAGE 2 &mdash; 시나리오 인식</text>
+            <text x="40" y="164" font-size="11" fill="#64748b">&ldquo;탭을 열어야 할 것 같은데 도구가 없다&rdquo; &mdash; 에이전트가 필요성 판단</text>
+            <text x="40" y="180" font-size="11" fill="#92400e" font-weight="600">tool_search(&ldquo;open new tab&rdquo;) 호출</text>
+
+            <!-- Arrow down -->
+            <path d="M240 192 L240 218" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrT)"/>
+
+            <!-- Stage 3: Tool Search expands -->
+            <rect x="20" y="222" width="440" height="104" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+            <text x="40" y="244" font-size="12" fill="#065f46" font-weight="800">STAGE 3 &mdash; 도구 확장</text>
+            <text x="40" y="264" font-size="11" fill="#64748b">Tool Search가 적합한 카테고리를 찾아 동적으로 로드</text>
+
+            <!-- Expanded tools chips -->
+            <g>
+              <rect x="40" y="278" width="70" height="24" rx="12" fill="#d1fae5" stroke="#10b981"/>
+              <text x="75" y="294" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">Tabs (11)</text>
+
+              <rect x="118" y="278" width="82" height="24" rx="12" fill="#d1fae5" stroke="#10b981"/>
+              <text x="159" y="294" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">Scrolling (4)</text>
+
+              <rect x="208" y="278" width="92" height="24" rx="12" fill="#d1fae5" stroke="#10b981"/>
+              <text x="254" y="294" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">Coordinate (3)</text>
+
+              <rect x="308" y="278" width="86" height="24" rx="12" fill="#d1fae5" stroke="#10b981"/>
+              <text x="351" y="294" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">JavaScript (3)</text>
+
+              <rect x="402" y="278" width="50" height="24" rx="12" fill="#d1fae5" stroke="#10b981"/>
+              <text x="427" y="294" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">...</text>
+            </g>
+
+            <text x="240" y="326" font-size="11" fill="#065f46" text-anchor="middle" font-weight="700">필요한 순간에만 로드 &rarr; 프롬프트 토큰 &amp; 지연 최소화</text>
+          </svg>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="slide-nav"></nav>
+  <script src="slide.js"></script>
+</body>
+</html>
