@@ -105,13 +105,22 @@ function mainLinks() {
   ]);
 }
 
-/* 앱 상단바용 — 아이콘만. 마켓플레이스까지 같은 묶음으로 둡니다 */
+/* 앱 상단바용 — 아이콘만 */
 function quickLinks() {
   const r = route();
-  const links = [...mainLinks(), ['#/marketplace', 'store', '마켓플레이스']];
-  return links.map(([href, ic, label]) => `
+  return mainLinks().map(([href, ic, label]) => `
     <a class="icon-btn ${r === href ? 'is-active' : ''}" href="${href}"
        title="${label}" aria-label="${label}">${ICONS[ic]}</a>`).join('');
+}
+
+/* 마켓플레이스 진입점.
+   스페이스 안에서는 '밖으로 나가는' 동작이라 아이콘 + 문구로 크게 둡니다. */
+function marketplaceLink(labeled) {
+  const on = route().startsWith('#/marketplace');
+  return labeled
+    ? `<a class="btn btn--sm ${on ? 'btn--primary' : ''}" href="#/marketplace">${ICONS.store} 마켓플레이스</a>`
+    : `<a class="icon-btn ${on ? 'is-active' : ''}" href="#/marketplace"
+          title="마켓플레이스" aria-label="마켓플레이스">${ICONS.store}</a>`;
 }
 
 /* 비로그인 헤더용 — 아이콘 + 문구, 가운데 정렬 */
@@ -352,9 +361,10 @@ function topbar() {
       <div class="grow"></div>
 
       ${quickLinks()}
+      ${sel ? '' : marketplaceLink(false)}
       <span class="navsep"></span>
 
-      ${sel ? '' : `
+      ${sel ? marketplaceLink(true) : `
         <div style="position:relative">
           <button class="btn btn--sm" data-action="menu" data-menu="ws">
             ${ICONS.space} 내 스페이스 ${ICONS.chevron}
