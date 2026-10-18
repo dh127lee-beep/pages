@@ -4,42 +4,183 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Downloads</title>
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --panel: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --border: #e3e3e6;
+      --hover: #f0f0f3;
+      --accent: #2563eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111113;
+        --panel: #1a1a1d;
+        --text: #ececef;
+        --muted: #9a9aa2;
+        --border: #2c2c31;
+        --hover: #232328;
+        --accent: #60a5fa;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+    main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 20px; font-size: 13px; }
+    .toolbar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .toolbar input {
+      flex: 1; min-width: 180px; padding: 8px 12px;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--panel); color: var(--text); font: inherit;
+    }
+    .toolbar button {
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--panel); color: var(--text); font: inherit; cursor: pointer;
+    }
+    .toolbar button:hover { background: var(--hover); }
+    .tree {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 8px 0; overflow: hidden;
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    ul ul { padding-left: 20px; }
+    summary, .file {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 16px; cursor: pointer; border-radius: 6px;
+      text-decoration: none; color: inherit;
+    }
+    summary { list-style: none; font-weight: 600; }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover, .file:hover { background: var(--hover); }
+    summary::before {
+      content: "▸"; width: 12px; color: var(--muted);
+      transition: transform .15s;
+    }
+    details[open] > summary::before { transform: rotate(90deg); }
+    .file::before { content: ""; width: 12px; }
+    .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file:hover .name { color: var(--accent); }
+    .size { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .count { color: var(--muted); font-size: 12px; font-weight: 400; }
+    .status { padding: 16px; color: var(--muted); }
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Downloads</h1>
-    <p class="subtitle">문서 및 오픈소스 다운로드</p>
-    <p class="quick-links">
-      <a href="slide/slide01.html">🎞️ 슬라이드</a>
-      <a href="harness/slide01.html">🧩 Harness 슬라이드</a>
-      <a href="harness-v2/slide01.html">🗜️ Harness v2 (5p)</a>
-      <a href="intro/index.html">🎬 인트로 영상</a>
-    </p>
-  </header>
-
-  <nav class="tabs">
-    <button class="tab active" data-target="documents">📄 문서 (PDF)</button>
-    <button class="tab" data-target="opensource">📦 오픈소스 (ZIP)</button>
-    <button class="tab" data-target="bookmark">🔖 북마크</button>
-  </nav>
-
   <main>
-    <section id="documents" class="section active">
-      <div class="list" id="documents-list"></div>
-    </section>
-    <section id="opensource" class="section">
-      <div class="list" id="opensource-list"></div>
-    </section>
-    <section id="bookmark" class="section">
-      <div class="list" id="bookmark-list"></div>
-    </section>
+    <h1>📁 Downloads</h1>
+    <p class="sub">파일을 클릭하면 다운로드됩니다.</p>
+    <div class="toolbar">
+      <input id="filter" type="search" placeholder="파일 이름 검색">
+      <button id="expand">모두 펼치기</button>
+      <button id="collapse">모두 접기</button>
+    </div>
+    <div class="tree" id="tree"><div class="status">불러오는 중…</div></div>
   </main>
 
-  <footer>
-    <p>&copy; 2026. Powered by GitHub Pages.</p>
-  </footer>
+  <script>
+    (() => {
+      // Repo is inferred from the GitHub Pages URL (<owner>.github.io/<repo>/)
+      const FALLBACK = { owner: 'dh127lee-beep', repo: 'pages' };
+      const HIDDEN = (path) =>
+        path === 'index.html' || path.split('/').some((p) => p.startsWith('.'));
 
-  <script src="js/app.js"></script>
+      const host = location.hostname.match(/^([^.]+)\.github\.io$/);
+      const owner = host ? host[1] : FALLBACK.owner;
+      const repo = host ? (location.pathname.split('/')[1] || `${owner}.github.io`) : FALLBACK.repo;
+
+      const treeEl = document.getElementById('tree');
+
+      const formatSize = (n) => {
+        const units = ['B', 'KB', 'MB', 'GB'];
+        let i = 0;
+        while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
+        return `${i ? n.toFixed(1) : n} ${units[i]}`;
+      };
+
+      const escape = (s) => s.replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+      })[c]);
+
+      function buildTree(entries) {
+        const root = { dirs: {}, files: [] };
+        for (const e of entries) {
+          if (e.type !== 'blob' || HIDDEN(e.path)) continue;
+          const parts = e.path.split('/');
+          let node = root;
+          for (const dir of parts.slice(0, -1)) {
+            node = node.dirs[dir] ||= { dirs: {}, files: [] };
+          }
+          node.files.push({ name: parts.at(-1), path: e.path, size: e.size });
+        }
+        return root;
+      }
+
+      const countFiles = (node) =>
+        node.files.length + Object.values(node.dirs).reduce((n, d) => n + countFiles(d), 0);
+
+      const byName = (a, b) => a.localeCompare(b, 'ko', { numeric: true, sensitivity: 'base' });
+
+      function render(node) {
+        const dirs = Object.keys(node.dirs).sort(byName).map((name) => {
+          const child = node.dirs[name];
+          return `<li class="dir"><details>
+            <summary><span class="name">📁 ${escape(name)}</span>
+              <span class="count">${countFiles(child)}</span></summary>
+            ${render(child)}</details></li>`;
+        });
+        const files = node.files.sort((a, b) => byName(a.name, b.name)).map((f) => {
+          const href = f.path.split('/').map(encodeURIComponent).join('/');
+          return `<li class="leaf" data-name="${escape(f.name.toLowerCase())}">
+            <a class="file" href="${href}" download="${escape(f.name)}">
+              <span class="name">📄 ${escape(f.name)}</span>
+              <span class="size">${formatSize(f.size)}</span></a></li>`;
+        });
+        return `<ul>${dirs.join('')}${files.join('')}</ul>`;
+      }
+
+      function setAll(open) {
+        treeEl.querySelectorAll('details').forEach((d) => { d.open = open; });
+      }
+
+      function applyFilter(q) {
+        q = q.trim().toLowerCase();
+        treeEl.querySelectorAll('li.leaf').forEach((li) => {
+          li.classList.toggle('hidden', !!q && !li.dataset.name.includes(q));
+        });
+        // Hide folders with no visible files; open the rest while searching
+        [...treeEl.querySelectorAll('li.dir')].reverse().forEach((li) => {
+          const visible = li.querySelector('li.leaf:not(.hidden)');
+          li.classList.toggle('hidden', !visible);
+          if (q) li.firstElementChild.open = !!visible;
+        });
+        if (!q) setAll(false);
+      }
+
+      fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/HEAD?recursive=1`)
+        .then((r) => {
+          if (!r.ok) throw new Error(`GitHub API ${r.status}`);
+          return r.json();
+        })
+        .then((data) => {
+          treeEl.innerHTML = render(buildTree(data.tree));
+        })
+        .catch((err) => {
+          treeEl.innerHTML = `<div class="status">목록을 불러오지 못했습니다 (${escape(err.message)}). 잠시 후 새로고침해 주세요.</div>`;
+        });
+
+      document.getElementById('expand').onclick = () => setAll(true);
+      document.getElementById('collapse').onclick = () => setAll(false);
+      document.getElementById('filter').oninput = (e) => applyFilter(e.target.value);
+    })();
+  </script>
 </body>
 </html>
