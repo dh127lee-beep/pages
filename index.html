@@ -72,10 +72,32 @@
     .count { color: var(--muted); font-size: 12px; font-weight: 400; }
     .status { padding: 16px; color: var(--muted); }
     .hidden { display: none; }
+    .gate { max-width: 360px; margin: 18vh auto 0; padding: 0 16px; }
+    .gate form { display: flex; gap: 8px; }
+    .gate input {
+      flex: 1; min-width: 0; padding: 8px 12px;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--panel); color: var(--text); font: inherit;
+    }
+    .gate button {
+      padding: 8px 14px; border: 0; border-radius: 8px;
+      background: var(--accent); color: #fff; font: inherit; cursor: pointer;
+    }
+    .gate .error { color: #dc2626; font-size: 13px; min-height: 20px; margin: 8px 0 0; }
   </style>
 </head>
 <body>
-  <main>
+  <div class="gate" id="gate">
+    <h1>🔒 Downloads</h1>
+    <p class="sub">비밀번호를 입력해 주세요.</p>
+    <form id="gate-form">
+      <input id="gate-input" type="password" placeholder="비밀번호" autocomplete="current-password" autofocus>
+      <button type="submit">확인</button>
+    </form>
+    <p class="error" id="gate-error"></p>
+  </div>
+
+  <main id="content" class="hidden">
     <h1>📁 Downloads</h1>
     <p class="sub">파일을 클릭하면 다운로드됩니다.</p>
     <div class="toolbar">
@@ -165,21 +187,60 @@
         if (!q) setAll(false);
       }
 
-      fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/HEAD?recursive=1`)
-        .then((r) => {
-          if (!r.ok) throw new Error(`GitHub API ${r.status}`);
-          return r.json();
-        })
-        .then((data) => {
-          treeEl.innerHTML = render(buildTree(data.tree));
-        })
-        .catch((err) => {
-          treeEl.innerHTML = `<div class="status">목록을 불러오지 못했습니다 (${escape(err.message)}). 잠시 후 새로고침해 주세요.</div>`;
-        });
+      function loadTree() {
+        fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/HEAD?recursive=1`)
+          .then((r) => {
+            if (!r.ok) throw new Error(`GitHub API ${r.status}`);
+            return r.json();
+          })
+          .then((data) => {
+            treeEl.innerHTML = render(buildTree(data.tree));
+          })
+          .catch((err) => {
+            treeEl.innerHTML = `<div class="status">목록을 불러오지 못했습니다 (${escape(err.message)}). 잠시 후 새로고침해 주세요.</div>`;
+          });
+      }
 
       document.getElementById('expand').onclick = () => setAll(true);
       document.getElementById('collapse').onclick = () => setAll(false);
       document.getElementById('filter').oninput = (e) => applyFilter(e.target.value);
+
+      // Password gate: compares the SHA-256 of the input against PASSWORD_HASH.
+      // Generate a hash with: printf '%s' '<password>' | shasum -a 256
+      const PASSWORD_HASH = 'e17d14033693c8ebc79eb2d6cbce4ba3516720f5124bbe82d23a03a54bd5c6c8';
+      const SESSION_KEY = 'downloads-unlocked';
+
+      const sha256 = async (text) => {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+      };
+
+      function unlock() {
+        document.getElementById('gate').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+        loadTree();
+      }
+
+      let remembered = null;
+      try { remembered = sessionStorage.getItem(SESSION_KEY); } catch {}
+      if (PASSWORD_HASH && remembered === PASSWORD_HASH) unlock();
+
+      document.getElementById('gate-form').onsubmit = async (e) => {
+        e.preventDefault();
+        const input = document.getElementById('gate-input');
+        const error = document.getElementById('gate-error');
+        if (!PASSWORD_HASH) {
+          error.textContent = '비밀번호가 아직 설정되지 않았습니다.';
+          return;
+        }
+        if (await sha256(input.value) !== PASSWORD_HASH) {
+          error.textContent = '비밀번호가 올바르지 않습니다.';
+          input.select();
+          return;
+        }
+        try { sessionStorage.setItem(SESSION_KEY, PASSWORD_HASH); } catch {}
+        unlock();
+      };
     })();
   </script>
 </body>
