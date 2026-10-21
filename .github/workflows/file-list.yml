@@ -1,0 +1,37 @@
+# Regenerates files.json (the list shown on index.html) on every push,
+# so the page doesn't need to call api.github.com.
+name: Update file list
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate files.json
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          paths = subprocess.run(['git', 'ls-files', '-z'], capture_output=True, check=True).stdout.decode().split('\0')
+          files = [{'path': p, 'size': os.path.getsize(p)} for p in sorted(paths) if p and os.path.isfile(p)]
+          with open('files.json', 'w', encoding='utf-8') as f:
+              json.dump(files, f, ensure_ascii=False, indent=1)
+              f.write('\n')
+          PY
+
+      - name: Commit if changed
+        run: |
+          git add files.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update files.json'
+          git push

@@ -110,14 +110,9 @@
 
   <script>
     (() => {
-      // Repo is inferred from the GitHub Pages URL (<owner>.github.io/<repo>/)
-      const FALLBACK = { owner: 'dh127lee-beep', repo: 'pages' };
+      // files.json is regenerated on every push by .github/workflows/file-list.yml
       const HIDDEN = (path) =>
-        path === 'index.html' || path.split('/').some((p) => p.startsWith('.'));
-
-      const host = location.hostname.match(/^([^.]+)\.github\.io$/);
-      const owner = host ? host[1] : FALLBACK.owner;
-      const repo = host ? (location.pathname.split('/')[1] || `${owner}.github.io`) : FALLBACK.repo;
+        path === 'index.html' || path === 'files.json' || path.split('/').some((p) => p.startsWith('.'));
 
       const treeEl = document.getElementById('tree');
 
@@ -135,7 +130,7 @@
       function buildTree(entries) {
         const root = { dirs: {}, files: [] };
         for (const e of entries) {
-          if (e.type !== 'blob' || HIDDEN(e.path)) continue;
+          if (HIDDEN(e.path)) continue;
           const parts = e.path.split('/');
           let node = root;
           for (const dir of parts.slice(0, -1)) {
@@ -188,13 +183,13 @@
       }
 
       function loadTree() {
-        fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/HEAD?recursive=1`)
+        fetch('files.json', { cache: 'no-store' })
           .then((r) => {
-            if (!r.ok) throw new Error(`GitHub API ${r.status}`);
+            if (!r.ok) throw new Error(`files.json ${r.status}`);
             return r.json();
           })
-          .then((data) => {
-            treeEl.innerHTML = render(buildTree(data.tree));
+          .then((files) => {
+            treeEl.innerHTML = render(buildTree(files));
           })
           .catch((err) => {
             treeEl.innerHTML = `<div class="status">목록을 불러오지 못했습니다 (${escape(err.message)}). 잠시 후 새로고침해 주세요.</div>`;

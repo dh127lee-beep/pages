@@ -1,0 +1,30 @@
+[
+ {
+  "path": ".gitignore",
+  "size": 14
+ },
+ {
+  "path": "data/agentbase.zip",
+  "size": 121625
+ },
+ {
+  "path": "data/dsh-server-20261018.zip",
+  "size": 182414
+ },
+ {
+  "path": "data/managed-agent.zip",
+  "size": 5532412
+ },
+ {
+  "path": "data/office-web.zip",
+  "size": 245341
+ },
+ {
+  "path": "data/on-look.zip",
+  "size": 174026
+ },
+ {
+  "path": "index.html",
+  "size": 9867
+ }
+]
