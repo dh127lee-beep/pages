@@ -28,8 +28,12 @@
   "size": 174026
  },
  {
+  "path": "data/python-gen-office.zip",
+  "size": 158117
+ },
+ {
   "path": "files.json",
-  "size": 387
+  "size": 499
  },
  {
   "path": "index.html",
