@@ -1,5 +1,9 @@
 [
  {
+  "path": ".github/workflows/file-list.yml",
+  "size": 1172
+ },
+ {
   "path": ".gitignore",
   "size": 14
  },
@@ -24,7 +28,11 @@
   "size": 174026
  },
  {
+  "path": "files.json",
+  "size": 387
+ },
+ {
   "path": "index.html",
-  "size": 9867
+  "size": 9543
  }
 ]
