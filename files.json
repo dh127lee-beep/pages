@@ -12,6 +12,10 @@
   "size": 121625
  },
  {
+  "path": "data/deep-agent-20261025.zip",
+  "size": 113698
+ },
+ {
   "path": "data/dsh-server-20261018.zip",
   "size": 182414
  },
@@ -33,7 +37,7 @@
  },
  {
   "path": "files.json",
-  "size": 499
+  "size": 563
  },
  {
   "path": "index.html",
